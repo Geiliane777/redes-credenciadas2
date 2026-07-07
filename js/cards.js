@@ -1,25 +1,49 @@
-function mostrarClinicas(clinicas) {
+// =======================================
+// EXIBIR CLÍNICAS
+// =======================================
 
-    console.log("mostrarClinicas foi chamada");
+function mostrarClinicas(clinicas) {
 
     const resultado = document.getElementById("resultado");
 
-    console.log(resultado);
-
     resultado.innerHTML = "";
+
+    if (!clinicas || clinicas.length === 0) {
+
+        resultado.innerHTML = `
+            <div class="semResultado">
+                Nenhuma clínica encontrada.
+            </div>
+        `;
+
+        return;
+
+    }
 
     clinicas.forEach(clinica => {
 
         resultado.innerHTML += `
-            <div style="
-                border:1px solid #000;
-                margin:15px;
-                padding:15px;
-                background:white;
-            ">
+
+            <div class="card">
+
                 <h2>${clinica.nome}</h2>
-                <p>${clinica.endereco}</p>
+
+                <div class="info">
+
+                    <p>
+                        <strong>📍 Endereço</strong><br>
+                        ${clinica.endereco}
+                    </p>
+
+                    <p>
+                        <strong>📞 Telefone</strong><br>
+                        ${clinica.telefone || "Não informado"}
+                    </p>
+
+                </div>
+
             </div>
+
         `;
 
     });
