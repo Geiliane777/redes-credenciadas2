@@ -13,13 +13,15 @@ async function buscarClinicas() {
         return;
     }
 
-    const { data, error } = await supabaseClient
-        .from("clinicas")
-        .select("*")
-        .eq("bairro_id", bairro);
+   const { data, error } = await supabaseClient
+    .from("clinicas")
+    .select("*")
+    .eq("bairro_id", bairro);
 
-    console.log("Clínicas encontradas:");
-    console.log(data);
-    console.log(error);
+if (error) {
+    console.error(error);
+    return;
+}
 
+mostrarClinicas(data);
 }
