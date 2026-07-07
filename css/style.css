@@ -126,3 +126,56 @@ button:hover{
     margin-top:35px;
 
 }
+/* ===========================
+   CARDS DAS CLÍNICAS
+=========================== */
+
+.card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    border-left:6px solid #2563eb;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.card h2{
+
+    color:#1e3a8a;
+
+    margin-bottom:18px;
+
+}
+
+.card p{
+
+    margin:12px 0;
+
+    color:#444;
+
+    line-height:1.6;
+
+}
+
+.card strong{
+
+    color:#111827;
+
+}
