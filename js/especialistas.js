@@ -1,9 +1,25 @@
 console.log("especialistas.js carregado");
 
-const botao = document.getElementById("buscar");
+document
+    .getElementById("buscar")
+    .addEventListener("click", buscarClinicas);
 
-console.log(botao);
+async function buscarClinicas() {
 
-botao.addEventListener("click", () => {
-    alert("Botão funcionando!");
-});
+    const bairro = document.getElementById("bairro").value;
+
+    if (!bairro) {
+        alert("Selecione um bairro.");
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from("clinicas")
+        .select("*")
+        .eq("bairro_id", bairro);
+
+    console.log("Clínicas encontradas:");
+    console.log(data);
+    console.log(error);
+
+}
