@@ -1,1 +1,35 @@
+// =============================
+// CARREGAR REGIÕES
+// =============================
 
+async function carregarRegioes() {
+
+    const { data, error } = await supabaseClient
+        .from("regioes")
+        .select("*")
+        .order("nome");
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    const select = document.getElementById("regiao");
+
+    select.innerHTML = `
+        <option value="">Selecione a Região</option>
+    `;
+
+    data.forEach(regiao => {
+
+        select.innerHTML += `
+            <option value="${regiao.id}">
+                ${regiao.nome}
+            </option>
+        `;
+
+    });
+
+}
+
+carregarRegioes();
