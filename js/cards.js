@@ -1,6 +1,6 @@
-// =======================================
+// ======================================
 // EXIBIR CLÍNICAS
-// =======================================
+// ======================================
 
 function mostrarClinicas(clinicas) {
 
@@ -25,16 +25,25 @@ function mostrarClinicas(clinicas) {
         const bairro = clinica.bairros?.nome || "Não informado";
 
         // Especialidades
-        const especialidades = clinica.clinica_especialidades
-            ?.filter(item => item.ativo)
-            ?.map(item => item.especialidades?.nome)
-            ?.join(", ") || "Não informado";
+        let especialidades = "Não informado";
+
+        if (
+            clinica.clinica_especialidades &&
+            clinica.clinica_especialidades.length > 0
+        ) {
+
+            especialidades = clinica.clinica_especialidades
+                .map(item => item.especialidades?.nome)
+                .filter(nome => nome)
+                .join(", ");
+
+        }
 
         resultado.innerHTML += `
 
             <div class="card">
 
-                <h2>🏥 ${clinica.nome}</h2>
+                <h2>${clinica.nome}</h2>
 
                 <div class="info">
 
