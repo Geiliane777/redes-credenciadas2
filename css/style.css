@@ -1,125 +1,461 @@
-// ======================================
-// EXIBIR CLÍNICAS
-// ======================================
+/* =====================================
+   RESET
+===================================== */
 
-function mostrarClinicas(clinicas) {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    const resultado = document.getElementById("resultado");
+body{
+    background:#f3f6fb;
+    color:#374151;
+}
 
-    resultado.innerHTML = "";
 
-    // Nenhuma clínica encontrada
-    if (!clinicas || clinicas.length === 0) {
+/* =====================================
+   HEADER
+===================================== */
 
-        resultado.innerHTML = `
-            <div class="semResultado">
-                <h2>Nenhuma clínica encontrada.</h2>
-                <p>Tente selecionar outro bairro.</p>
-            </div>
-        `;
+.header{
 
-        return;
+    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+
+    color:white;
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.20);
+
+}
+
+.logo{
+
+    width:120px;
+
+    margin-bottom:20px;
+
+    transition:.3s;
+
+}
+
+.logo:hover{
+
+    transform:scale(1.08);
+
+}
+
+.header h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.header p{
+
+    font-size:20px;
+
+    opacity:.9;
+
+}
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
+.container{
+
+    width:95%;
+    max-width:1200px;
+
+    margin:auto;
+
+    margin-top:-30px;
+    margin-bottom:50px;
+
+}
+
+
+/* =====================================
+   FILTROS
+===================================== */
+
+.filtros{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    align-items:end;
+
+}
+
+
+/* =====================================
+   SELECT
+===================================== */
+
+select{
+
+    width:100%;
+
+    padding:15px;
+
+    border:2px solid #dbeafe;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    background:white;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+select:hover{
+
+    border-color:#60a5fa;
+
+}
+
+select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 10px rgba(37,99,235,.25);
+
+}
+
+
+/* =====================================
+   BOTÃO BUSCAR
+===================================== */
+
+button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.30);
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.45);
+
+}
+
+
+/* =====================================
+   RESULTADO
+===================================== */
+
+#resultado{
+
+    margin-top:40px;
+
+}
+
+.tituloResultado{
+
+    font-size:30px;
+
+    color:#1e3a8a;
+
+    margin-bottom:25px;
+
+}
+
+
+/* =====================================
+   CARD
+===================================== */
+
+.card{
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin-bottom:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+
+}
+
+
+/* =====================================
+   HEADER CARD
+===================================== */
+
+.cardHeader{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    color:white;
+
+    padding:22px;
+
+}
+
+.cardHeader h2{
+
+    margin:0;
+
+    font-size:24px;
+
+}
+
+
+/* =====================================
+   INFORMAÇÕES
+===================================== */
+
+.info{
+
+    padding:25px;
+
+}
+
+.info p{
+
+    margin-bottom:18px;
+
+    line-height:1.7;
+
+}
+
+.info strong{
+
+    color:#2563eb;
+
+}
+
+
+/* =====================================
+   ESPECIALIDADES
+===================================== */
+
+.especialidades{
+
+    margin-top:20px;
+
+}
+
+.tags{
+
+    margin-top:12px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.tag{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.tag:hover{
+
+    background:#1d4ed8;
+
+    transform:scale(1.05);
+
+}
+
+
+/* =====================================
+   BOTÃO GOOGLE MAPS
+===================================== */
+
+.acoes{
+
+    margin-top:30px;
+
+}
+
+.btnAcao{
+
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
+    padding:15px;
+
+    background:#059669;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:bold;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.btnAcao:hover{
+
+    background:#047857;
+
+    transform:translateY(-3px);
+
+}
+
+
+/* =====================================
+   SEM RESULTADO
+===================================== */
+
+.semResultado{
+
+    background:white;
+
+    padding:50px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.semResultado h2{
+
+    color:#dc2626;
+
+    margin-bottom:10px;
+
+}
+
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+@media(max-width:768px){
+
+    .header{
+
+        padding:40px 20px;
+
     }
 
-    // Título dos resultados
-    resultado.innerHTML = `
-        <h2 class="tituloResultado">
-            Clínicas Encontradas (${clinicas.length})
-        </h2>
-    `;
+    .header h1{
 
-    // Percorre as clínicas
-    clinicas.forEach(clinica => {
+        font-size:32px;
 
-        const bairro = clinica.bairros?.nome || "Não informado";
+    }
 
-        const telefone = clinica.telefone || "Não informado";
+    .header p{
 
-        const especialidades = clinica.clinica_especialidades
-            ?.map(item => item.especialidades?.nome)
-            .filter(nome => nome) || [];
+        font-size:16px;
 
-        let tags = "";
+    }
 
-        especialidades.forEach(nome => {
+    .logo{
 
-            tags += `
-                <span class="tag">
-                    ${nome}
-                </span>
-            `;
+        width:90px;
 
-        });
+    }
 
-        // Endereço para o Google Maps
-        const enderecoMaps = encodeURIComponent(clinica.endereco);
+    .container{
 
-        resultado.innerHTML += `
+        width:95%;
 
-            <div class="card">
+        margin-top:-20px;
 
-                <div class="cardHeader">
+    }
 
-                    <h2>🏥 ${clinica.nome}</h2>
+    .filtros{
 
-                </div>
+        grid-template-columns:1fr;
 
-                <div class="info">
+    }
 
-                    <p>
+    .cardHeader h2{
 
-                        <strong>📍 Endereço</strong><br>
+        font-size:20px;
 
-                        ${clinica.endereco}
-
-                    </p>
-
-                    <p>
-
-                        <strong>🏙 Bairro</strong><br>
-
-                        ${bairro}
-
-                    </p>
-
-                    <p>
-
-                        <strong>📞 Telefone</strong><br>
-
-                        ${telefone}
-
-                    </p>
-
-                    <div class="especialidades">
-
-                        <strong>🦷 Especialidades</strong>
-
-                        <div class="tags">
-
-                            ${tags}
-
-                        </div>
-
-                    </div>
-
-                    <div class="acoes">
-
-                        <a
-                            class="btnAcao"
-                            href="https://www.google.com/maps/search/?api=1&query=${enderecoMaps}"
-                            target="_blank"
-                        >
-                            📍 Ver no Google Maps
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
-
-    });
+    }
 
 }
