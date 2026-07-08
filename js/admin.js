@@ -45,7 +45,7 @@ function sair(){
 
 
 // ======================================
-// MÓDULO LOCALIZAÇÃO
+// LOCALIZAÇÃO
 // CARREGAR REGIÕES
 // ======================================
 
@@ -56,8 +56,10 @@ async function carregarRegioesAdmin(){
 
 
     if(!lista){
+
         console.error("Elemento lista-regioes não encontrado");
         return;
+
     }
 
 
@@ -76,7 +78,7 @@ async function carregarRegioesAdmin(){
 
         console.error(error);
 
-        lista.innerHTML = 
+        lista.innerHTML =
         "Erro ao carregar regiões.";
 
         return;
@@ -107,6 +109,7 @@ async function carregarRegioesAdmin(){
 
 
 }
+
 
 
 
@@ -169,6 +172,7 @@ function abrirModulo(modulo){
 
 
 
+
     // ==========================
     // CLÍNICAS
     // ==========================
@@ -176,36 +180,38 @@ function abrirModulo(modulo){
     if(modulo === "clinicas"){
 
 
-    conteudo.innerHTML = `
+        conteudo.innerHTML = `
 
 
-        <h2>
-            🦷 Gerenciar Clínicas
-        </h2>
+            <h2>
+                🦷 Gerenciar Clínicas
+            </h2>
 
 
-        <div class="admin-card">
+
+            <div class="admin-card">
 
 
-            <button onclick="carregarClinicasAdmin()">
+                <button onclick="carregarClinicasAdmin()">
 
-                Carregar Clínicas
+                    Carregar Clínicas
 
-            </button>
+                </button>
 
 
-            <div id="lista-clinicas">
+
+                <div id="lista-clinicas">
+
+                </div>
+
 
             </div>
 
 
-        </div>
+        `;
 
 
-    `;
-
-
-}
+    }
 
 
 
@@ -226,11 +232,14 @@ function abrirModulo(modulo){
             </h2>
 
 
+
             <div class="admin-card">
 
 
                 <p>
-                    Cadastro e edição de especialidades será desenvolvido aqui.
+
+                Cadastro e edição de especialidades será desenvolvido aqui.
+
                 </p>
 
 
@@ -261,11 +270,14 @@ function abrirModulo(modulo){
             </h2>
 
 
+
             <div class="admin-card">
 
 
                 <p>
-                    Controle das redes Especialistas e Sindilegis será desenvolvido aqui.
+
+                Controle das redes Especialistas e Sindilegis será desenvolvido aqui.
+
                 </p>
 
 
@@ -276,6 +288,189 @@ function abrirModulo(modulo){
 
 
     }
+
+
+
+}
+
+
+
+
+
+// ======================================
+// CARREGAR CLÍNICAS
+// ======================================
+
+
+async function carregarClinicasAdmin(){
+
+
+    const lista = document.getElementById("lista-clinicas");
+
+
+    if(!lista){
+
+        console.error("Lista de clínicas não encontrada");
+
+        return;
+
+    }
+
+
+
+    lista.innerHTML = "Carregando clínicas...";
+
+
+
+
+    const { data, error } = await supabaseClient
+
+        .from("clinicas")
+
+        .select(`
+
+            id,
+            nome,
+            endereco,
+            telefone,
+            ativo,
+
+            bairros(
+                nome
+            )
+
+        `)
+
+        .order("nome");
+
+
+
+
+    if(error){
+
+
+        console.error(error);
+
+
+        lista.innerHTML =
+        "Erro ao carregar clínicas.";
+
+
+        return;
+
+
+    }
+
+
+
+
+
+    lista.innerHTML = "";
+
+
+
+
+    if(!data || data.length === 0){
+
+
+        lista.innerHTML = `
+
+            <div class="admin-item">
+
+                Nenhuma clínica encontrada.
+
+            </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+
+
+    data.forEach(clinica => {
+
+
+
+        lista.innerHTML += `
+
+
+
+        <div class="admin-card">
+
+
+
+            <h3>
+
+                🦷 ${clinica.nome}
+
+            </h3>
+
+
+
+            <p>
+
+                📍 <strong>Endereço:</strong><br>
+
+                ${clinica.endereco}
+
+            </p>
+
+
+
+
+            <p>
+
+                🏙 <strong>Bairro:</strong><br>
+
+                ${clinica.bairros?.nome || "Não informado"}
+
+            </p>
+
+
+
+
+            <p>
+
+                📞 <strong>Telefone:</strong><br>
+
+                ${clinica.telefone || "Não informado"}
+
+            </p>
+
+
+
+
+            <p>
+
+                Status:
+
+                ${
+                    clinica.ativo
+                    ?
+                    "🟢 Ativa"
+                    :
+                    "🔴 Inativa"
+                }
+
+
+            </p>
+
+
+
+        </div>
+
+
+
+        `;
+
+
+
+    });
 
 
 
