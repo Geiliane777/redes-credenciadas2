@@ -6,38 +6,38 @@ function mostrarClinicas(clinicas) {
 
     const resultado = document.getElementById("resultado");
 
+    // Limpa os resultados anteriores
     resultado.innerHTML = "";
 
+    // Se não encontrou clínicas
     if (!clinicas || clinicas.length === 0) {
 
         resultado.innerHTML = `
             <div class="semResultado">
-                Nenhuma clínica encontrada.
+                <h2>Nenhuma clínica encontrada.</h2>
+                <p>Tente selecionar outro bairro.</p>
             </div>
         `;
 
         return;
     }
 
+    // Título
+    resultado.innerHTML = `
+        <h2 class="tituloResultado">
+            Clínicas Encontradas (${clinicas.length})
+        </h2>
+    `;
+
+    // Cards
     clinicas.forEach(clinica => {
 
-        // Bairro
         const bairro = clinica.bairros?.nome || "Não informado";
 
-        // Especialidades
-        let especialidades = "Não informado";
-
-        if (
-            clinica.clinica_especialidades &&
-            clinica.clinica_especialidades.length > 0
-        ) {
-
-            especialidades = clinica.clinica_especialidades
-                .map(item => item.especialidades?.nome)
-                .filter(nome => nome)
-                .join(", ");
-
-        }
+        const especialidades = clinica.clinica_especialidades
+            ?.map(item => item.especialidades?.nome)
+            .filter(nome => nome)
+            .join(", ") || "Não informado";
 
         resultado.innerHTML += `
 
