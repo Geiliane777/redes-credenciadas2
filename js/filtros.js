@@ -164,4 +164,6 @@ document.getElementById("cidade").addEventListener("change",function(){
 
 // ======================================
 
+console.log("filtros.js carregado");
+
 carregarRegioes();
