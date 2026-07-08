@@ -6,12 +6,9 @@ document
 
 async function buscarClinicas() {
 
-    const bairro = document.getElementById("bairro").value;
+    console.log("Entrou na função buscarClinicas");
 
-    if (!bairro) {
-        alert("Selecione um bairro.");
-        return;
-    }
+    const bairro = document.getElementById("bairro").value;
 
   const { data, error } = await supabaseClient
     .from("clinicas")
