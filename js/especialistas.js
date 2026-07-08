@@ -8,40 +8,43 @@ botao.addEventListener("click", buscarClinicas);
 
 async function buscarClinicas() {
 
-    console.log("Entrou na função buscarClinicas");
+    console.log("Entrou na função");
 
-    const bairro = document.getElementById("bairro").value;
+    try {
 
- const { data, error } = await supabaseClient
-    .from("clinicas")
-    .select(`
-        id,
-        nome,
-        endereco,
-        telefone,
+        const bairro = document.getElementById("bairro").value;
 
-        bairros(
-            nome
-        ),
+        console.log("Bairro:", bairro);
 
-        clinica_especialidades!inner(
-            ativo,
-            rede,
-            especialidades(
-                nome
-            )
-        )
-    `)
-    .eq("bairro_id", bairro)
-    .eq("clinica_especialidades.rede", "especialistas");
+        const resposta = await supabaseClient
+            .from("clinicas")
+            .select(`
+                id,
+                nome,
+                endereco,
+                telefone,
+                bairros(nome),
+                clinica_especialidades(
+                    ativo,
+                    rede,
+                    especialidades(nome)
+                )
+            `)
+            .eq("bairro_id", bairro);
 
-console.log("Erro:", error);
-console.log("Dados:", data);
+        console.log("Resposta completa:", resposta);
 
-if (error) {
-    return;
-}
+        if(resposta.error){
+            console.error("Erro:", resposta.error);
+            return;
+        }
 
-mostrarClinicas(data);
+        mostrarClinicas(resposta.data);
+
+    } catch(e){
+
+        console.error("ERRO GERAL:", e);
+
+    }
 
 }
