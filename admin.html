@@ -18,36 +18,38 @@
 <body>
 
 
-<!-- LOGIN -->
+<!-- =========================
+        LOGIN
+========================= -->
 
 <section id="login" class="login-container">
 
 
-<div class="login-box">
+    <div class="login-box">
 
 
-<h1>
-⚙️ Admin
-</h1>
+        <h1>
+            ⚙️ Admin
+        </h1>
 
 
-<input 
-id="usuario"
-placeholder="Usuário">
+        <input 
+        id="usuario"
+        placeholder="Usuário">
 
 
-<input 
-id="senha"
-type="password"
-placeholder="Senha">
+        <input 
+        id="senha"
+        type="password"
+        placeholder="Senha">
 
 
-<button onclick="entrar()">
-Entrar
-</button>
+        <button onclick="entrar()">
+            Entrar
+        </button>
 
 
-</div>
+    </div>
 
 
 </section>
@@ -55,61 +57,91 @@ Entrar
 
 
 
+<!-- =========================
+        PAINEL
+========================= -->
 
-<!-- PAINEL -->
 
 <section id="painel" class="hidden">
 
 
-<div class="header-admin">
+    <div class="header-admin">
 
-<h1>
-Painel Administrativo
-</h1>
-
-<p>
-Gerenciamento Redes Especialistas
-</p>
-
-</div>
+        <h1>
+            Painel Administrativo
+        </h1>
 
 
-
-<div class="admin-container">
-
-
-<div class="menu">
+        <p>
+            Gerenciamento Redes Especialistas
+        </p>
 
 
-<button onclick="abrirModulo('localizacao')">
-📍 Localização
-</button>
+    </div>
 
 
-<button onclick="abrirModulo('clinicas')">
-🦷 Clínicas
-</button>
 
 
-<button onclick="abrirModulo('especialidades')">
-📋 Especialidades
-</button>
+    <div class="admin-container">
 
 
-<button onclick="abrirModulo('redes')">
-🌐 Redes
-</button>
+        <!-- MENU LATERAL -->
+
+        <div class="menu">
 
 
-<button onclick="sair()">
-🚪 Sair
-</button>
+            <button onclick="abrirModulo('localizacao')">
+                📍 Localização
+            </button>
 
 
-</div>
+            <button onclick="abrirModulo('clinicas')">
+                🦷 Clínicas
+            </button>
 
 
-</div>
+            <button onclick="abrirModulo('especialidades')">
+                📋 Especialidades
+            </button>
+
+
+            <button onclick="abrirModulo('redes')">
+                🌐 Redes
+            </button>
+
+
+            <button onclick="sair()">
+                🚪 Sair
+            </button>
+
+
+        </div>
+
+
+
+
+
+        <!-- ÁREA DOS MÓDULOS -->
+
+        <div id="conteudo-admin">
+
+
+            <h2>
+                Bem-vindo ao painel
+            </h2>
+
+
+            <p>
+                Selecione uma opção no menu.
+            </p>
+
+
+        </div>
+
+
+
+    </div>
+
 
 
 </section>
@@ -117,7 +149,14 @@ Gerenciamento Redes Especialistas
 
 
 
+
+<!-- =========================
+        SCRIPTS
+========================= -->
+
+
 <script src="js/supabase.js"></script>
+
 <script src="js/admin.js"></script>
 
 
