@@ -160,14 +160,17 @@ async function carregarBairros(cidadeId){
 
 }
 
-
-// ---------- ESPECIALIDADES ----------
 async function carregarEspecialidades(){
 
-    const {data,error}=await supabaseClient
+    console.log("Carregando especialidades...");
+
+    const { data, error } = await supabaseClient
         .from("especialidades")
         .select("*")
         .order("nome");
+
+    console.log("Erro:", error);
+    console.log("Dados:", data);
 
     if(error){
         console.error(error);
@@ -191,8 +194,6 @@ async function carregarEspecialidades(){
     });
 
 }
-
-
 // ======================================
 // EVENTOS
 // ======================================
