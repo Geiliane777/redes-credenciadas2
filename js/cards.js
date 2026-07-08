@@ -43,10 +43,14 @@ function mostrarClinicas(clinicas) {
 
             <div class="card">
 
-                <h2>${clinica.nome}</h2>
+               <div class="cardHeader">
 
-                <div class="info">
+    <h2>${clinica.nome}</h2>
 
+</div>
+
+<div class="info">
+              
                     <p>
                         <strong>📍 Endereço</strong><br>
                         ${clinica.endereco}
