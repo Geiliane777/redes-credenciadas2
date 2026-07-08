@@ -8,6 +8,7 @@ function mostrarClinicas(clinicas) {
 
     resultado.innerHTML = "";
 
+    // Nenhuma clínica encontrada
     if (!clinicas || clinicas.length === 0) {
 
         resultado.innerHTML = `
@@ -20,15 +21,19 @@ function mostrarClinicas(clinicas) {
         return;
     }
 
+    // Título dos resultados
     resultado.innerHTML = `
         <h2 class="tituloResultado">
             Clínicas Encontradas (${clinicas.length})
         </h2>
     `;
 
+    // Percorre as clínicas
     clinicas.forEach(clinica => {
 
         const bairro = clinica.bairros?.nome || "Não informado";
+
+        const telefone = clinica.telefone || "Não informado";
 
         const especialidades = clinica.clinica_especialidades
             ?.map(item => item.especialidades?.nome)
@@ -38,33 +43,51 @@ function mostrarClinicas(clinicas) {
 
         especialidades.forEach(nome => {
 
-            tags += `<span class="tag">${nome}</span>`;
+            tags += `
+                <span class="tag">
+                    ${nome}
+                </span>
+            `;
 
         });
+
+        // Endereço para o Google Maps
+        const enderecoMaps = encodeURIComponent(clinica.endereco);
 
         resultado.innerHTML += `
 
             <div class="card">
 
                 <div class="cardHeader">
+
                     <h2>🏥 ${clinica.nome}</h2>
+
                 </div>
 
                 <div class="info">
 
                     <p>
+
                         <strong>📍 Endereço</strong><br>
+
                         ${clinica.endereco}
+
                     </p>
 
                     <p>
+
                         <strong>🏙 Bairro</strong><br>
+
                         ${bairro}
+
                     </p>
 
                     <p>
+
                         <strong>📞 Telefone</strong><br>
-                        ${clinica.telefone || "Não informado"}
+
+                        ${telefone}
+
                     </p>
 
                     <div class="especialidades">
@@ -72,8 +95,22 @@ function mostrarClinicas(clinicas) {
                         <strong>🦷 Especialidades</strong>
 
                         <div class="tags">
+
                             ${tags}
+
                         </div>
+
+                    </div>
+
+                    <div class="acoes">
+
+                        <a
+                            class="btnAcao"
+                            href="https://www.google.com/maps/search/?api=1&query=${enderecoMaps}"
+                            target="_blank"
+                        >
+                            📍 Ver no Google Maps
+                        </a>
 
                     </div>
 
