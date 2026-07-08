@@ -6,10 +6,8 @@ function mostrarClinicas(clinicas) {
 
     const resultado = document.getElementById("resultado");
 
-    // Limpa os resultados anteriores
     resultado.innerHTML = "";
 
-    // Se não encontrou clínicas
     if (!clinicas || clinicas.length === 0) {
 
         resultado.innerHTML = `
@@ -22,35 +20,38 @@ function mostrarClinicas(clinicas) {
         return;
     }
 
-    // Título
     resultado.innerHTML = `
         <h2 class="tituloResultado">
             Clínicas Encontradas (${clinicas.length})
         </h2>
     `;
 
-    // Cards
     clinicas.forEach(clinica => {
 
         const bairro = clinica.bairros?.nome || "Não informado";
 
         const especialidades = clinica.clinica_especialidades
             ?.map(item => item.especialidades?.nome)
-            .filter(nome => nome)
-            .join(", ") || "Não informado";
+            .filter(nome => nome) || [];
+
+        let tags = "";
+
+        especialidades.forEach(nome => {
+
+            tags += `<span class="tag">${nome}</span>`;
+
+        });
 
         resultado.innerHTML += `
 
             <div class="card">
 
-               <div class="cardHeader">
+                <div class="cardHeader">
+                    <h2>🏥 ${clinica.nome}</h2>
+                </div>
 
-    <h2>${clinica.nome}</h2>
+                <div class="info">
 
-</div>
-
-<div class="info">
-              
                     <p>
                         <strong>📍 Endereço</strong><br>
                         ${clinica.endereco}
@@ -66,10 +67,15 @@ function mostrarClinicas(clinicas) {
                         ${clinica.telefone || "Não informado"}
                     </p>
 
-                    <p>
-                        <strong>🦷 Especialidades</strong><br>
-                        ${especialidades}
-                    </p>
+                    <div class="especialidades">
+
+                        <strong>🦷 Especialidades</strong>
+
+                        <div class="tags">
+                            ${tags}
+                        </div>
+
+                    </div>
 
                 </div>
 
