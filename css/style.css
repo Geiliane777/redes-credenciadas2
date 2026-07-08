@@ -13,18 +13,18 @@ body{
 
 .header{
 
-    background:linear-gradient(135deg,#0f172a,#2563eb);
+    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
 
     color:white;
 
     text-align:center;
 
-    padding:45px;
+    padding:55px 20px;
 
-    border-bottom-left-radius:30px;
-    border-bottom-right-radius:30px;
+    border-bottom-left-radius:35px;
+    border-bottom-right-radius:35px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
+    box-shadow:0 15px 35px rgba(0,0,0,.20);
 
 }
 
