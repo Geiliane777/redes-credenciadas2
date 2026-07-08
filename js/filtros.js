@@ -1,6 +1,7 @@
 // ======================================
-// FILTROS - REGIÃO / ESTADO / CIDADE / BAIRRO
+// FILTROS - REGIÃO / ESTADO / CIDADE / BAIRRO / ESPECIALIDADE
 // ======================================
+
 
 // ---------- REGIÕES ----------
 async function carregarRegioes() {
@@ -41,9 +42,19 @@ async function carregarEstados(regiaoId){
     const cidade = document.getElementById("cidade");
     const bairro = document.getElementById("bairro");
 
-    estado.innerHTML='<option value="">Selecione o Estado</option>';
-    cidade.innerHTML='<option value="">Selecione a Cidade</option>';
-    bairro.innerHTML='<option value="">Selecione o Bairro</option>';
+    estado.innerHTML = `
+        <option value="">Selecione o Estado</option>
+    `;
+
+    cidade.innerHTML = `
+        <option value="">Selecione a Cidade</option>
+    `;
+
+    bairro.innerHTML = `
+        <option value="">Selecione o Bairro</option>
+    `;
+
+    document.getElementById("especialidade").value = "";
 
     if(!regiaoId) return;
 
@@ -74,11 +85,18 @@ async function carregarEstados(regiaoId){
 // ---------- CIDADES ----------
 async function carregarCidades(estadoId){
 
-    const cidade=document.getElementById("cidade");
-    const bairro=document.getElementById("bairro");
+    const cidade = document.getElementById("cidade");
+    const bairro = document.getElementById("bairro");
 
-    cidade.innerHTML='<option value="">Selecione a Cidade</option>';
-    bairro.innerHTML='<option value="">Selecione o Bairro</option>';
+    cidade.innerHTML = `
+        <option value="">Selecione a Cidade</option>
+    `;
+
+    bairro.innerHTML = `
+        <option value="">Selecione o Bairro</option>
+    `;
+
+    document.getElementById("especialidade").value = "";
 
     if(!estadoId) return;
 
@@ -109,9 +127,13 @@ async function carregarCidades(estadoId){
 // ---------- BAIRROS ----------
 async function carregarBairros(cidadeId){
 
-    const bairro=document.getElementById("bairro");
+    const bairro = document.getElementById("bairro");
 
-    bairro.innerHTML='<option value="">Selecione o Bairro</option>';
+    bairro.innerHTML = `
+        <option value="">Selecione o Bairro</option>
+    `;
+
+    document.getElementById("especialidade").value = "";
 
     if(!cidadeId) return;
 
@@ -130,6 +152,38 @@ async function carregarBairros(cidadeId){
 
         bairro.innerHTML += `
             <option value="${item.id}">
+                ${item.nome}
+            </option>
+        `;
+
+    });
+
+}
+
+
+// ---------- ESPECIALIDADES ----------
+async function carregarEspecialidades(){
+
+    const {data,error}=await supabaseClient
+        .from("especialidades")
+        .select("*")
+        .order("nome");
+
+    if(error){
+        console.error(error);
+        return;
+    }
+
+    const especialidade = document.getElementById("especialidade");
+
+    especialidade.innerHTML = `
+        <option value="">Todas as Especialidades</option>
+    `;
+
+    data.forEach(item=>{
+
+        especialidade.innerHTML += `
+            <option value="${item.nome}">
                 ${item.nome}
             </option>
         `;
@@ -163,7 +217,10 @@ document.getElementById("cidade").addEventListener("change",function(){
 
 
 // ======================================
+// INICIALIZAÇÃO
+// ======================================
 
 console.log("filtros.js carregado");
 
 carregarRegioes();
+carregarEspecialidades();
