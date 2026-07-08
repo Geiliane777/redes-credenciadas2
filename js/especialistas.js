@@ -32,8 +32,7 @@ async function buscarClinicas() {
             `)
             .eq("bairro_id", bairro);
 
-        console.log("Resposta completa:", resposta);
-
+      console.log(resposta.data);
         if(resposta.error){
             console.error("Erro:", resposta.error);
             return;
