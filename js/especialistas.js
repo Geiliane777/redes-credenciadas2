@@ -12,7 +12,7 @@ async function buscarClinicas() {
 
     const bairro = document.getElementById("bairro").value;
 
-  const { data, error } = await supabaseClient
+ const { data, error } = await supabaseClient
     .from("clinicas")
     .select(`
         id,
@@ -35,12 +35,13 @@ async function buscarClinicas() {
     .eq("bairro_id", bairro)
     .eq("clinica_especialidades.rede", "especialistas");
 
+console.log("Erro:", error);
+console.log("Dados:", data);
+
 if (error) {
-    console.error(error);
     return;
 }
 
-console.log(data);
-
 mostrarClinicas(data);
+
 }
