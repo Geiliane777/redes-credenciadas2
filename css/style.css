@@ -174,23 +174,21 @@ button:hover{
 
     border-radius:20px;
 
-    padding:25px;
+    overflow:hidden;
 
-    margin-top:25px;
+    margin-bottom:30px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.10);
 
-    border-left:6px solid #2563eb;
-
-    transition:.3s;
+    transition:.35s;
 
 }
 
 .card:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-6px);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    box-shadow:0 18px 40px rgba(0,0,0,.18);
 
 }
 
