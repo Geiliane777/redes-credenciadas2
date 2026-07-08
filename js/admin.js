@@ -176,29 +176,36 @@ function abrirModulo(modulo){
     if(modulo === "clinicas"){
 
 
-        conteudo.innerHTML = `
+    conteudo.innerHTML = `
 
 
-            <h2>
-                🦷 Gerenciar Clínicas
-            </h2>
+        <h2>
+            🦷 Gerenciar Clínicas
+        </h2>
 
 
-            <div class="admin-card">
+        <div class="admin-card">
 
 
-                <p>
-                    Cadastro e edição de clínicas será desenvolvido aqui.
-                </p>
+            <button onclick="carregarClinicasAdmin()">
 
+                Carregar Clínicas
+
+            </button>
+
+
+            <div id="lista-clinicas">
 
             </div>
 
 
-        `;
+        </div>
 
 
-    }
+    `;
+
+
+}
 
 
 
