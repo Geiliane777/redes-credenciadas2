@@ -350,3 +350,50 @@ button:hover{
     }
 
 }
+/* =====================================
+   ESPECIALIDADES
+===================================== */
+
+.especialidades{
+
+    margin-top:20px;
+
+}
+
+.tags{
+
+    margin-top:12px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+}
+
+.tag{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:8px 14px;
+
+    border-radius:25px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.tag:hover{
+
+    background:#1d4ed8;
+
+    transform:scale(1.05);
+
+}
