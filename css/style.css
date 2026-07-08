@@ -1,3 +1,7 @@
+/* =====================================
+   RESET
+===================================== */
+
 *{
     margin:0;
     padding:0;
@@ -8,8 +12,14 @@
 body{
 
     background:#f3f6fb;
+    color:#333;
 
 }
+
+
+/* =====================================
+   HEADER
+===================================== */
 
 .header{
 
@@ -48,9 +58,7 @@ body{
 
     font-size:42px;
 
-    font-weight:bold;
-
-    margin-bottom:12px;
+    margin-bottom:10px;
 
 }
 
@@ -61,6 +69,12 @@ body{
     opacity:.9;
 
 }
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
 .container{
 
     width:95%;
@@ -72,15 +86,18 @@ body{
 
 }
 
+
+/* =====================================
+   FILTROS
+===================================== */
+
 .filtros{
 
-    background:white;
+    background:#fff;
 
     padding:30px;
 
     border-radius:20px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
 
     display:grid;
 
@@ -90,7 +107,15 @@ body{
 
     align-items:end;
 
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
 }
+
+
+/* =====================================
+   SELECT
+===================================== */
+
 select{
 
     width:100%;
@@ -105,11 +130,9 @@ select{
 
     font-size:15px;
 
-    color:#1f2937;
+    outline:none;
 
     transition:.3s;
-
-    outline:none;
 
 }
 
@@ -123,9 +146,15 @@ select:focus{
 
     border-color:#2563eb;
 
-    box-shadow:0 0 12px rgba(37,99,235,.20);
+    box-shadow:0 0 10px rgba(37,99,235,.20);
 
 }
+
+
+/* =====================================
+   BOTÃO
+===================================== */
+
 button{
 
     width:100%;
@@ -140,11 +169,11 @@ button{
 
     border-radius:12px;
 
+    cursor:pointer;
+
     font-size:17px;
 
     font-weight:bold;
-
-    cursor:pointer;
 
     transition:.3s;
 
@@ -156,21 +185,39 @@ button:hover{
 
     transform:translateY(-3px);
 
-    box-shadow:0 15px 30px rgba(37,99,235,.40);
+    box-shadow:0 15px 35px rgba(37,99,235,.40);
 
 }
+
+
+/* =====================================
+   RESULTADOS
+===================================== */
+
 #resultado{
 
     margin-top:35px;
 
 }
-/*=====================================
-            CARDS
-=====================================*/
+
+.tituloResultado{
+
+    margin-bottom:25px;
+
+    color:#1e3a8a;
+
+    font-size:32px;
+
+}
+
+
+/* =====================================
+   CARD
+===================================== */
 
 .card{
 
-    background:#fff;
+    background:white;
 
     border-radius:20px;
 
@@ -180,7 +227,7 @@ button:hover{
 
     box-shadow:0 10px 30px rgba(0,0,0,.10);
 
-    transition:.35s;
+    transition:.3s;
 
 }
 
@@ -192,71 +239,114 @@ button:hover{
 
 }
 
-.card h2{
 
-    color:#1e3a8a;
+/* =====================================
+   CABEÇALHO DO CARD
+===================================== */
 
-    margin-bottom:20px;
+.cardHeader{
 
-    font-size:28px;
+    background:linear-gradient(135deg,#1d4ed8,#2563eb);
+
+    color:white;
+
+    padding:20px;
 
 }
 
+.cardHeader h2{
+
+    margin:0;
+
+    font-size:24px;
+
+}
+
+
+/* =====================================
+   INFORMAÇÕES
+===================================== */
+
 .info{
 
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
-    gap:20px;
+    padding:25px;
 
 }
 
 .info p{
 
-    background:#f8fafc;
+    margin-bottom:18px;
 
-    padding:15px;
+    line-height:1.7;
 
-    border-radius:12px;
-
-    line-height:1.6;
+    color:#4b5563;
 
 }
 
 .info strong{
 
-    color:#2563eb;
+    color:#1d4ed8;
+
+    font-size:16px;
 
 }
+
+
+/* =====================================
+   SEM RESULTADOS
+===================================== */
 
 .semResultado{
 
-    margin-top:30px;
-
     background:white;
 
-    padding:30px;
-
-    border-radius:15px;
+    padding:40px;
 
     text-align:center;
 
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 
 }
-/* ===========================
-   TÍTULO DOS RESULTADOS
-=========================== */
 
-.tituloResultado{
+.semResultado h2{
 
-    margin:35px 0 25px;
+    color:#dc2626;
 
-    color:#1e3a8a;
+    margin-bottom:10px;
 
-    font-size:30px;
+}
 
-    font-weight:bold;
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+@media(max-width:768px){
+
+    .header h1{
+
+        font-size:30px;
+
+    }
+
+    .header p{
+
+        font-size:16px;
+
+    }
+
+    .container{
+
+        width:96%;
+
+    }
+
+    .filtros{
+
+        grid-template-columns:1fr;
+
+    }
 
 }
