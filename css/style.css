@@ -14,6 +14,9 @@ body{
     color:#374151;
 }
 
+/* NÃO ALTERAR TODAS AS IMAGENS */
+/* Não coloque img { width:100%; } */
+
 
 /* =====================================
    HEADER
@@ -21,40 +24,46 @@ body{
 
 .header{
 
-    background:linear-gradient(135deg,#0f172a,#1d4ed8,#2563eb);
+    background:linear-gradient(135deg,#0f172a,#2563eb);
 
     color:white;
 
     text-align:center;
 
-    padding:60px 20px;
+    padding:50px 20px;
 
-    border-bottom-left-radius:35px;
-    border-bottom-right-radius:35px;
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.20);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 
 }
+
+
+/* =====================================
+   LOGO
+===================================== */
 
 .logo{
 
-    width:120px;
+    width:90px;
 
-    margin-bottom:20px;
+    height:auto;
 
-    transition:.3s;
+    display:block;
 
-}
-
-.logo:hover{
-
-    transform:scale(1.08);
+    margin:0 auto 20px;
 
 }
+
+
+/* =====================================
+   TÍTULOS
+===================================== */
 
 .header h1{
 
-    font-size:42px;
+    font-size:36px;
 
     margin-bottom:10px;
 
@@ -62,7 +71,7 @@ body{
 
 .header p{
 
-    font-size:20px;
+    font-size:18px;
 
     opacity:.9;
 
@@ -76,12 +85,14 @@ body{
 .container{
 
     width:95%;
+
     max-width:1200px;
 
     margin:auto;
 
     margin-top:-30px;
-    margin-bottom:50px;
+
+    margin-bottom:40px;
 
 }
 
@@ -94,7 +105,7 @@ body{
 
     background:white;
 
-    padding:30px;
+    padding:25px;
 
     border-radius:20px;
 
@@ -104,9 +115,7 @@ body{
 
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-    gap:20px;
-
-    align-items:end;
+    gap:15px;
 
 }
 
@@ -119,72 +128,48 @@ select{
 
     width:100%;
 
-    padding:15px;
+    padding:14px;
 
-    border:2px solid #dbeafe;
+    border-radius:10px;
 
-    border-radius:12px;
+    border:1px solid #d1d5db;
 
     font-size:15px;
 
     background:white;
 
-    outline:none;
-
-    transition:.3s;
-
-}
-
-select:hover{
-
-    border-color:#60a5fa;
-
-}
-
-select:focus{
-
-    border-color:#2563eb;
-
-    box-shadow:0 0 10px rgba(37,99,235,.25);
-
 }
 
 
 /* =====================================
-   BOTÃO BUSCAR
+   BOTÃO
 ===================================== */
 
 button{
 
-    width:100%;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    background:#2563eb;
 
     color:white;
 
-    font-size:17px;
+    border:none;
 
-    font-weight:bold;
+    border-radius:10px;
 
     cursor:pointer;
 
-    transition:.3s;
+    font-size:16px;
 
-    box-shadow:0 10px 25px rgba(37,99,235,.30);
+    font-weight:bold;
+
+    padding:14px;
+
+    transition:.3s;
 
 }
 
 button:hover{
 
-    transform:translateY(-3px);
-
-    box-shadow:0 15px 35px rgba(37,99,235,.45);
+    background:#1d4ed8;
 
 }
 
@@ -195,17 +180,15 @@ button:hover{
 
 #resultado{
 
-    margin-top:40px;
+    margin-top:35px;
 
 }
 
 .tituloResultado{
 
-    font-size:30px;
+    margin-bottom:20px;
 
     color:#1e3a8a;
-
-    margin-bottom:25px;
 
 }
 
@@ -218,13 +201,13 @@ button:hover{
 
     background:white;
 
-    border-radius:20px;
+    border-radius:18px;
 
     overflow:hidden;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.10);
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 
     transition:.3s;
 
@@ -232,30 +215,28 @@ button:hover{
 
 .card:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-5px);
 
-    box-shadow:0 20px 40px rgba(0,0,0,.18);
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
 
 }
 
 
 /* =====================================
-   HEADER CARD
+   CABEÇALHO DO CARD
 ===================================== */
 
 .cardHeader{
 
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    background:#2563eb;
 
     color:white;
 
-    padding:22px;
+    padding:20px;
 
 }
 
 .cardHeader h2{
-
-    margin:0;
 
     font-size:24px;
 
@@ -274,15 +255,15 @@ button:hover{
 
 .info p{
 
-    margin-bottom:18px;
+    margin-bottom:15px;
 
-    line-height:1.7;
+    line-height:1.6;
 
 }
 
 .info strong{
 
-    color:#2563eb;
+    color:#111827;
 
 }
 
@@ -299,13 +280,13 @@ button:hover{
 
 .tags{
 
-    margin-top:12px;
-
     display:flex;
 
     flex-wrap:wrap;
 
     gap:10px;
+
+    margin-top:10px;
 
 }
 
@@ -323,16 +304,6 @@ button:hover{
 
     font-weight:bold;
 
-    transition:.3s;
-
-}
-
-.tag:hover{
-
-    background:#1d4ed8;
-
-    transform:scale(1.05);
-
 }
 
 
@@ -342,7 +313,7 @@ button:hover{
 
 .acoes{
 
-    margin-top:30px;
+    margin-top:25px;
 
 }
 
@@ -354,19 +325,17 @@ button:hover{
 
     text-align:center;
 
+    text-decoration:none;
+
     padding:15px;
 
     background:#059669;
 
     color:white;
 
-    text-decoration:none;
-
-    border-radius:12px;
+    border-radius:10px;
 
     font-weight:bold;
-
-    font-size:16px;
 
     transition:.3s;
 
@@ -375,8 +344,6 @@ button:hover{
 .btnAcao:hover{
 
     background:#047857;
-
-    transform:translateY(-3px);
 
 }
 
@@ -389,21 +356,13 @@ button:hover{
 
     background:white;
 
-    padding:50px;
+    padding:40px;
 
     border-radius:20px;
 
     text-align:center;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-
-}
-
-.semResultado h2{
-
-    color:#dc2626;
-
-    margin-bottom:10px;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
 
 }
 
@@ -414,15 +373,9 @@ button:hover{
 
 @media(max-width:768px){
 
-    .header{
-
-        padding:40px 20px;
-
-    }
-
     .header h1{
 
-        font-size:32px;
+        font-size:30px;
 
     }
 
@@ -434,27 +387,13 @@ button:hover{
 
     .logo{
 
-        width:90px;
-
-    }
-
-    .container{
-
-        width:95%;
-
-        margin-top:-20px;
+        width:75px;
 
     }
 
     .filtros{
 
         grid-template-columns:1fr;
-
-    }
-
-    .cardHeader h2{
-
-        font-size:20px;
 
     }
 
