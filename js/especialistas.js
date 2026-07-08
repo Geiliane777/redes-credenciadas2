@@ -1,49 +1,67 @@
+// ======================================
+// REDE ESPECIALISTAS
+// ======================================
+
 console.log("especialistas.js carregado");
 
-const botao = document.getElementById("buscar");
+// Aguarda a página carregar
+document.addEventListener("DOMContentLoaded", () => {
 
-console.log(botao);
+    const botao = document.getElementById("buscar");
 
-botao.addEventListener("click", buscarClinicas);
+    if (botao) {
+        botao.addEventListener("click", buscarClinicas);
+    }
+
+});
+
+
+// ======================================
+// BUSCAR CLÍNICAS
+// ======================================
 
 async function buscarClinicas() {
 
-    console.log("Entrou na função");
+    const bairro = document.getElementById("bairro").value;
 
-    try {
-
-        const bairro = document.getElementById("bairro").value;
-
-        console.log("Bairro:", bairro);
-
-        const resposta = await supabaseClient
-            .from("clinicas")
-            .select(`
-                id,
-                nome,
-                endereco,
-                telefone,
-                bairros(nome),
-                clinica_especialidades(
-                    ativo,
-                    rede,
-                    especialidades(nome)
-                )
-            `)
-            .eq("bairro_id", bairro);
-
-      console.log(resposta.data);
-        if(resposta.error){
-            console.error("Erro:", resposta.error);
-            return;
-        }
-
-        console.log(JSON.stringify(resposta.data, null, 2));
-
-    } catch(e){
-
-        console.error("ERRO GERAL:", e);
-
+    if (!bairro) {
+        alert("Selecione um bairro.");
+        return;
     }
+
+    const { data, error } = await supabaseClient
+        .from("clinicas")
+        .select(`
+            id,
+            nome,
+            endereco,
+            telefone,
+
+            bairros (
+                nome
+            ),
+
+            clinica_especialidades!inner (
+                ativo,
+                rede,
+
+                especialidades (
+                    nome
+                )
+            )
+        `)
+        .eq("bairro_id", bairro)
+        .eq("clinica_especialidades.rede", "especialistas")
+        .eq("clinica_especialidades.ativo", true);
+
+    if (error) {
+        console.error(error);
+        alert("Erro ao buscar clínicas.");
+        return;
+    }
+
+    console.log(data);
+
+    mostrarClinicas(data);
 
 }
