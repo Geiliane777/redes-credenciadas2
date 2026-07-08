@@ -38,7 +38,7 @@ async function buscarClinicas() {
             return;
         }
 
-        mostrarClinicas(resposta.data);
+        console.log(JSON.stringify(resposta.data, null, 2));
 
     } catch(e){
 
