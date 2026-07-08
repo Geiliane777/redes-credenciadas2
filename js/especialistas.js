@@ -41,5 +41,7 @@ if (error) {
     return;
 }
 
+console.log(data);
+
 mostrarClinicas(data);
 }
