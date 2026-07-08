@@ -209,3 +209,18 @@ button:hover{
     box-shadow:0 5px 20px rgba(0,0,0,.08);
 
 }
+/* ===========================
+   TÍTULO DOS RESULTADOS
+=========================== */
+
+.tituloResultado{
+
+    margin:35px 0 25px;
+
+    color:#1e3a8a;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+}
