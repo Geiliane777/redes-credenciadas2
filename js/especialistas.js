@@ -1,8 +1,10 @@
 console.log("especialistas.js carregado");
 
-document
-    .getElementById("buscar")
-    .addEventListener("click", buscarClinicas);
+const botao = document.getElementById("buscar");
+
+console.log(botao);
+
+botao.addEventListener("click", buscarClinicas);
 
 async function buscarClinicas() {
 
