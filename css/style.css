@@ -76,7 +76,7 @@ body{
 
     background:white;
 
-    padding:25px;
+    padding:30px;
 
     border-radius:20px;
 
@@ -86,10 +86,11 @@ body{
 
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-    gap:15px;
+    gap:20px;
+
+    align-items:end;
 
 }
-
 select{
 
     width:100%;
@@ -127,32 +128,37 @@ select:focus{
 }
 button{
 
-    background:#2563eb;
+    width:100%;
+
+    padding:15px;
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
 
     color:white;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    cursor:pointer;
-
-    font-size:16px;
+    font-size:17px;
 
     font-weight:bold;
 
+    cursor:pointer;
+
     transition:.3s;
+
+    box-shadow:0 8px 20px rgba(37,99,235,.30);
 
 }
 
 button:hover{
 
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 
-    background:#1d4ed8;
+    box-shadow:0 15px 30px rgba(37,99,235,.40);
 
 }
-
 #resultado{
 
     margin-top:35px;
