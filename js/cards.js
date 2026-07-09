@@ -12,9 +12,27 @@ function mostrarClinicas(clinicas) {
 
 
 
-    // Nenhuma clínica encontrada
+    // ======================================
+    // REMOVER DUPLICIDADES
+    // ======================================
 
-    if (!clinicas || clinicas.length === 0) {
+    const clinicasUnicas = [
+        ...new Map(
+            clinicas.map(item => [
+                item.id,
+                item
+            ])
+        ).values()
+    ];
+
+
+
+
+    // ======================================
+    // NENHUMA CLÍNICA
+    // ======================================
+
+    if (!clinicasUnicas || clinicasUnicas.length === 0) {
 
 
         resultado.innerHTML = `
@@ -40,13 +58,17 @@ function mostrarClinicas(clinicas) {
 
 
 
-    // Título dos resultados
+
+
+    // ======================================
+    // TÍTULO
+    // ======================================
 
     resultado.innerHTML = `
 
         <h2 class="tituloResultado">
 
-            Clínicas Encontradas (${clinicas.length})
+            Clínicas Encontradas (${clinicasUnicas.length})
 
         </h2>
 
@@ -54,70 +76,48 @@ function mostrarClinicas(clinicas) {
 
 
 
-    // Percorre clínicas
-
-    clinicas.forEach(clinica => {
 
 
 
-        // ==============================
-        // LOCALIZAÇÃO
-        // ==============================
+    // ======================================
+    // MONTAR CARDS
+    // ======================================
+
+    clinicasUnicas.forEach(clinica => {
+
+
 
         const bairro =
-        clinica.bairros?.nome || "Não informado";
+            clinica.bairros?.nome || "Não informado";
+
 
 
         const cidade =
-        clinica.bairros?.cidades?.nome || "Não informado";
+            clinica.bairros?.cidades?.nome || "Não informado";
+
 
 
         const estado =
-        clinica.bairros?.cidades?.estados?.nome || "Não informado";
+            clinica.bairros?.cidades?.estados?.nome || "Não informado";
 
 
-
-
-        // ==============================
-        // TELEFONE
-        // ==============================
 
         const telefone =
-        clinica.telefone || "Não informado";
+            clinica.telefone || "Não informado";
 
 
 
 
-        // ==============================
-        // REDE
-        // ==============================
 
-        const rede =
-        clinica.clinica_especialidades?.[0]?.rede 
-        || "Não informado";
-
-
-
-
-        // ==============================
+        // ======================================
         // ESPECIALIDADES
-        // ==============================
+        // ======================================
 
-        const especialidades = [
-
-            ...new Set(
-
-                clinica.clinica_especialidades
-
-                ?.map(item => 
-                    item.especialidades?.nome
-                )
-
-                .filter(nome => nome)
-
-            )
-
-        ];
+        const especialidades =
+            clinica.clinica_especialidades
+            ?.map(item => item.especialidades?.nome)
+            .filter(nome => nome)
+            || [];
 
 
 
@@ -144,28 +144,44 @@ function mostrarClinicas(clinicas) {
 
 
 
-        // ==============================
+
+        // ======================================
         // GOOGLE MAPS
-        // ==============================
+        // BUSCA PELO NOME DA CLÍNICA
+        // ======================================
 
-        const enderecoMaps =
-        encodeURIComponent(
 
-            `${clinica.endereco}, ${cidade}, ${estado}`
+        const buscaMaps = encodeURIComponent(
+
+            `${clinica.nome}, ${bairro}, ${cidade}, ${estado}`
 
         );
 
 
 
 
-        // ==============================
+
+        // ======================================
+        // TELEFONE PARA LIGAÇÃO
+        // ======================================
+
+        const telefoneLink = telefone
+            .replace(/\D/g,'');
+
+
+
+
+
+        // ======================================
         // CARD
-        // ==============================
+        // ======================================
+
 
         resultado.innerHTML += `
 
 
             <div class="card">
+
 
 
                 <div class="cardHeader">
@@ -181,7 +197,10 @@ function mostrarClinicas(clinicas) {
 
 
 
+
                 <div class="info">
+
+
 
 
 
@@ -200,6 +219,8 @@ function mostrarClinicas(clinicas) {
 
 
 
+
+
                     <p>
 
                         <strong>
@@ -208,10 +229,16 @@ function mostrarClinicas(clinicas) {
 
                         <br>
 
-                        ${bairro} -
-                        ${cidade}/${estado}
+                        ${bairro}
+
+                        <br>
+
+                        ${cidade} - ${estado}
 
                     </p>
+
+
+
 
 
 
@@ -224,24 +251,28 @@ function mostrarClinicas(clinicas) {
 
                         <br>
 
-                        ${telefone}
+
+                        ${
+                            telefone !== "Não informado"
+
+                            ?
+
+                            `<a href="tel:${telefoneLink}">
+                                ${telefone}
+                            </a>`
+
+                            :
+
+                            telefone
+
+                        }
+
 
                     </p>
 
 
 
 
-                    <p>
-
-                        <strong>
-                            🌐 Rede
-                        </strong>
-
-                        <br>
-
-                        ${rede}
-
-                    </p>
 
 
 
@@ -249,25 +280,31 @@ function mostrarClinicas(clinicas) {
                     <div class="especialidades">
 
 
+
                         <strong>
-                            🦷 Especialidades
+
+                            🦷 Procedimentos disponíveis
+
                         </strong>
+
 
 
 
                         <div class="tags">
 
 
-                            ${
-                                tags ||
-                                "<span>Não informado</span>"
-                            }
+                            ${tags}
 
 
                         </div>
 
 
+
                     </div>
+
+
+
+
 
 
 
@@ -276,13 +313,14 @@ function mostrarClinicas(clinicas) {
                     <div class="acoes">
 
 
+
+
+
                         <a
 
                             class="btnAcao"
 
-                            href="
-                            https://www.google.com/maps/search/?api=1&query=${enderecoMaps}
-                            "
+                            href="https://www.google.com/maps/search/?api=1&query=${buscaMaps}"
 
                             target="_blank"
 
@@ -290,7 +328,10 @@ function mostrarClinicas(clinicas) {
 
                             📍 Ver no Google Maps
 
+
                         </a>
+
+
 
 
                     </div>
@@ -298,7 +339,10 @@ function mostrarClinicas(clinicas) {
 
 
 
+
                 </div>
+
+
 
 
             </div>
@@ -308,7 +352,9 @@ function mostrarClinicas(clinicas) {
         `;
 
 
+
     });
+
 
 
 }
