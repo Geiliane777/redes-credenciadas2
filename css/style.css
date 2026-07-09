@@ -317,7 +317,39 @@ background:var(--cor-primaria);
     padding:25px;
 
 }
+/* =====================================
+   LINKS (Telefone)
+===================================== */
 
+.info a{
+
+    color:var(--texto);
+
+    text-decoration:none;
+
+    font-weight:normal;
+
+}
+
+.info a:hover{
+
+    color:var(--cor-primaria);
+
+    text-decoration:underline;
+
+}
+
+.info a:visited{
+
+    color:var(--texto);
+
+}
+
+.info a:active{
+
+    color:var(--cor-primaria);
+
+}
 .info p{
 
     margin-bottom:15px;
