@@ -3,14 +3,17 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Painel Administrativo</title>
+    <title>Painel Administrativo</title>
 
-<link rel="stylesheet" href="css/admin.css">
+    <link rel="icon" href="img/tooth.png">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="css/admin.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
@@ -18,144 +21,192 @@
 <body>
 
 
-<!-- =========================
-        LOGIN
-========================= -->
-
-<section id="login" class="login-container">
+<header class="adminHeader">
 
 
-    <div class="login-box">
+    <img src="img/tooth.png" class="logo">
 
 
-        <h1>
-            ⚙️ Admin
-        </h1>
+    <h1>
+        Painel Administrativo
+    </h1>
 
 
-        <input 
-        id="usuario"
-        placeholder="Usuário">
+    <p>
+        Gerenciamento das Redes Credenciadas
+    </p>
 
 
-        <input 
-        id="senha"
-        type="password"
-        placeholder="Senha">
+    <div class="topButtons">
 
 
-        <button onclick="entrar()">
-            Entrar
+        <button onclick="location.href='index.html'">
+            🦷 Rede Especialistas
+        </button>
+
+
+
+        <button onclick="location.href='sindilegis.html'">
+            🌐 Rede Sindilegis
+        </button>
+
+
+
+        <button id="btnTema">
+            🌙 Tema
+        </button>
+
+
+
+        <button onclick="sairAdmin()">
+            🚪 Sair
         </button>
 
 
     </div>
 
 
-</section>
+</header>
 
 
 
 
-<!-- =========================
-        PAINEL
-========================= -->
+
+<main class="containerAdmin">
 
 
-<section id="painel" class="hidden">
+
+    <section class="menuAdmin">
 
 
-    <div class="header-admin">
 
-        <h1>
-            Painel Administrativo
-        </h1>
+        <div class="adminCard" onclick="abrirModulo('clinicas')">
+
+            <h2>
+                🏥 Clínicas
+            </h2>
+
+            <p>
+                Cadastrar e editar clínicas
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="adminCard" onclick="abrirModulo('especialidades')">
+
+            <h2>
+                🦷 Especialidades
+            </h2>
+
+            <p>
+                Gerenciar especialidades
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="adminCard" onclick="abrirModulo('regioes')">
+
+            <h2>
+                🌎 Regiões
+            </h2>
+
+            <p>
+                Cadastro de regiões
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="adminCard" onclick="abrirModulo('estados')">
+
+            <h2>
+                📍 Estados
+            </h2>
+
+            <p>
+                Cadastro de estados
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="adminCard" onclick="abrirModulo('cidades')">
+
+            <h2>
+                🏙 Cidades
+            </h2>
+
+            <p>
+                Cadastro de cidades
+            </p>
+
+        </div>
+
+
+
+
+
+        <div class="adminCard" onclick="abrirModulo('bairros')">
+
+            <h2>
+                📌 Bairros
+            </h2>
+
+            <p>
+                Cadastro de bairros
+            </p>
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+    <section id="areaTrabalho" class="areaTrabalho">
+
+
+        <h2>
+            Bem-vindo ao Painel
+        </h2>
 
 
         <p>
-            Gerenciamento Redes Especialistas
+            Selecione uma opção acima para começar.
         </p>
 
 
-    </div>
+    </section>
 
 
 
 
-    <div class="admin-container">
-
-
-        <!-- MENU LATERAL -->
-
-        <div class="menu">
-
-
-            <button onclick="abrirModulo('localizacao')">
-                📍 Localização
-            </button>
-
-
-            <button onclick="abrirModulo('clinicas')">
-                🦷 Clínicas
-            </button>
-
-
-            <button onclick="abrirModulo('especialidades')">
-                📋 Especialidades
-            </button>
-
-
-            <button onclick="abrirModulo('redes')">
-                🌐 Redes
-            </button>
-
-
-            <button onclick="sair()">
-                🚪 Sair
-            </button>
-
-
-        </div>
+</main>
 
 
 
-
-
-        <!-- ÁREA DOS MÓDULOS -->
-
-        <div id="conteudo-admin">
-
-
-            <h2>
-                Bem-vindo ao painel
-            </h2>
-
-
-            <p>
-                Selecione uma opção no menu.
-            </p>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-</section>
-
-
-
-
-
-<!-- =========================
-        SCRIPTS
-========================= -->
 
 
 <script src="js/supabase.js"></script>
+
+<script src="js/tema.js"></script>
 
 <script src="js/admin.js"></script>
 
