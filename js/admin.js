@@ -191,37 +191,43 @@ function abrirModulo(modulo){
 
         case "clinicas":
 
+conteudo = `
 
-            conteudo = `
+<div class="card-admin">
 
-                <h2>
-                    🏥 Clínicas
-                </h2>
-
-
-                <p>
-                    Cadastro e gerenciamento de clínicas.
-                </p>
+<h2>
+🏥 Cadastro de Clínicas
+</h2>
 
 
-                <hr>
+<p>
+Gerencie as clínicas credenciadas.
+</p>
 
 
-                <p>
-                    Próxima etapa:
-                    formulário de cadastro.
-                </p>
+<hr><br>
 
 
-            `;
+<button onclick="novoCadastroClinica()">
+➕ Nova Clínica
+</button>
 
+
+<br><br>
+
+
+<div id="listaClinicas">
+
+Carregando clínicas...
+
+</div>
+
+
+</div>
+
+`;
 
         break;
-
-
-
-
-
         // =============================
         // ESPECIALIDADES
         // =============================
@@ -402,5 +408,66 @@ function abrirModulo(modulo){
     area.innerHTML = conteudo;
 
 
+
+}
+function novoCadastroClinica(){
+
+
+const area =
+document.getElementById("areaTrabalho");
+
+
+area.innerHTML = `
+
+
+<div class="card-admin">
+
+
+<h2>
+➕ Nova Clínica
+</h2>
+
+
+<label>
+Nome da Clínica
+</label>
+
+<input id="nomeClinica">
+
+
+<br><br>
+
+
+<label>
+Endereço
+</label>
+
+<input id="enderecoClinica">
+
+
+<br><br>
+
+
+<label>
+Telefone
+</label>
+
+<input id="telefoneClinica">
+
+
+<br><br>
+
+
+<button onclick="salvarClinica()">
+
+Salvar Clínica
+
+</button>
+
+
+</div>
+
+
+`;
 
 }
