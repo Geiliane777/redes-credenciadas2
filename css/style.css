@@ -538,3 +538,20 @@ body.sindilegis{
     --cor-sucesso-hover:#065f46;
 
 }
+/* =====================================
+   BOTÃO ATIVO
+===================================== */
+
+button.ativo{
+
+    background:var(--cor-primaria);
+
+    color:#fff;
+
+}
+
+button.ativo:hover{
+
+    background:var(--cor-primaria-hover);
+
+}
