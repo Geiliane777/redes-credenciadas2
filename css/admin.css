@@ -1,5 +1,5 @@
 /* =====================================
-   VARIÁVEIS DO ADMIN
+   VARIÁVEIS
 ===================================== */
 
 :root{
@@ -16,10 +16,17 @@
 
     --primaria-hover:#1d4ed8;
 
+    --sucesso:#059669;
+
     --sombra:0 10px 30px rgba(0,0,0,.08);
 
 }
 
+
+
+/* =====================================
+   TEMA ESCURO
+===================================== */
 
 body.dark{
 
@@ -38,6 +45,8 @@ body.dark{
     --sombra:0 10px 30px rgba(0,0,0,.35);
 
 }
+
+
 
 
 
@@ -72,18 +81,152 @@ body{
 
 
 
+
+
 /* =====================================
-   HEADER
+   LOGIN
+===================================== */
+
+
+.loginArea{
+
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--fundo);
+
+}
+
+
+
+.loginBox{
+
+
+    background:var(--card);
+
+    width:360px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+
+    text-align:center;
+
+}
+
+
+
+.loginBox h2{
+
+
+    color:var(--primaria);
+
+    margin-bottom:25px;
+
+}
+
+
+
+.loginBox input{
+
+
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:15px;
+
+    border-radius:10px;
+
+    border:1px solid #d1d5db;
+
+    background:var(--card);
+
+    color:var(--texto);
+
+    font-size:15px;
+
+}
+
+
+
+.loginBox button{
+
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:var(--primaria);
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.loginBox button:hover{
+
+
+    background:var(--primaria-hover);
+
+}
+
+
+
+#erroLogin{
+
+
+    margin-top:15px;
+
+    color:#dc2626;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+
+
+/* =====================================
+   HEADER ADMIN
 ===================================== */
 
 
 .adminHeader{
 
+
     background:linear-gradient(
+
         135deg,
+
         #0f172a,
+
         #2563eb
+
     );
+
 
     color:white;
 
@@ -91,9 +234,11 @@ body{
 
     padding:45px 20px;
 
+
     border-bottom-left-radius:30px;
 
     border-bottom-right-radius:30px;
+
 
     box-shadow:var(--sombra);
 
@@ -102,6 +247,7 @@ body{
 
 
 .logo{
+
 
     width:90px;
 
@@ -113,6 +259,7 @@ body{
 
 .adminHeader h1{
 
+
     font-size:35px;
 
     margin-bottom:10px;
@@ -123,9 +270,12 @@ body{
 
 .adminHeader p{
 
+
     opacity:.9;
 
 }
+
+
 
 
 
@@ -135,6 +285,7 @@ body{
 
 
 .topButtons{
+
 
     margin-top:25px;
 
@@ -175,9 +326,12 @@ body{
 
 .topButtons button:hover{
 
+
     transform:translateY(-3px);
 
 }
+
+
 
 
 
@@ -188,31 +342,43 @@ body{
 
 .containerAdmin{
 
+
     width:95%;
 
     max-width:1200px;
 
     margin:40px auto;
 
+
 }
 
 
 
+
+
+
+
 /* =====================================
-   MENU
+   MENU DE MÓDULOS
 ===================================== */
 
 
 .menuAdmin{
 
+
     display:grid;
 
     grid-template-columns:
+
     repeat(auto-fit,minmax(230px,1fr));
+
 
     gap:20px;
 
+
 }
+
+
 
 
 
@@ -223,19 +389,27 @@ body{
 
 .adminCard{
 
+
     background:var(--card);
+
 
     padding:30px;
 
+
     border-radius:20px;
+
 
     box-shadow:var(--sombra);
 
+
     cursor:pointer;
+
+
+    border-left:6px solid var(--primaria);
+
 
     transition:.3s;
 
-    border-left:6px solid var(--primaria);
 
 }
 
@@ -243,7 +417,9 @@ body{
 
 .adminCard:hover{
 
+
     transform:translateY(-6px);
+
 
 }
 
@@ -251,9 +427,11 @@ body{
 
 .adminCard h2{
 
+
     color:var(--primaria);
 
     margin-bottom:10px;
+
 
 }
 
@@ -261,9 +439,14 @@ body{
 
 .adminCard p{
 
+
     color:var(--texto);
 
+
 }
+
+
+
 
 
 
@@ -274,17 +457,24 @@ body{
 
 .areaTrabalho{
 
+
     margin-top:40px;
+
 
     background:var(--card);
 
+
     padding:40px;
+
 
     border-radius:20px;
 
-    box-shadow:var(--sombra);
 
     min-height:300px;
+
+
+    box-shadow:var(--sombra);
+
 
 }
 
@@ -292,25 +482,32 @@ body{
 
 .areaTrabalho h2{
 
+
     color:var(--primaria);
 
+
     margin-bottom:15px;
+
 
 }
 
 
 
+
+
 /* =====================================
-   TRANSIÇÕES
+   ELEMENTOS GERAIS
 ===================================== */
 
 
 button,
 .adminCard,
 .areaTrabalho,
-body{
+.loginBox{
+
 
     transition:
+
 
     background .3s,
 
@@ -318,7 +515,12 @@ body{
 
     box-shadow .3s;
 
+
 }
+
+
+
+
 
 
 
@@ -332,7 +534,9 @@ body{
 
     .adminHeader h1{
 
+
         font-size:28px;
+
 
     }
 
@@ -340,7 +544,9 @@ body{
 
     .topButtons{
 
+
         flex-direction:column;
+
 
     }
 
@@ -348,7 +554,19 @@ body{
 
     .topButtons button{
 
+
         width:100%;
+
+
+    }
+
+
+
+    .loginBox{
+
+
+        width:90%;
+
 
     }
 
