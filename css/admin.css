@@ -4,49 +4,22 @@
 
 :root{
 
-    --fundo:#f3f6fb;
+    --fundo:#f1f5f9;
 
     --card:#ffffff;
-
-    --texto:#374151;
-
-    --texto-forte:#111827;
 
     --primaria:#2563eb;
 
     --primaria-hover:#1d4ed8;
 
-    --sucesso:#059669;
+    --escuro:#0f172a;
 
-    --sombra:0 10px 30px rgba(0,0,0,.08);
+    --texto:#334155;
 
-}
-
-
-
-/* =====================================
-   TEMA ESCURO
-===================================== */
-
-body.dark{
-
-    --fundo:#0f172a;
-
-    --card:#1e293b;
-
-    --texto:#f8fafc;
-
-    --texto-forte:#ffffff;
-
-    --primaria:#3b82f6;
-
-    --primaria-hover:#2563eb;
-
-    --sombra:0 10px 30px rgba(0,0,0,.35);
+    --sombra:
+    0 10px 30px rgba(0,0,0,.12);
 
 }
-
-
 
 
 
@@ -63,7 +36,8 @@ body.dark{
 
     box-sizing:border-box;
 
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:
+    Arial, Helvetica, sans-serif;
 
 }
 
@@ -75,8 +49,6 @@ body{
 
     color:var(--texto);
 
-    transition:.3s;
-
 }
 
 
@@ -84,18 +56,24 @@ body{
 
 
 /* =====================================
-   LOGIN ADMIN
+   LOGIN
 ===================================== */
+
 
 .login-container{
 
+
     min-height:100vh;
+
 
     display:flex;
 
+
     justify-content:center;
 
+
     align-items:center;
+
 
     background:
     linear-gradient(
@@ -104,321 +82,262 @@ body{
         #2563eb
     );
 
+
 }
 
 
-/* CARD LOGIN */
 
 .login-box{
 
+
     width:380px;
+
 
     background:white;
 
+
     padding:40px;
 
+
     border-radius:25px;
+
+
+    text-align:center;
+
 
     box-shadow:
     0 20px 50px rgba(0,0,0,.25);
 
-    text-align:center;
-
-    animation:entrada .5s ease;
 
 }
 
 
-/* ANIMAÇÃO */
-
-@keyframes entrada{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(-30px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-
-/* LOGO LOGIN */
 
 .login-box img{
 
+
     width:90px;
+
 
     margin-bottom:20px;
 
+
 }
 
 
-/* TITULO */
 
 .login-box h1{
 
+
     color:#0f172a;
+
 
     margin-bottom:10px;
 
-    font-size:28px;
 
 }
+
 
 
 .login-box p{
 
+
     color:#64748b;
 
-    margin-bottom:30px;
+
+    margin-bottom:25px;
+
 
 }
 
 
-/* CAMPOS */
 
 .login-box input{
 
+
     width:100%;
 
-    padding:15px;
+
+    padding:14px;
+
 
     margin-bottom:15px;
 
+
     border-radius:12px;
+
 
     border:1px solid #cbd5e1;
 
+
     font-size:15px;
 
-    outline:none;
-
-    transition:.3s;
 
 }
+
 
 
 .login-box input:focus{
 
-    border-color:#2563eb;
 
-    box-shadow:
-    0 0 0 3px rgba(37,99,235,.15);
+    outline:none;
+
+
+    border-color:var(--primaria);
+
 
 }
 
 
-/* BOTÃO LOGIN */
 
 .login-box button{
 
+
     width:100%;
+
 
     padding:15px;
 
+
     border:none;
+
 
     border-radius:12px;
 
-    background:#2563eb;
+
+    background:var(--primaria);
+
 
     color:white;
 
+
     font-size:16px;
+
 
     font-weight:bold;
 
+
     cursor:pointer;
+
 
     transition:.3s;
 
+
 }
+
 
 
 .login-box button:hover{
 
-    background:#1d4ed8;
 
-    transform:translateY(-2px);
+    background:
+    var(--primaria-hover);
+
 
 }
 
 
-/* ERRO LOGIN */
 
 #erroLogin{
 
+
     margin-top:15px;
+
 
     color:#dc2626;
 
+
     font-weight:bold;
 
-}
-
-
-/* RESPONSIVO */
-
-@media(max-width:450px){
-
-    .login-box{
-
-        width:90%;
-
-        padding:30px;
-
-    }
 
 }
+
+
+
+
+
+
+
 /* =====================================
    HEADER ADMIN
 ===================================== */
 
 
-.adminHeader{
+.admin-header{
 
 
-    background:linear-gradient(
+    height:90px;
 
+
+    background:
+    linear-gradient(
         135deg,
-
         #0f172a,
-
         #2563eb
-
     );
 
 
     color:white;
 
-    text-align:center;
-
-    padding:45px 20px;
-
-
-    border-bottom-left-radius:30px;
-
-    border-bottom-right-radius:30px;
-
-
-    box-shadow:var(--sombra);
-
-}
-
-
-
-.logo{
-
-
-    width:90px;
-
-    margin-bottom:15px;
-
-}
-
-
-
-.adminHeader h1{
-
-
-    font-size:35px;
-
-    margin-bottom:10px;
-
-}
-
-
-
-.adminHeader p{
-
-
-    opacity:.9;
-
-}
-
-
-
-
-
-/* =====================================
-   BOTÕES SUPERIORES
-===================================== */
-
-
-.topButtons{
-
-
-    margin-top:25px;
 
     display:flex;
 
-    justify-content:center;
 
-    flex-wrap:wrap;
+    justify-content:space-between;
 
-    gap:12px;
+
+    align-items:center;
+
+
+    padding:20px 40px;
+
 
 }
 
 
 
-.topButtons button{
+.admin-header h1{
 
 
-    background:white;
+    font-size:26px;
 
-    color:#0f172a;
+
+}
+
+
+
+.admin-header button{
+
+
+    background:#ef4444;
+
+
+    color:white;
+
 
     border:none;
 
-    padding:12px 18px;
 
-    border-radius:12px;
+    padding:12px 20px;
+
+
+    border-radius:10px;
+
 
     cursor:pointer;
+
 
     font-weight:bold;
 
-    transition:.3s;
 
 }
 
 
 
-.topButtons button:hover{
+.admin-header button:hover{
 
 
-    transform:translateY(-3px);
-
-}
-
-
-
-
-
-/* =====================================
-   CONTAINER
-===================================== */
-
-
-.containerAdmin{
-
-
-    width:95%;
-
-    max-width:1200px;
-
-    margin:40px auto;
+    background:#dc2626;
 
 
 }
@@ -430,21 +349,18 @@ body{
 
 
 /* =====================================
-   MENU DE MÓDULOS
+   LAYOUT
 ===================================== */
 
 
-.menuAdmin{
+.admin-layout{
 
 
-    display:grid;
-
-    grid-template-columns:
-
-    repeat(auto-fit,minmax(230px,1fr));
+    display:flex;
 
 
-    gap:20px;
+    min-height:
+    calc(100vh - 90px);
 
 
 }
@@ -453,30 +369,60 @@ body{
 
 
 
+
 /* =====================================
-   CARDS
+   MENU LATERAL
 ===================================== */
 
 
-.adminCard{
+.menu-admin{
 
 
-    background:var(--card);
+    width:260px;
 
 
-    padding:30px;
+    background:#0f172a;
 
 
-    border-radius:20px;
+    padding:25px 15px;
 
 
-    box-shadow:var(--sombra);
+}
+
+
+
+
+.menu-admin button{
+
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    margin-bottom:12px;
+
+
+    border:none;
+
+
+    border-radius:12px;
+
+
+    background:#1e293b;
+
+
+    color:white;
 
 
     cursor:pointer;
 
 
-    border-left:6px solid var(--primaria);
+    text-align:left;
+
+
+    font-size:15px;
 
 
     transition:.3s;
@@ -486,35 +432,18 @@ body{
 
 
 
-.adminCard:hover{
+.menu-admin button:hover{
 
 
-    transform:translateY(-6px);
+    background:#2563eb;
 
 
-}
-
-
-
-.adminCard h2{
-
-
-    color:var(--primaria);
-
-    margin-bottom:10px;
+    transform:
+    translateX(5px);
 
 
 }
 
-
-
-.adminCard p{
-
-
-    color:var(--texto);
-
-
-}
 
 
 
@@ -526,22 +455,22 @@ body{
 ===================================== */
 
 
-.areaTrabalho{
+.area-trabalho{
 
 
-    margin-top:40px;
+    flex:1;
 
 
-    background:var(--card);
+    background:white;
 
 
-    padding:40px;
+    margin:25px;
+
+
+    padding:30px;
 
 
     border-radius:20px;
-
-
-    min-height:300px;
 
 
     box-shadow:var(--sombra);
@@ -551,40 +480,13 @@ body{
 
 
 
-.areaTrabalho h2{
+.area-trabalho h2{
 
 
-    color:var(--primaria);
+    color:#0f172a;
 
 
     margin-bottom:15px;
-
-
-}
-
-
-
-
-
-/* =====================================
-   ELEMENTOS GERAIS
-===================================== */
-
-
-button,
-.adminCard,
-.areaTrabalho,
-.loginBox{
-
-
-    transition:
-
-
-    background .3s,
-
-    color .3s,
-
-    box-shadow .3s;
 
 
 }
@@ -603,17 +505,28 @@ button,
 @media(max-width:768px){
 
 
-    .adminHeader h1{
+
+    .admin-header{
 
 
-        font-size:28px;
+        flex-direction:column;
+
+
+        height:auto;
+
+
+        gap:15px;
+
+
+        text-align:center;
 
 
     }
 
 
 
-    .topButtons{
+
+    .admin-layout{
 
 
         flex-direction:column;
@@ -623,7 +536,73 @@ button,
 
 
 
-    .topButtons button{
+
+    .menu-admin{
+
+
+        width:100%;
+
+
+        display:flex;
+
+
+        flex-wrap:wrap;
+
+
+        gap:10px;
+
+
+    }
+
+
+
+
+    .menu-admin button{
+
+
+        width:calc(50% - 10px);
+
+
+    }
+
+
+
+
+    .area-trabalho{
+
+
+        margin:15px;
+
+
+    }
+
+
+
+}
+
+
+
+
+
+
+@media(max-width:450px){
+
+
+
+    .login-box{
+
+
+        width:90%;
+
+
+        padding:30px;
+
+
+    }
+
+
+
+    .menu-admin button{
 
 
         width:100%;
@@ -631,15 +610,6 @@ button,
 
     }
 
-
-
-    .loginBox{
-
-
-        width:90%;
-
-
-    }
 
 
 }
