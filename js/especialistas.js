@@ -137,17 +137,42 @@ async function buscarClinicas(){
     // FILTRO DE ESPECIALIDADE
     // ==============================
 
-    if(especialidade){
+  // ==============================
+// FILTRO DE ESPECIALIDADE
+// ==============================
+
+if(especialidade){
 
 
-        consulta =
-        consulta.eq(
-            "clinica_especialidades.especialidades.nome",
-            especialidade
+    const { data: especialidadeData, error: erroEspecialidade } = 
+    await supabaseClient
+        .from("especialidades")
+        .select("id")
+        .eq("nome", especialidade)
+        .single();
+
+
+
+    if(erroEspecialidade){
+
+        console.error(
+            "Erro ao buscar especialidade:",
+            erroEspecialidade
         );
 
+        return;
 
     }
+
+
+
+    consulta = consulta.eq(
+        "clinica_especialidades.especialidade_id",
+        especialidadeData.id
+    );
+
+
+}
 
 
 
