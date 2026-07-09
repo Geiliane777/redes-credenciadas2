@@ -1,3 +1,66 @@
+
+
+/* =====================================
+   TEMA
+===================================== */
+
+:root{
+
+    --cor-fundo:#f3f6fb;
+
+    --cor-card:#ffffff;
+
+    --cor-header1:#0f172a;
+
+    --cor-header2:#2563eb;
+
+    --cor-primaria:#2563eb;
+
+    --cor-primaria-hover:#1d4ed8;
+
+    --cor-sucesso:#059669;
+
+    --cor-sucesso-hover:#047857;
+
+    --texto:#374151;
+
+    --texto-forte:#111827;
+
+    --sombra:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+
+/* =====================================
+   TEMA ESCURO
+===================================== */
+
+body.dark{
+
+    --cor-fundo:#0f172a;
+
+    --cor-card:#1e293b;
+
+    --cor-header1:#020617;
+
+    --cor-header2:#1e40af;
+
+    --cor-primaria:#3b82f6;
+
+    --cor-primaria-hover:#2563eb;
+
+    --cor-sucesso:#10b981;
+
+    --cor-sucesso-hover:#059669;
+
+    --texto:#f8fafc;
+
+    --texto-forte:#ffffff;
+
+    --sombra:0 10px 30px rgba(0,0,0,.35);
+
+}
 /* =====================================
    RESET
 ===================================== */
@@ -10,10 +73,10 @@
 }
 
 body{
-    background:#f3f6fb;
-    color:#374151;
+    background:var(--cor-fundo);
+    color:var(--texto);
+    transition:.3s;
 }
-
 /* NÃO ALTERAR TODAS AS IMAGENS */
 /* Não coloque img { width:100%; } */
 
@@ -24,8 +87,11 @@ body{
 
 .header{
 
-    background:linear-gradient(135deg,#0f172a,#2563eb);
-
+    background:linear-gradient(
+    135deg,
+    var(--cor-header1),
+    var(--cor-header2)
+);
     color:white;
 
     text-align:center;
@@ -103,13 +169,13 @@ body{
 
 .filtros{
 
-    background:white;
-
+background:var(--cor-card);
+   
     padding:25px;
 
     border-radius:20px;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+ box-shadow:var(--sombra);
 
     display:grid;
 
@@ -123,7 +189,6 @@ body{
 /* =====================================
    SELECT
 ===================================== */
-
 select{
 
     width:100%;
@@ -136,10 +201,11 @@ select{
 
     font-size:15px;
 
-    background:white;
+    background:var(--cor-card);
+
+    color:var(--texto);
 
 }
-
 
 /* =====================================
    BOTÃO
@@ -147,7 +213,7 @@ select{
 
 button{
 
-    background:#2563eb;
+    background:var(--cor-primaria);
 
     color:white;
 
@@ -169,7 +235,7 @@ button{
 
 button:hover{
 
-    background:#1d4ed8;
+  background:var(--cor-primaria-hover);
 
 }
 
@@ -188,7 +254,7 @@ button:hover{
 
     margin-bottom:20px;
 
-    color:#1e3a8a;
+    color:var(--cor-primaria);
 
 }
 
@@ -199,15 +265,15 @@ button:hover{
 
 .card{
 
-    background:white;
-
+background:var(--cor-card);
+   
     border-radius:18px;
 
     overflow:hidden;
 
     margin-bottom:25px;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+  box-shadow:var(--sombra);
 
     transition:.3s;
 
@@ -228,8 +294,8 @@ button:hover{
 
 .cardHeader{
 
-    background:#2563eb;
-
+background:var(--cor-primaria);
+   
     color:white;
 
     padding:20px;
@@ -263,7 +329,7 @@ button:hover{
 
 .info strong{
 
-    color:#111827;
+   color:var(--texto-forte);
 
 }
 
@@ -292,8 +358,7 @@ button:hover{
 
 .tag{
 
-    background:#2563eb;
-
+    background:var(--cor-primaria);
     color:white;
 
     padding:8px 14px;
@@ -329,7 +394,7 @@ button:hover{
 
     padding:15px;
 
-    background:#059669;
+    background:var(--cor-sucesso);
 
     color:white;
 
@@ -343,7 +408,7 @@ button:hover{
 
 .btnAcao:hover{
 
-    background:#047857;
+    background:var(--cor-sucesso-hover);
 
 }
 
@@ -354,15 +419,14 @@ button:hover{
 
 .semResultado{
 
-    background:white;
-
+    background:var(--cor-card);
     padding:40px;
 
     border-radius:20px;
 
     text-align:center;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
+   box-shadow:var(--sombra);
 
 }
 
@@ -371,6 +435,33 @@ button:hover{
    RESPONSIVO
 ===================================== */
 
+@media(max-width:768px){
+
+    .header h1{
+
+        font-size:30px;
+
+    }
+
+    .header p{
+
+        font-size:16px;
+
+    }
+
+    .logo{
+
+        width:75px;
+
+    }
+
+    .filtros{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
 @media(max-width:768px){
 
     .header h1{
