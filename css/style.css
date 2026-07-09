@@ -283,7 +283,7 @@ background:var(--cor-card);
 
     transform:translateY(-5px);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    box-shadow:var(--sombra);
 
 }
 
@@ -462,30 +462,25 @@ background:var(--cor-primaria);
     }
 
 }
-@media(max-width:768px){
+/* =====================================
+   TRANSIÇÃO DO TEMA
+===================================== */
 
-    .header h1{
+body,
+.header,
+.filtros,
+.card,
+.cardHeader,
+button,
+.btnAcao,
+.tag,
+select,
+.semResultado{
 
-        font-size:30px;
-
-    }
-
-    .header p{
-
-        font-size:16px;
-
-    }
-
-    .logo{
-
-        width:75px;
-
-    }
-
-    .filtros{
-
-        grid-template-columns:1fr;
-
-    }
+    transition:
+        background .3s,
+        color .3s,
+        border-color .3s,
+        box-shadow .3s;
 
 }
