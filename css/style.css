@@ -321,49 +321,51 @@ background:var(--cor-primaria);
    LINKS (Telefone)
 ===================================== */
 
-.info a{
+/* =====================================
+   TELEFONE
+===================================== */
 
-    color:var(--texto);
+.info p a,
+.info p a:link,
+.info p a:visited,
+.info p a:hover,
+.info p a:active{
 
-    text-decoration:none;
+    color:inherit !important;
+
+    text-decoration:none !important;
 
     font-weight:normal;
 
 }
 
-.info a:hover{
+.info p a:hover{
 
-    color:var(--cor-primaria);
-
-    text-decoration:underline;
+    color:var(--cor-primaria) !important;
 
 }
 
-.info a:visited{
+/* Chrome / Safari */
 
-    color:var(--texto);
+a[href^="tel"]{
 
-}
+    color:inherit !important;
 
-.info a:active{
-
-    color:var(--cor-primaria);
-
-}
-.info p{
-
-    margin-bottom:15px;
-
-    line-height:1.6;
+    text-decoration:none !important;
 
 }
 
-.info strong{
+a[href^="tel"]:visited{
 
-   color:var(--texto-forte);
+    color:inherit !important;
 
 }
 
+a[href^="tel"]:hover{
+
+    color:var(--cor-primaria) !important;
+
+}
 
 /* =====================================
    ESPECIALIDADES
