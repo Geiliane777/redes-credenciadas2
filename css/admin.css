@@ -1,25 +1,23 @@
 /* =====================================
-   ADMIN CSS
-   PAINEL ADMINISTRATIVO
+   VARIÁVEIS
 ===================================== */
-
 
 :root{
 
     --fundo:#f1f5f9;
+
     --card:#ffffff;
 
     --primaria:#2563eb;
+
     --primaria-hover:#1d4ed8;
 
     --escuro:#0f172a;
 
     --texto:#334155;
 
-    --sucesso:#059669;
-
     --sombra:
-    0 10px 30px rgba(0,0,0,.08);
+    0 10px 30px rgba(0,0,0,.12);
 
 }
 
@@ -33,13 +31,13 @@
 *{
 
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
 
     font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+    Arial, Helvetica, sans-serif;
 
 }
 
@@ -55,23 +53,27 @@ body{
 
 
 
+
+
 /* =====================================
    LOGIN
 ===================================== */
 
 
-#loginArea{
+.login-container{
 
 
-    width:100%;
+    min-height:100vh;
 
-    height:100vh;
 
     display:flex;
 
+
     justify-content:center;
 
+
     align-items:center;
+
 
     background:
     linear-gradient(
@@ -88,18 +90,36 @@ body{
 .login-box{
 
 
+    width:380px;
+
+
     background:white;
 
-    width:380px;
 
     padding:40px;
 
-    border-radius:20px;
+
+    border-radius:25px;
+
+
+    text-align:center;
+
 
     box-shadow:
     0 20px 50px rgba(0,0,0,.25);
 
-    text-align:center;
+
+}
+
+
+
+.login-box img{
+
+
+    width:90px;
+
+
+    margin-bottom:20px;
 
 
 }
@@ -109,9 +129,11 @@ body{
 .login-box h1{
 
 
+    color:#0f172a;
+
+
     margin-bottom:10px;
 
-    color:#0f172a;
 
 }
 
@@ -119,9 +141,12 @@ body{
 
 .login-box p{
 
+
     color:#64748b;
 
-    margin-bottom:30px;
+
+    margin-bottom:25px;
+
 
 }
 
@@ -132,18 +157,33 @@ body{
 
     width:100%;
 
+
     padding:14px;
+
 
     margin-bottom:15px;
 
-    border-radius:10px;
 
-    border:
+    border-radius:12px;
 
-    1px solid #cbd5e1;
+
+    border:1px solid #cbd5e1;
 
 
     font-size:15px;
+
+
+}
+
+
+
+.login-box input:focus{
+
+
+    outline:none;
+
+
+    border-color:var(--primaria);
 
 
 }
@@ -155,19 +195,32 @@ body{
 
     width:100%;
 
-    padding:14px;
+
+    padding:15px;
+
 
     border:none;
 
-    border-radius:10px;
 
-    background:#2563eb;
+    border-radius:12px;
+
+
+    background:var(--primaria);
+
 
     color:white;
 
+
+    font-size:16px;
+
+
     font-weight:bold;
 
+
     cursor:pointer;
+
+
+    transition:.3s;
 
 
 }
@@ -177,7 +230,8 @@ body{
 .login-box button:hover{
 
 
-    background:#1d4ed8;
+    background:
+    var(--primaria-hover);
 
 
 }
@@ -187,53 +241,56 @@ body{
 #erroLogin{
 
 
-    color:#dc2626;
-
     margin-top:15px;
 
 
-}
+    color:#dc2626;
 
 
-
-/* =====================================
-   PAINEL
-===================================== */
-
-
-#painelAdmin{
-
-
-    display:none;
-
-    min-height:100vh;
+    font-weight:bold;
 
 
 }
 
 
 
+
+
+
+
 /* =====================================
-   TOPO
+   HEADER ADMIN
 ===================================== */
 
 
 .admin-header{
 
 
-    height:80px;
+    height:90px;
 
-    background:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
+
+
+    color:white;
+
 
     display:flex;
 
-    align-items:center;
 
     justify-content:space-between;
 
-    padding:0 30px;
 
-    box-shadow:var(--sombra);
+    align-items:center;
+
+
+    padding:20px 40px;
+
 
 }
 
@@ -242,41 +299,73 @@ body{
 .admin-header h1{
 
 
-    color:#0f172a;
-
-    font-size:24px;
+    font-size:26px;
 
 
 }
 
 
 
-.btn-sair{
+.admin-header button{
+
+
+    background:#ef4444;
+
+
+    color:white;
+
+
+    border:none;
+
+
+    padding:12px 20px;
+
+
+    border-radius:10px;
+
+
+    cursor:pointer;
+
+
+    font-weight:bold;
+
+
+}
+
+
+
+.admin-header button:hover{
 
 
     background:#dc2626;
 
-    color:white;
-
-    border:none;
-
-    padding:12px 20px;
-
-    border-radius:10px;
-
-    cursor:pointer;
-
-    font-weight:bold;
 
 }
 
 
 
-.btn-sair:hover{
 
-    background:#b91c1c;
+
+
+
+/* =====================================
+   LAYOUT
+===================================== */
+
+
+.admin-layout{
+
+
+    display:flex;
+
+
+    min-height:
+    calc(100vh - 90px);
+
 
 }
+
+
 
 
 
@@ -286,27 +375,14 @@ body{
 ===================================== */
 
 
-.admin-layout{
-
-
-    display:flex;
-
-}
-
-
-
-/* MENU */
-
-
-.menu{
+.menu-admin{
 
 
     width:260px;
 
+
     background:#0f172a;
 
-    min-height:
-    calc(100vh - 80px);
 
     padding:25px 15px;
 
@@ -315,28 +391,39 @@ body{
 
 
 
-.menu button{
+
+.menu-admin button{
 
 
     width:100%;
 
-    margin-bottom:12px;
 
     padding:15px;
 
+
+    margin-bottom:12px;
+
+
     border:none;
+
 
     border-radius:12px;
 
+
     background:#1e293b;
+
 
     color:white;
 
-    text-align:left;
 
     cursor:pointer;
 
+
+    text-align:left;
+
+
     font-size:15px;
+
 
     transition:.3s;
 
@@ -345,10 +432,11 @@ body{
 
 
 
-.menu button:hover{
+.menu-admin button:hover{
 
 
     background:#2563eb;
+
 
     transform:
     translateX(5px);
@@ -359,80 +447,52 @@ body{
 
 
 
+
+
+
 /* =====================================
-   AREA PRINCIPAL
+   ÁREA DE TRABALHO
 ===================================== */
 
 
-.area-conteudo{
+.area-trabalho{
 
 
     flex:1;
 
-    padding:40px;
+
+    background:white;
+
+
+    margin:25px;
+
+
+    padding:30px;
+
+
+    border-radius:20px;
+
+
+    box-shadow:var(--sombra);
 
 
 }
 
 
 
-.area-conteudo h2{
+.area-trabalho h2{
 
-
-    font-size:28px;
-
-    margin-bottom:15px;
 
     color:#0f172a;
 
 
-}
-
-
-
-.area-conteudo p{
-
-
-    color:#64748b;
+    margin-bottom:15px;
 
 
 }
 
 
 
-
-/* =====================================
-   CARDS DOS MODULOS
-===================================== */
-
-
-.card-admin{
-
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:18px;
-
-    box-shadow:var(--sombra);
-
-    margin-top:25px;
-
-
-}
-
-
-
-.card-admin h3{
-
-
-    color:#2563eb;
-
-    margin-bottom:10px;
-
-
-}
 
 
 
@@ -446,44 +506,109 @@ body{
 
 
 
-.admin-layout{
+    .admin-header{
 
-    flex-direction:column;
+
+        flex-direction:column;
+
+
+        height:auto;
+
+
+        gap:15px;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+
+    .admin-layout{
+
+
+        flex-direction:column;
+
+
+    }
+
+
+
+
+    .menu-admin{
+
+
+        width:100%;
+
+
+        display:flex;
+
+
+        flex-wrap:wrap;
+
+
+        gap:10px;
+
+
+    }
+
+
+
+
+    .menu-admin button{
+
+
+        width:calc(50% - 10px);
+
+
+    }
+
+
+
+
+    .area-trabalho{
+
+
+        margin:15px;
+
+
+    }
+
+
 
 }
 
 
 
-.menu{
-
-    width:100%;
-
-    min-height:auto;
-
-}
 
 
 
-.area-conteudo{
-
-    padding:20px;
-
-}
+@media(max-width:450px){
 
 
 
-.admin-header h1{
-
-    font-size:18px;
-
-}
+    .login-box{
 
 
-.login-box{
+        width:90%;
 
-    width:90%;
 
-}
+        padding:30px;
+
+
+    }
+
+
+
+    .menu-admin button{
+
+
+        width:100%;
+
+
+    }
 
 
 
