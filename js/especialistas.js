@@ -130,7 +130,6 @@ async function buscarClinicas() {
         telefone,
         ativo,
 
-
         bairros(
 
             nome,
@@ -151,6 +150,7 @@ async function buscarClinicas() {
 
 
         clinica_especialidades!inner(
+
 
             ativo,
             rede,
