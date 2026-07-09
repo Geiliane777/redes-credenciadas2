@@ -1,7 +1,7 @@
 // ======================================
 // TEMA CLARO / ESCURO
 // ======================================
-
+console.log("tema.js carregado");
 document.addEventListener("DOMContentLoaded", () => {
 
     const btnTema = document.getElementById("btnTema");
