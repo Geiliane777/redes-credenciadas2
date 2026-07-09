@@ -84,12 +84,10 @@ body{
 
 
 /* =====================================
-   LOGIN
+   LOGIN ADMIN
 ===================================== */
 
-
-.loginArea{
-
+.login-container{
 
     min-height:100vh;
 
@@ -99,79 +97,144 @@ body{
 
     align-items:center;
 
-    background:var(--fundo);
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
 
 }
 
 
+/* CARD LOGIN */
 
-.loginBox{
+.login-box{
 
+    width:380px;
 
-    background:var(--card);
+    background:white;
 
-    width:360px;
+    padding:40px;
 
-    padding:35px;
+    border-radius:25px;
 
-    border-radius:20px;
-
-    box-shadow:var(--sombra);
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
 
     text-align:center;
 
-}
-
-
-
-.loginBox h2{
-
-
-    color:var(--primaria);
-
-    margin-bottom:25px;
+    animation:entrada .5s ease;
 
 }
 
 
+/* ANIMAÇÃO */
 
-.loginBox input{
+@keyframes entrada{
 
+    from{
+
+        opacity:0;
+
+        transform:translateY(-30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* LOGO LOGIN */
+
+.login-box img{
+
+    width:90px;
+
+    margin-bottom:20px;
+
+}
+
+
+/* TITULO */
+
+.login-box h1{
+
+    color:#0f172a;
+
+    margin-bottom:10px;
+
+    font-size:28px;
+
+}
+
+
+.login-box p{
+
+    color:#64748b;
+
+    margin-bottom:30px;
+
+}
+
+
+/* CAMPOS */
+
+.login-box input{
 
     width:100%;
 
-    padding:14px;
+    padding:15px;
 
     margin-bottom:15px;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    border:1px solid #d1d5db;
-
-    background:var(--card);
-
-    color:var(--texto);
+    border:1px solid #cbd5e1;
 
     font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
 
 }
 
 
+.login-box input:focus{
 
-.loginBox button{
+    border-color:#2563eb;
 
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+
+/* BOTÃO LOGIN */
+
+.login-box button{
 
     width:100%;
 
-    padding:14px;
+    padding:15px;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    background:var(--primaria);
+    background:#2563eb;
 
     color:white;
+
+    font-size:16px;
 
     font-weight:bold;
 
@@ -182,18 +245,18 @@ body{
 }
 
 
+.login-box button:hover{
 
-.loginBox button:hover{
+    background:#1d4ed8;
 
-
-    background:var(--primaria-hover);
+    transform:translateY(-2px);
 
 }
 
 
+/* ERRO LOGIN */
 
 #erroLogin{
-
 
     margin-top:15px;
 
@@ -204,11 +267,19 @@ body{
 }
 
 
+/* RESPONSIVO */
 
+@media(max-width:450px){
 
+    .login-box{
 
+        width:90%;
 
+        padding:30px;
 
+    }
+
+}
 /* =====================================
    HEADER ADMIN
 ===================================== */
