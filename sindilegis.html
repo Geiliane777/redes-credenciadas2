@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Rede Sindilegis</title>
+
+    <!-- Ícone -->
+    <link rel="icon" href="img/tooth.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <img
+        src="img/tooth.png"
+        class="logo"
+        alt="Logo">
+
+    <h1>Rede Sindilegis</h1>
+
+    <p>
+        Encontre clínicas credenciadas da Rede Sindilegis
+    </p>
+
+</header>
+
+<main class="container">
+
+    <!-- BOTÕES SUPERIORES -->
+    <section class="filtros">
+
+        <button onclick="location.href='index.html'">
+            🦷 Rede Especialistas
+        </button>
+
+        <button onclick="location.href='admin.html'">
+            ⚙️ Painel Administrativo
+        </button>
+
+        <button id="tema">
+            🌙 Tema
+        </button>
+
+    </section>
+
+    <br>
+
+    <!-- FILTROS -->
+    <section class="filtros">
+
+        <select id="regiao"></select>
+
+        <select id="estado"></select>
+
+        <select id="cidade"></select>
+
+        <select id="bairro"></select>
+
+        <select id="especialidade">
+
+            <option value="">
+                Todas as Especialidades
+            </option>
+
+        </select>
+
+        <button id="buscar">
+            🔍 Buscar Clínicas
+        </button>
+
+    </section>
+
+    <!-- RESULTADOS -->
+    <section id="resultado">
+
+    </section>
+
+</main>
+
+<!-- SUPABASE -->
+<script src="js/supabase.js"></script>
+
+<!-- FILTROS -->
+<script src="js/filtros.js"></script>
+
+<!-- CARDS -->
+<script src="js/cards.js"></script>
+
+<!-- REDE SINDILEGIS -->
+<script src="js/sindilegis.js"></script>
+
+<!-- TEMA -->
+<script>
+
+const btnTema = document.getElementById("tema");
+
+const temaSalvo = localStorage.getItem("tema");
+
+if (temaSalvo === "dark") {
+
+    document.body.classList.add("dark");
+
+    btnTema.innerHTML = "☀️ Tema";
+
+}
+
+btnTema.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+
+        localStorage.setItem("tema", "dark");
+
+        btnTema.innerHTML = "☀️ Tema";
+
+    } else {
+
+        localStorage.setItem("tema", "light");
+
+        btnTema.innerHTML = "🌙 Tema";
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
