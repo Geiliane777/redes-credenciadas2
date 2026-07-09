@@ -4,11 +4,14 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Painel Administrativo</title>
 
+
 <link rel="icon" href="img/tooth.png">
+
 
 <link rel="stylesheet" href="css/admin.css">
 
@@ -22,20 +25,18 @@
 
 <body>
 
+<!-- =================================================
+     LOGIN
+================================================= -->
 
 
-<!-- ==============================
-     ÁREA LOGIN
-================================ -->
-
-
-<div id="loginArea" class="login-container">
+<section id="loginArea" class="login-container">
 
 
     <div class="login-box">
 
 
-        <img src="img/tooth.png">
+        <img src="img/tooth.png" alt="Logo">
 
 
         <h1>
@@ -49,22 +50,25 @@
 
 
 
-        <input
+        <div class="campo">
+
+
+            <input
             type="text"
             id="usuario"
-            placeholder="Usuário"
-        >
+            placeholder="Usuário">
 
 
+        </div>
 
-        <input
+        <div class="campo">
+
+
+            <input
             type="password"
             id="senha"
-            placeholder="Senha"
-        >
-
-
-
+            placeholder="Senha">
+        </div>
         <button onclick="login()">
 
             Entrar
@@ -75,43 +79,35 @@
 
         <div id="erroLogin"></div>
 
-
-
     </div>
 
 
-</div>
+</section>
+
+<!-- =================================================
+     PAINEL
+================================================= -->
 
 
-
-
-
-
-<!-- ==============================
-     PAINEL ADMINISTRATIVO
-================================ -->
-
-
-<div id="painelAdmin" style="display:none;">
-
-
+<section id="painelAdmin" style="display:none;">
 
 <header class="admin-header">
 
 
-    <div>
+    <div class="titulo-admin">
+
 
         <h1>
             ⚙ Painel Administrativo
         </h1>
 
+
         <p>
             Gerenciamento das redes credenciadas
         </p>
 
+
     </div>
-
-
 
     <button onclick="sairAdmin()">
 
@@ -120,98 +116,126 @@
     </button>
 
 
+
 </header>
-
-
-
-
-
-
 
 <div class="admin-layout">
 
+<!-- ==========================
+     MENU
+=========================== -->
 
 
-<!-- MENU -->
-
-<aside class="menu">
-
-
-    <button onclick="abrirModulo('clinicas')">
-
-        🏥 Clínicas
-
-    </button>
+<aside class="menu-admin">
 
 
 
-    <button onclick="abrirModulo('especialidades')">
-
-        🦷 Especialidades
-
-    </button>
+    <div class="logo-admin">
 
 
+        <img src="img/tooth.png">
 
 
-    <button onclick="abrirModulo('regioes')">
-
-        🌎 Regiões
-
-    </button>
+        <h2>
+            Redes
+        </h2>
 
 
+    </div>
 
-
-    <button onclick="abrirModulo('estados')">
-
-        📍 Estados
-
-    </button>
+    <nav>
 
 
 
+        <button onclick="abrirModulo('clinicas')">
 
-    <button onclick="abrirModulo('cidades')">
+            🏥 Clínicas
 
-        🏙 Cidades
+        </button>
 
-    </button>
+        <button onclick="abrirModulo('especialidades')">
 
+            🦷 Especialidades
 
+        </button>
 
+        <button onclick="abrirModulo('regioes')">
 
-    <button onclick="abrirModulo('bairros')">
+            🌎 Regiões
 
-        📌 Bairros
+        </button>
 
-    </button>
+        <button onclick="abrirModulo('estados')">
 
+            📍 Estados
+
+        </button>
+
+        <button onclick="abrirModulo('cidades')">
+
+            🏙 Cidades
+
+        </button>
+
+        <button onclick="abrirModulo('bairros')">
+
+            📌 Bairros
+
+        </button>
+
+    </nav>
 
 
 </aside>
 
-<!-- ÁREA DE TRABALHO -->
+<!-- ==========================
+     CONTEÚDO
+=========================== -->
 
-<section id="areaTrabalho" class="area-trabalho">
+
+<main 
+id="areaTrabalho"
+class="area-trabalho">
+
+
+
+<div class="bem-vindo">
+
+
     <h2>
         Bem-vindo ao painel
     </h2>
+
+
+
     <p>
-        Escolha uma opção no menu.
+        Escolha uma opção no menu lateral.
     </p>
-</section>
-</div>
+
+
 </div>
 
-<!-- ==============================
+</main>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =================================================
      SCRIPTS
-================================ -->
+================================================= -->
+
+
 <script src="js/supabase.js"></script>
 
 <script src="js/tema.js"></script>
 
 <script src="js/admin.js"></script>
+
+
 
 </body>
 
