@@ -1,155 +1,356 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+/* =====================================
+   VARIÁVEIS DO ADMIN
+===================================== */
+
+:root{
+
+    --fundo:#f3f6fb;
+
+    --card:#ffffff;
+
+    --texto:#374151;
+
+    --texto-forte:#111827;
+
+    --primaria:#2563eb;
+
+    --primaria-hover:#1d4ed8;
+
+    --sombra:0 10px 30px rgba(0,0,0,.08);
+
 }
+
+
+body.dark{
+
+    --fundo:#0f172a;
+
+    --card:#1e293b;
+
+    --texto:#f8fafc;
+
+    --texto-forte:#ffffff;
+
+    --primaria:#3b82f6;
+
+    --primaria-hover:#2563eb;
+
+    --sombra:0 10px 30px rgba(0,0,0,.35);
+
+}
+
+
+
+/* =====================================
+   RESET
+===================================== */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+
+
 
 body{
 
-    background:#f3f6fb;
+    background:var(--fundo);
+
+    color:var(--texto);
+
+    transition:.3s;
 
 }
 
 
-/* LOGIN */
 
-.login-container{
-
-    width:100%;
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-}
+/* =====================================
+   HEADER
+===================================== */
 
 
-.login-box{
+.adminHeader{
 
-    background:white;
-
-    width:350px;
-
-    padding:30px;
-
-    border-radius:20px;
-
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
-
-}
-
-
-.login-box h1{
-
-    text-align:center;
-
-    margin-bottom:25px;
-
-    color:#2563eb;
-
-}
-
-
-input{
-
-    width:100%;
-
-    padding:14px;
-
-    margin-top:12px;
-
-    border-radius:10px;
-
-    border:1px solid #ddd;
-
-}
-
-
-button{
-
-    width:100%;
-
-    padding:14px;
-
-    margin-top:15px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#2563eb;
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
 
     color:white;
 
-    font-size:16px;
+    text-align:center;
 
-    font-weight:bold;
+    padding:45px 20px;
+
+    border-bottom-left-radius:30px;
+
+    border-bottom-right-radius:30px;
+
+    box-shadow:var(--sombra);
+
+}
+
+
+
+.logo{
+
+    width:90px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.adminHeader h1{
+
+    font-size:35px;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.adminHeader p{
+
+    opacity:.9;
+
+}
+
+
+
+/* =====================================
+   BOTÕES SUPERIORES
+===================================== */
+
+
+.topButtons{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+
+
+.topButtons button{
+
+
+    background:white;
+
+    color:#0f172a;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:12px;
 
     cursor:pointer;
 
-}
+    font-weight:bold;
 
-
-button:hover{
-
-    background:#1d4ed8;
+    transition:.3s;
 
 }
 
 
 
-/* PAINEL */
+.topButtons button:hover{
 
-.admin-container{
+    transform:translateY(-3px);
+
+}
+
+
+
+/* =====================================
+   CONTAINER
+===================================== */
+
+
+.containerAdmin{
 
     width:95%;
 
     max-width:1200px;
 
-    margin:auto;
+    margin:40px auto;
 
 }
 
 
-.header-admin{
 
-    background:linear-gradient(135deg,#0f172a,#2563eb);
-
-    color:white;
-
-    padding:35px;
-
-    text-align:center;
-
-    border-radius:0 0 30px 30px;
-
-}
+/* =====================================
+   MENU
+===================================== */
 
 
-.menu{
-
-    margin-top:30px;
+.menuAdmin{
 
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
 
     gap:20px;
 
 }
 
 
-.menu button{
 
-    height:100px;
+/* =====================================
+   CARDS
+===================================== */
+
+
+.adminCard{
+
+    background:var(--card);
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    border-left:6px solid var(--primaria);
 
 }
 
 
-.hidden{
 
-    display:none;
+.adminCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+
+.adminCard h2{
+
+    color:var(--primaria);
+
+    margin-bottom:10px;
+
+}
+
+
+
+.adminCard p{
+
+    color:var(--texto);
+
+}
+
+
+
+/* =====================================
+   ÁREA DE TRABALHO
+===================================== */
+
+
+.areaTrabalho{
+
+    margin-top:40px;
+
+    background:var(--card);
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:var(--sombra);
+
+    min-height:300px;
+
+}
+
+
+
+.areaTrabalho h2{
+
+    color:var(--primaria);
+
+    margin-bottom:15px;
+
+}
+
+
+
+/* =====================================
+   TRANSIÇÕES
+===================================== */
+
+
+button,
+.adminCard,
+.areaTrabalho,
+body{
+
+    transition:
+
+    background .3s,
+
+    color .3s,
+
+    box-shadow .3s;
+
+}
+
+
+
+/* =====================================
+   RESPONSIVO
+===================================== */
+
+
+@media(max-width:768px){
+
+
+    .adminHeader h1{
+
+        font-size:28px;
+
+    }
+
+
+
+    .topButtons{
+
+        flex-direction:column;
+
+    }
+
+
+
+    .topButtons button{
+
+        width:100%;
+
+    }
+
 
 }
