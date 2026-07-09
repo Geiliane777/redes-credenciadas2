@@ -7,26 +7,24 @@
 // =====================================
 // LOGIN
 // =====================================
+console.log("admin.js carregado");
 
-
-function entrarAdmin(){
+function login(){
 
 
     const usuario =
-    document.getElementById("usuario").value;
+        document.getElementById("usuario").value;
 
 
     const senha =
-    document.getElementById("senha").value;
+        document.getElementById("senha").value;
 
 
 
     const erro =
-    document.getElementById("erroLogin");
+        document.getElementById("erroLogin");
 
 
-
-    // LOGIN INICIAL
 
     if(
         usuario === "admin" &&
@@ -40,7 +38,20 @@ function entrarAdmin(){
         );
 
 
+        window.location.href="admin.html";
 
+
+    }else{
+
+
+        erro.innerHTML =
+        "Usuário ou senha incorretos";
+
+
+    }
+
+
+}
         mostrarPainel();
 
 
