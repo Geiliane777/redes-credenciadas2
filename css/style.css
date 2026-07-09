@@ -555,3 +555,67 @@ button.ativo:hover{
     background:var(--cor-primaria-hover);
 
 }
+/* =====================================
+   REDE SINDILEGIS
+===================================== */
+
+body.sindilegis{
+
+    --cor-header1:#0f172a;
+    --cor-header2:#581c87;
+
+    --cor-primaria:#7c3aed;
+    --cor-primaria-hover:#6d28d9;
+
+    --cor-sucesso:#16a34a;
+    --cor-sucesso-hover:#15803d;
+
+}
+
+body.sindilegis .header{
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #581c87,
+        #7c3aed
+    );
+
+}
+
+body.sindilegis .tag{
+
+    background:#7c3aed;
+
+}
+
+body.sindilegis .cardHeader{
+
+    background:#7c3aed;
+
+}
+
+body.sindilegis .tituloResultado{
+
+    color:#7c3aed;
+
+}
+
+body.sindilegis button{
+
+    background:#7c3aed;
+
+}
+
+body.sindilegis button:hover{
+
+    background:#6d28d9;
+
+}
+
+body.sindilegis .ativo{
+
+    background:#581c87;
+    color:#fff;
+
+}
