@@ -4,64 +4,171 @@
 
 console.log("especialistas.js carregado");
 
-// Aguarda a página carregar
-document.addEventListener("DOMContentLoaded", () => {
+
+// Aguarda carregamento da página
+document.addEventListener("DOMContentLoaded",()=>{
 
     const botao = document.getElementById("buscar");
 
-    if (botao) {
-        botao.addEventListener("click", buscarClinicas);
+    if(botao){
+
+        botao.addEventListener(
+            "click",
+            buscarClinicas
+        );
+
     }
 
 });
+
+
 
 
 // ======================================
 // BUSCAR CLÍNICAS
 // ======================================
 
-async function buscarClinicas() {
+async function buscarClinicas(){
 
-    const bairro = document.getElementById("bairro").value;
 
-    if (!bairro) {
+    const bairro =
+    document.getElementById("bairro").value;
+
+
+    const especialidade =
+    document.getElementById("especialidade").value;
+
+
+
+    if(!bairro){
+
         alert("Selecione um bairro.");
         return;
+
     }
 
-    const { data, error } = await supabaseClient
-        .from("clinicas")
-        .select(`
-            id,
-            nome,
-            endereco,
-            telefone,
 
-            bairros (
+
+    let consulta = supabaseClient
+
+    .from("clinicas")
+
+    .select(`
+
+        id,
+        nome,
+        endereco,
+        telefone,
+        ativo,
+
+
+        bairros(
+            nome
+        ),
+
+
+        clinica_especialidades!inner(
+
+            ativo,
+            rede,
+
+
+            especialidades(
+                id,
                 nome
-            ),
-
-            clinica_especialidades!inner (
-                ativo,
-                rede,
-
-                especialidades (
-                    nome
-                )
             )
-        `)
-        .eq("bairro_id", bairro)
-        .eq("clinica_especialidades.rede", "especialistas")
-        .eq("clinica_especialidades.ativo", true);
 
-    if (error) {
-        console.error(error);
-        alert("Erro ao buscar clínicas.");
-        return;
+        )
+
+
+    `)
+
+
+
+    // clínica ativa
+
+    .eq(
+        "ativo",
+        true
+    )
+
+
+    // bairro escolhido
+
+    .eq(
+        "bairro_id",
+        bairro
+    )
+
+
+    // rede
+
+    .eq(
+        "clinica_especialidades.rede",
+        "especialistas"
+    )
+
+
+    // relação ativa
+
+    .eq(
+        "clinica_especialidades.ativo",
+        true
+    );
+
+
+
+
+    // ==============================
+    // FILTRO DE ESPECIALIDADE
+    // ==============================
+
+    if(especialidade){
+
+
+        consulta =
+        consulta.eq(
+            "clinica_especialidades.especialidades.nome",
+            especialidade
+        );
+
+
     }
 
-    console.log(data);
+
+
+
+    const {
+        data,
+        error
+
+    } = await consulta;
+
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Erro ao buscar clínicas."
+        );
+
+        return;
+
+    }
+
+
+
+    console.log(
+        "Resultado:",
+        data
+    );
+
+
 
     mostrarClinicas(data);
+
+
 
 }
