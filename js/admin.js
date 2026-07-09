@@ -4,10 +4,13 @@
 // =====================================
 
 
+console.log("admin.js carregado");
+
+
+
 // =====================================
 // LOGIN
 // =====================================
-console.log("admin.js carregado");
 
 function login(){
 
@@ -18,7 +21,6 @@ function login(){
 
     const senha =
         document.getElementById("senha").value;
-
 
 
     const erro =
@@ -38,22 +40,7 @@ function login(){
         );
 
 
-        window.location.href="admin.html";
-
-
-    }else{
-
-
-        erro.innerHTML =
-        "Usuário ou senha incorretos";
-
-
-    }
-
-
-}
         mostrarPainel();
-
 
 
     }else{
@@ -66,9 +53,7 @@ function login(){
     }
 
 
-
 }
-
 
 
 
@@ -77,33 +62,35 @@ function login(){
 // MOSTRAR PAINEL
 // =====================================
 
-
 function mostrarPainel(){
 
 
-    const login =
-    document.getElementById("loginArea");
+    const loginArea =
+        document.getElementById("loginArea");
 
 
-    const painel =
-    document.getElementById("painelAdmin");
+    const painelAdmin =
+        document.getElementById("painelAdmin");
 
 
 
-    if(login){
+    if(loginArea){
 
-        login.style.display="none";
+
+        loginArea.style.display="none";
+
 
     }
 
 
 
-    if(painel){
+    if(painelAdmin){
 
-        painel.style.display="block";
+
+        painelAdmin.style.display="block";
+
 
     }
-
 
 
 }
@@ -113,9 +100,8 @@ function mostrarPainel(){
 
 
 
-
 // =====================================
-// VERIFICAR LOGIN AO ABRIR
+// VERIFICAR LOGIN AO CARREGAR
 // =====================================
 
 
@@ -125,9 +111,9 @@ document.addEventListener(
 
 
     const logado =
-    localStorage.getItem(
-        "adminLogado"
-    );
+        localStorage.getItem(
+            "adminLogado"
+        );
 
 
 
@@ -140,9 +126,7 @@ document.addEventListener(
     }
 
 
-
 });
-
 
 
 
@@ -153,14 +137,12 @@ document.addEventListener(
 // SAIR DO ADMIN
 // =====================================
 
-
 function sairAdmin(){
 
 
     localStorage.removeItem(
         "adminLogado"
     );
-
 
 
     location.reload();
@@ -174,19 +156,18 @@ function sairAdmin(){
 
 
 
-
 // =====================================
 // ABRIR MÓDULOS
 // =====================================
 
-
 function abrirModulo(modulo){
 
 
+
     const area =
-    document.getElementById(
-        "areaTrabalho"
-    );
+        document.getElementById(
+            "areaTrabalho"
+        );
 
 
 
@@ -199,9 +180,14 @@ function abrirModulo(modulo){
 
 
 
+
     switch(modulo){
 
 
+
+        // =============================
+        // CLÍNICAS
+        // =============================
 
         case "clinicas":
 
@@ -212,15 +198,20 @@ function abrirModulo(modulo){
                     🏥 Clínicas
                 </h2>
 
+
                 <p>
                     Cadastro e gerenciamento de clínicas.
                 </p>
 
+
                 <hr>
 
+
                 <p>
-                    Módulo será desenvolvido na próxima etapa.
+                    Próxima etapa:
+                    formulário de cadastro.
                 </p>
+
 
             `;
 
@@ -230,6 +221,10 @@ function abrirModulo(modulo){
 
 
 
+
+        // =============================
+        // ESPECIALIDADES
+        // =============================
 
         case "especialidades":
 
@@ -242,8 +237,10 @@ function abrirModulo(modulo){
 
 
                 <p>
-                    Cadastro de especialidades.
+                    Cadastro e gerenciamento
+                    das especialidades.
                 </p>
+
 
             `;
 
@@ -253,6 +250,12 @@ function abrirModulo(modulo){
 
 
 
+
+
+
+        // =============================
+        // REGIÕES
+        // =============================
 
         case "regioes":
 
@@ -263,9 +266,11 @@ function abrirModulo(modulo){
                     🌎 Regiões
                 </h2>
 
+
                 <p>
-                    Gerenciamento das regiões.
+                    Gerenciar regiões cadastradas.
                 </p>
+
 
             `;
 
@@ -276,6 +281,11 @@ function abrirModulo(modulo){
 
 
 
+
+
+        // =============================
+        // ESTADOS
+        // =============================
 
         case "estados":
 
@@ -286,9 +296,11 @@ function abrirModulo(modulo){
                     📍 Estados
                 </h2>
 
+
                 <p>
-                    Cadastro de estados.
+                    Cadastro dos estados.
                 </p>
+
 
             `;
 
@@ -299,6 +311,12 @@ function abrirModulo(modulo){
 
 
 
+
+
+
+        // =============================
+        // CIDADES
+        // =============================
 
         case "cidades":
 
@@ -309,9 +327,11 @@ function abrirModulo(modulo){
                     🏙 Cidades
                 </h2>
 
+
                 <p>
-                    Cadastro de cidades.
+                    Cadastro das cidades.
                 </p>
+
 
             `;
 
@@ -322,6 +342,11 @@ function abrirModulo(modulo){
 
 
 
+
+
+        // =============================
+        // BAIRROS
+        // =============================
 
         case "bairros":
 
@@ -332,9 +357,11 @@ function abrirModulo(modulo){
                     📌 Bairros
                 </h2>
 
+
                 <p>
-                    Cadastro de bairros.
+                    Cadastro dos bairros.
                 </p>
+
 
             `;
 
@@ -343,7 +370,30 @@ function abrirModulo(modulo){
 
 
 
+
+
+
+
+        default:
+
+
+            conteudo = `
+
+                <h2>
+                    Bem-vindo ao painel administrativo
+                </h2>
+
+
+                <p>
+                    Escolha uma opção no menu.
+                </p>
+
+
+            `;
+
+
     }
+
 
 
 
