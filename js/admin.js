@@ -1,458 +1,345 @@
-
-console.log("ADMIN JS NOVO CARREGADO");// ======================================
-// LOGIN ADMIN
-// ======================================
-
-function entrar(){
-
-    const usuario = document.getElementById("usuario").value;
-    const senha = document.getElementById("senha").value;
+// =====================================
+// ADMIN.JS
+// PAINEL ADMINISTRATIVO
+// =====================================
 
 
-    if(usuario === "admin" && senha === "123456"){
-
-        document
-        .getElementById("login")
-        .classList.add("hidden");
+// =====================================
+// LOGIN
+// =====================================
 
 
-        document
-        .getElementById("painel")
-        .classList.remove("hidden");
+function entrarAdmin(){
+
+
+    const usuario =
+    document.getElementById("usuario").value;
+
+
+    const senha =
+    document.getElementById("senha").value;
+
+
+
+    const erro =
+    document.getElementById("erroLogin");
+
+
+
+    // LOGIN INICIAL
+
+    if(
+        usuario === "admin" &&
+        senha === "123456"
+    ){
+
+
+        localStorage.setItem(
+            "adminLogado",
+            "true"
+        );
+
+
+
+        mostrarPainel();
+
+
+
+    }else{
+
+
+        erro.innerHTML =
+        "Usuário ou senha inválidos";
+
 
     }
-    else{
 
-        alert("Usuário ou senha inválidos");
 
-    }
 
 }
 
 
-// ======================================
-// SAIR
-// ======================================
 
-function sair(){
+
+
+// =====================================
+// MOSTRAR PAINEL
+// =====================================
+
+
+function mostrarPainel(){
+
+
+    const login =
+    document.getElementById("loginArea");
+
+
+    const painel =
+    document.getElementById("painelAdmin");
+
+
+
+    if(login){
+
+        login.style.display="none";
+
+    }
+
+
+
+    if(painel){
+
+        painel.style.display="block";
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+// =====================================
+// VERIFICAR LOGIN AO ABRIR
+// =====================================
+
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+
+    const logado =
+    localStorage.getItem(
+        "adminLogado"
+    );
+
+
+
+    if(logado === "true"){
+
+
+        mostrarPainel();
+
+
+    }
+
+
+
+});
+
+
+
+
+
+
+
+// =====================================
+// SAIR DO ADMIN
+// =====================================
+
+
+function sairAdmin(){
+
+
+    localStorage.removeItem(
+        "adminLogado"
+    );
+
+
 
     location.reload();
 
+
 }
 
 
 
-// ======================================
+
+
+
+
+
+// =====================================
 // ABRIR MÓDULOS
-// ======================================
+// =====================================
+
 
 function abrirModulo(modulo){
 
 
-    const conteudo = document.getElementById("conteudo-admin");
+    const area =
+    document.getElementById(
+        "areaTrabalho"
+    );
 
 
 
-    // ==========================
-    // LOCALIZAÇÃO
-    // ==========================
+    if(!area) return;
 
-    if(modulo === "localizacao"){
 
 
-        conteudo.innerHTML = `
+    let conteudo = "";
 
-            <h2>
-                📍 Gerenciar Localização
-            </h2>
 
 
-            <div class="admin-card">
 
-                <h3>
-                    Regiões cadastradas
-                </h3>
+    switch(modulo){
 
 
-                <button onclick="carregarRegioesAdmin()">
-                    Carregar Regiões
-                </button>
 
+        case "clinicas":
 
-                <div id="lista-regioes"></div>
 
+            conteudo = `
 
-            </div>
+                <h2>
+                    🏥 Clínicas
+                </h2>
 
-        `;
+                <p>
+                    Cadastro e gerenciamento de clínicas.
+                </p>
 
-    }
+                <hr>
 
+                <p>
+                    Módulo será desenvolvido na próxima etapa.
+                </p>
 
+            `;
 
-    // ==========================
-    // CLÍNICAS
-    // ==========================
 
-    if(modulo === "clinicas"){
+        break;
 
 
-        conteudo.innerHTML = `
 
-            <h2>
-                🦷 Gerenciar Clínicas
-            </h2>
 
 
-            <div class="admin-card">
+        case "especialidades":
 
 
-                <button onclick="carregarClinicasAdmin()">
-                    Carregar Clínicas
-                </button>
+            conteudo = `
 
-
-                <div id="lista-clinicas"></div>
-
-
-            </div>
-
-        `;
-
-    }
-
-
-
-
-    // ==========================
-    // ESPECIALIDADES
-    // ==========================
-
-    if(modulo === "especialidades"){
-
-
-        conteudo.innerHTML = `
-
-            <h2>
-                📋 Gerenciar Especialidades
-            </h2>
-
-
-            <div class="admin-card">
-
-                <button onclick="carregarEspecialidadesAdmin()">
-                    Carregar Especialidades
-                </button>
-
-
-                <div id="lista-especialidades"></div>
-
-
-            </div>
-
-        `;
-
-    }
-
-
-
-
-    // ==========================
-    // REDES
-    // ==========================
-
-    if(modulo === "redes"){
-
-
-        conteudo.innerHTML = `
-
-            <h2>
-                🌐 Gerenciar Redes
-            </h2>
-
-
-            <div class="admin-card">
-
-                <button onclick="carregarRedesAdmin()">
-                    Carregar Redes
-                </button>
-
-
-                <div id="lista-redes"></div>
-
-
-            </div>
-
-        `;
-
-    }
-
-
-}
-
-
-
-
-// ======================================
-// CARREGAR REGIÕES
-// ======================================
-
-async function carregarRegioesAdmin(){
-
-
-    const lista = document.getElementById("lista-regioes");
-
-
-    lista.innerHTML = "Carregando...";
-
-
-    const {data,error}=await supabaseClient
-        .from("regioes")
-        .select("*")
-        .order("nome");
-
-
-    if(error){
-
-        console.error(error);
-        lista.innerHTML="Erro ao carregar regiões.";
-        return;
-
-    }
-
-
-    lista.innerHTML="";
-
-
-    data.forEach(item=>{
-
-
-        lista.innerHTML += `
-
-            <div class="admin-item">
-
-                📍 ${item.nome}
-
-            </div>
-
-        `;
-
-
-    });
-
-
-}
-
-
-
-
-// ======================================
-// CARREGAR CLÍNICAS
-// ======================================
-
-async function carregarClinicasAdmin(){
-
-
-    const lista=document.getElementById("lista-clinicas");
-
-
-    lista.innerHTML="Carregando clínicas...";
-
-
-
-    const {data,error}=await supabaseClient
-    .from("clinicas")
-    .select(`
-
-        id,
-        nome,
-        endereco,
-        telefone,
-        ativo,
-
-        bairros(
-            nome
-        )
-
-    `)
-    .order("nome");
-
-
-
-    if(error){
-
-        console.error(error);
-        lista.innerHTML="Erro ao carregar clínicas.";
-        return;
-
-    }
-
-
-
-    lista.innerHTML="";
-
-
-
-    data.forEach(clinica=>{
-
-
-        lista.innerHTML += `
-
-            <div class="admin-card">
-
-
-                <h3>
-                    ${clinica.nome}
-                </h3>
+                <h2>
+                    🦷 Especialidades
+                </h2>
 
 
                 <p>
-                    📍 ${clinica.endereco}
+                    Cadastro de especialidades.
                 </p>
 
+            `;
+
+
+        break;
+
+
+
+
+
+        case "regioes":
+
+
+            conteudo = `
+
+                <h2>
+                    🌎 Regiões
+                </h2>
 
                 <p>
-                    🏙 Bairro:
-                    ${clinica.bairros?.nome || "Não informado"}
+                    Gerenciamento das regiões.
                 </p>
 
+            `;
+
+
+        break;
+
+
+
+
+
+
+        case "estados":
+
+
+            conteudo = `
+
+                <h2>
+                    📍 Estados
+                </h2>
 
                 <p>
-                    📞 ${clinica.telefone || "Não informado"}
+                    Cadastro de estados.
                 </p>
 
+            `;
+
+
+        break;
+
+
+
+
+
+
+        case "cidades":
+
+
+            conteudo = `
+
+                <h2>
+                    🏙 Cidades
+                </h2>
 
                 <p>
-                    Status:
-                    ${
-                        clinica.ativo
-                        ?
-                        "🟢 Ativa"
-                        :
-                        "🔴 Inativa"
-                    }
+                    Cadastro de cidades.
                 </p>
 
+            `;
 
-            </div>
 
-        `;
+        break;
 
 
-    });
 
 
-}
 
 
+        case "bairros":
 
 
-// ======================================
-// CARREGAR ESPECIALIDADES
-// ======================================
+            conteudo = `
 
-async function carregarEspecialidadesAdmin(){
+                <h2>
+                    📌 Bairros
+                </h2>
 
+                <p>
+                    Cadastro de bairros.
+                </p>
 
-const lista=document.getElementById("lista-especialidades");
+            `;
 
 
-lista.innerHTML="Carregando...";
+        break;
 
 
-const {data,error}=await supabaseClient
-.from("especialidades")
-.select("*")
-.order("nome");
 
+    }
 
 
-if(error){
 
-console.error(error);
-lista.innerHTML="Erro ao carregar especialidades.";
-return;
 
-}
 
+    area.innerHTML = conteudo;
 
-
-lista.innerHTML="";
-
-
-data.forEach(item=>{
-
-
-lista.innerHTML += `
-
-<div class="admin-item">
-
-🦷 ${item.nome}
-
-</div>
-
-`;
-
-
-});
-
-
-}
-
-
-
-
-// ======================================
-// CARREGAR REDES
-// ======================================
-
-async function carregarRedesAdmin(){
-
-
-const lista=document.getElementById("lista-redes");
-
-
-lista.innerHTML="Carregando...";
-
-
-const {data,error}=await supabaseClient
-.from("clinica_especialidades")
-.select("rede")
-.order("rede");
-
-
-
-if(error){
-
-console.error(error);
-lista.innerHTML="Erro ao carregar redes.";
-return;
-
-}
-
-
-
-let redes=[...new Set(data.map(item=>item.rede))];
-
-
-lista.innerHTML="";
-
-
-redes.forEach(rede=>{
-
-
-lista.innerHTML += `
-
-<div class="admin-item">
-
-🌐 ${rede}
-
-</div>
-
-`;
-
-
-});
 
 
 }
