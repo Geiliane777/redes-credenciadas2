@@ -62,9 +62,23 @@ async function buscarClinicas(){
         ativo,
 
 
-        bairros(
+       bairros(
+
+    nome,
+
+    cidades(
+
+        nome,
+
+        estados(
+
             nome
-        ),
+
+        )
+
+    )
+
+)
 
 
         clinica_especialidades!inner(
