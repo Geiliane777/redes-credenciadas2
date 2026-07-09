@@ -5,12 +5,16 @@
 console.log("especialistas.js carregado");
 
 
-// Aguarda carregamento da página
-document.addEventListener("DOMContentLoaded",()=>{
+// ======================================
+// EVENTO BOTÃO BUSCAR
+// ======================================
+
+document.addEventListener("DOMContentLoaded", () => {
 
     const botao = document.getElementById("buscar");
 
-    if(botao){
+
+    if (botao) {
 
         botao.addEventListener(
             "click",
@@ -23,16 +27,16 @@ document.addEventListener("DOMContentLoaded",()=>{
 
 
 
-
 // ======================================
 // BUSCAR CLÍNICAS
 // ======================================
 
-async function buscarClinicas(){
+async function buscarClinicas() {
 
 
     const bairro =
     document.getElementById("bairro").value;
+
 
 
     const especialidade =
@@ -40,16 +44,81 @@ async function buscarClinicas(){
 
 
 
-    if(!bairro){
+
+    if (!bairro) {
+
 
         alert("Selecione um bairro.");
+
         return;
 
     }
 
 
 
-    let consulta = supabaseClient
+
+    // ======================================
+    // BUSCAR ID DA ESPECIALIDADE
+    // ======================================
+
+    let especialidadeId = null;
+
+
+
+    if (especialidade) {
+
+
+        const {
+            data: especialidadeData,
+            error: erroEspecialidade
+
+        } = await supabaseClient
+
+            .from("especialidades")
+
+            .select("id")
+
+            .eq(
+                "nome",
+                especialidade
+            )
+
+            .single();
+
+
+
+        if (erroEspecialidade) {
+
+
+            console.error(
+                "Erro ao buscar especialidade:",
+                erroEspecialidade
+            );
+
+
+            return;
+
+        }
+
+
+
+        especialidadeId =
+        especialidadeData.id;
+
+
+    }
+
+
+
+
+
+    // ======================================
+    // CONSULTA CLÍNICAS
+    // ======================================
+
+
+    let consulta =
+    supabaseClient
 
     .from("clinicas")
 
@@ -62,34 +131,37 @@ async function buscarClinicas(){
         ativo,
 
 
-       bairros(
+        bairros(
 
-    nome,
+            nome,
 
-    cidades(
+            cidades(
 
-        nome,
+                nome,
 
-        estados(
+                estados(
 
-            nome
+                    nome
 
-        )
+                )
 
-    )
+            )
 
-)
+        ),
 
 
         clinica_especialidades!inner(
 
             ativo,
             rede,
+            especialidade_id,
 
 
             especialidades(
+
                 id,
                 nome
+
             )
 
         )
@@ -99,7 +171,7 @@ async function buscarClinicas(){
 
 
 
-    // clínica ativa
+    // Clínica ativa
 
     .eq(
         "ativo",
@@ -107,7 +179,8 @@ async function buscarClinicas(){
     )
 
 
-    // bairro escolhido
+
+    // Bairro escolhido
 
     .eq(
         "bairro_id",
@@ -115,7 +188,8 @@ async function buscarClinicas(){
     )
 
 
-    // rede
+
+    // Somente rede especialistas
 
     .eq(
         "clinica_especialidades.rede",
@@ -123,7 +197,8 @@ async function buscarClinicas(){
     )
 
 
-    // relação ativa
+
+    // Relação ativa
 
     .eq(
         "clinica_especialidades.ativo",
@@ -133,51 +208,39 @@ async function buscarClinicas(){
 
 
 
-    // ==============================
-    // FILTRO DE ESPECIALIDADE
-    // ==============================
-
-  // ==============================
-// FILTRO DE ESPECIALIDADE
-// ==============================
-
-if(especialidade){
 
 
-    const { data: especialidadeData, error: erroEspecialidade } = 
-    await supabaseClient
-        .from("especialidades")
-        .select("id")
-        .eq("nome", especialidade)
-        .single();
+    // ======================================
+    // FILTRO ESPECIALIDADE
+    // ======================================
+
+    if(especialidadeId){
 
 
+        consulta = consulta.eq(
 
-    if(erroEspecialidade){
+            "clinica_especialidades.especialidade_id",
 
-        console.error(
-            "Erro ao buscar especialidade:",
-            erroEspecialidade
+            especialidadeId
+
         );
 
-        return;
 
     }
 
 
 
-    consulta = consulta.eq(
-        "clinica_especialidades.especialidade_id",
-        especialidadeData.id
-    );
 
 
-}
 
 
+    // ======================================
+    // EXECUTAR CONSULTA
+    // ======================================
 
 
     const {
+
         data,
         error
 
@@ -185,13 +248,20 @@ if(especialidade){
 
 
 
+
     if(error){
 
-        console.error(error);
+
+        console.error(
+            "Erro ao buscar clínicas:",
+            error
+        );
+
 
         alert(
             "Erro ao buscar clínicas."
         );
+
 
         return;
 
@@ -199,8 +269,9 @@ if(especialidade){
 
 
 
+
     console.log(
-        "Resultado:",
+        "Clínicas encontradas:",
         data
     );
 
