@@ -2,8 +2,16 @@
 // TEMA CLARO / ESCURO
 // ======================================
 
-// Carrega o tema salvo
 document.addEventListener("DOMContentLoaded", () => {
+
+    const btnTema = document.getElementById("btnTema");
+
+    if (!btnTema) return;
+
+
+    // ======================================
+    // CARREGAR TEMA SALVO
+    // ======================================
 
     const temaSalvo = localStorage.getItem("tema");
 
@@ -11,54 +19,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.classList.add("dark");
 
+        btnTema.innerHTML = "☀️";
+
+        btnTema.title = "Tema Claro";
+
+    } else {
+
+        document.body.classList.remove("dark");
+
+        btnTema.innerHTML = "🌙";
+
+        btnTema.title = "Tema Escuro";
+
     }
 
-    atualizarIcone();
+
+    // ======================================
+    // ALTERAR TEMA
+    // ======================================
+
+    btnTema.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark");
+
+        const dark = document.body.classList.contains("dark");
+
+
+        if (dark) {
+
+            localStorage.setItem("tema", "dark");
+
+            btnTema.innerHTML = "☀️";
+
+            btnTema.title = "Tema Claro";
+
+        } else {
+
+            localStorage.setItem("tema", "light");
+
+            btnTema.innerHTML = "🌙";
+
+            btnTema.title = "Tema Escuro";
+
+        }
+
+    });
 
 });
-
-
-// ======================================
-// ALTERAR TEMA
-// ======================================
-
-function alternarTema() {
-
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-
-        localStorage.setItem("tema", "dark");
-
-    } else {
-
-        localStorage.setItem("tema", "light");
-
-    }
-
-    atualizarIcone();
-
-}
-
-
-// ======================================
-// ALTERAR ÍCONE
-// ======================================
-
-function atualizarIcone() {
-
-    const botao = document.getElementById("btnTema");
-
-    if (!botao) return;
-
-    if (document.body.classList.contains("dark")) {
-
-        botao.innerHTML = "☀️";
-
-    } else {
-
-        botao.innerHTML = "🌙";
-
-    }
-
-}
