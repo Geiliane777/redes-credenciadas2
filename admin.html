@@ -32,24 +32,23 @@
 
 
 
-<!-- ===============================
-     LOGIN
-================================ -->
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <img src="img/tooth.png">
 
 
-<div id="loginArea" class="loginArea">
+        <h1>
+            Painel Administrativo
+        </h1>
 
 
-    <div class="loginBox">
-
-
-        <img src="img/tooth.png" class="logo">
-
-
-        <h2>
-            🔐 Acesso Administrativo
-        </h2>
-
+        <p>
+            Redes Credenciadas
+        </p>
 
 
         <input 
@@ -59,7 +58,6 @@
         >
 
 
-
         <input 
             type="password"
             id="senha"
@@ -67,29 +65,17 @@
         >
 
 
-
-        <button onclick="entrarAdmin()">
-
+        <button onclick="login()">
             Entrar
-
         </button>
 
 
-
-        <p id="erroLogin"></p>
+        <div id="erroLogin"></div>
 
 
     </div>
 
-
 </div>
-
-
-
-
-
-
-
 <!-- ===============================
      PAINEL
 ================================ -->
