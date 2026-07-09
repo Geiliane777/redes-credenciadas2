@@ -471,3 +471,86 @@ Salvar Clínica
 `;
 
 }
+// =====================================
+// SALVAR CLÍNICA
+// =====================================
+
+async function salvarClinica(){
+
+
+    const nome =
+    document.getElementById("nomeClinica").value;
+
+
+    const endereco =
+    document.getElementById("enderecoClinica").value;
+
+
+    const telefone =
+    document.getElementById("telefoneClinica").value;
+
+
+
+    if(
+        !nome ||
+        !endereco
+    ){
+
+        alert(
+            "Preencha nome e endereço"
+        );
+
+        return;
+
+    }
+
+
+
+    const { data, error } = await supabaseClient
+    .from("clinicas")
+    .insert([
+
+        {
+
+            nome:nome,
+
+            endereco:endereco,
+
+            telefone:telefone,
+
+            ativo:true
+
+        }
+
+    ]);
+
+
+
+    if(error){
+
+
+        console.error(error);
+
+
+        alert(
+            "Erro ao cadastrar clínica"
+        );
+
+
+        return;
+
+
+    }
+
+
+
+    alert(
+        "Clínica cadastrada com sucesso!"
+    );
+
+
+
+    abrirModulo("clinicas");
+
+
+}
