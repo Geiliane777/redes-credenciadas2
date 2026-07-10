@@ -3,240 +3,125 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Painel Administrativo</title>
+    <title>Painel Administrativo</title>
 
+    <link rel="icon" href="img/tooth.png">
 
-<link rel="icon" href="img/tooth.png">
+    <link rel="stylesheet" href="css/admin.css">
 
-
-<link rel="stylesheet" href="css/admin.css">
-
-
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
-
 <body>
 
-<!-- =================================================
-     LOGIN
-================================================= -->
+<header class="header">
 
+    <img src="img/tooth.png" class="logo">
 
-<section id="loginArea" class="login-container">
+    <h1>Painel Administrativo</h1>
 
+    <p>
+        Gerenciamento das Redes Credenciadas
+    </p>
 
-    <div class="login-box">
+</header>
 
+<div class="container">
 
-        <img src="img/tooth.png" alt="Logo">
+    <button
+        class="btnVoltar"
+        onclick="location.href='index.html'">
 
+        ← Voltar para Busca
 
-        <h1>
-            Painel Administrativo
-        </h1>
+    </button>
 
+    <!-- LOGIN -->
 
-        <p>
-            Redes Credenciadas
-        </p>
+    <section
+        id="loginBox"
+        class="card">
 
+        <h2>Login</h2>
 
-
-        <div class="campo">
-
-
-            <input
-            type="text"
+        <input
             id="usuario"
             placeholder="Usuário">
 
-
-        </div>
-
-        <div class="campo">
-
-
-            <input
-            type="password"
+        <input
             id="senha"
+            type="password"
             placeholder="Senha">
-        </div>
-        <button onclick="login()">
+
+        <button
+            class="btnAzul"
+            onclick="login()">
 
             Entrar
 
         </button>
 
+    </section>
 
+    <!-- PAINEL -->
 
-        <div id="erroLogin"></div>
+    <section
+        id="painel"
+        class="hidden">
 
-    </div>
+        <div class="dashboard">
 
+            <div class="dashCard">
 
-</section>
+                <h3 id="totalClinicas">0</h3>
 
-<!-- =================================================
-     PAINEL
-================================================= -->
+                <span>Clínicas</span>
 
+            </div>
 
-<section id="painelAdmin" style="display:none;">
+            <div class="dashCard">
 
-<header class="admin-header">
+                <h3 id="totalEspecialidades">0</h3>
 
+                <span>Especialidades</span>
 
-    <div class="titulo-admin">
+            </div>
 
+            <div class="dashCard">
 
-        <h1>
-            ⚙ Painel Administrativo
-        </h1>
+                <h3 id="totalRegioes">0</h3>
 
+                <span>Regiões</span>
 
-        <p>
-            Gerenciamento das redes credenciadas
-        </p>
+            </div>
 
+            <div class="dashCard">
 
-    </div>
+                <h3 id="totalEstados">0</h3>
 
-    <button onclick="sairAdmin()">
+                <span>Estados</span>
 
-        🚪 Sair
+            </div>
 
-    </button>
+            <div class="dashCard">
 
+                <h3 id="totalCidades">0</h3>
 
+                <span>Cidades</span>
 
-</header>
+            </div>
 
-<div class="admin-layout">
+            <div class="dashCard">
 
-<!-- ==========================
-     MENU
-=========================== -->
+                <h3 id="totalBairros">0</h3>
 
+                <span>Bairros</span>
 
-<aside class="menu-admin">
+            </div>
 
-
-
-    <div class="logo-admin">
-
-
-        <img src="img/tooth.png">
-
-
-        <h2>
-            Redes
-        </h2>
-
-
-    </div>
-
-    <nav>
-
-
-
-        <button onclick="abrirModulo('clinicas')">
-
-            🏥 Clínicas
-
-        </button>
-
-        <button onclick="abrirModulo('especialidades')">
-
-            🦷 Especialidades
-
-        </button>
-
-        <button onclick="abrirModulo('regioes')">
-
-            🌎 Regiões
-
-        </button>
-
-        <button onclick="abrirModulo('estados')">
-
-            📍 Estados
-
-        </button>
-
-        <button onclick="abrirModulo('cidades')">
-
-            🏙 Cidades
-
-        </button>
-
-        <button onclick="abrirModulo('bairros')">
-
-            📌 Bairros
-
-        </button>
-
-    </nav>
-
-
-</aside>
-
-<!-- ==========================
-     CONTEÚDO
-=========================== -->
-
-
-<main 
-id="areaTrabalho"
-class="area-trabalho">
-
-
-
-<div class="bem-vindo">
-
-
-    <h2>
-        Bem-vindo ao painel
-    </h2>
-
-
-
-    <p>
-        Escolha uma opção no menu lateral.
-    </p>
-
-
-</div>
-
-</main>
-
-</div>
-
-
-</section>
-
-
-
-<!-- =================================================
-     SCRIPTS
-================================================= -->
-
-
-<script src="js/supabase.js"></script>
-
-<script src="js/tema.js"></script>
-
-<script src="js/admin.js"></script>
-
-
-
-</body>
-
-</html>
+        </div>
