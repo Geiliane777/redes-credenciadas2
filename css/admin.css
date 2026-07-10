@@ -1,72 +1,24 @@
 /* =====================================
-   ADMIN CSS
-   PAINEL ADMINISTRATIVO
+   RESET
 ===================================== */
 
-
-:root{
-
-    --fundo:#f3f6fb;
-
-    --card:#ffffff;
-
-    --primaria:#2563eb;
-
-    --primaria-hover:#1d4ed8;
-
-    --escuro:#0f172a;
-
-    --texto:#334155;
-
-    --erro:#dc2626;
-
-    --sombra:
-    0 15px 40px rgba(0,0,0,.12);
-
-}
-
-
-
 *{
-
     margin:0;
-
     padding:0;
-
     box-sizing:border-box;
-
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
+    font-family:Arial, Helvetica, sans-serif;
 }
-
-
 
 body{
 
-    background:var(--fundo);
+    min-height:100vh;
 
-    color:var(--texto);
-
-}
-
-
-
-
-/* =====================================
-   LOGIN
-===================================== */
-
-
-.login-container{
-
-
-    width:100%;
-
-    height:100vh;
-
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1d4ed8,
+        #2563eb
+    );
 
     display:flex;
 
@@ -74,730 +26,226 @@ body{
 
     align-items:center;
 
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #0f172a,
-        #2563eb
-    );
-
-
 }
 
 
+/* =====================================
+   LOGIN
+===================================== */
 
-.login-box{
+.loginContainer{
 
+    width:100%;
 
-    width:380px;
+    display:flex;
 
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+.loginCard{
+
+    width:100%;
+
+    max-width:420px;
 
     background:white;
 
+    border-radius:20px;
 
     padding:40px;
 
-
-    border-radius:25px;
-
+    box-shadow:0 20px 50px rgba(0,0,0,.20);
 
     text-align:center;
-
-
-    box-shadow:
-
-    0 20px 50px rgba(0,0,0,.30);
-
 
 }
 
 
+/* =====================================
+   LOGO
+===================================== */
 
-.login-box img{
-
+.logo{
 
     width:90px;
 
     margin-bottom:20px;
 
-
 }
 
 
+/* =====================================
+   TÍTULOS
+===================================== */
 
-.login-box h1{
-
-
-    font-size:26px;
+.loginCard h1{
 
     color:#0f172a;
 
     margin-bottom:8px;
 
+    font-size:30px;
 
 }
 
-
-
-.login-box p{
-
+.loginCard p{
 
     color:#64748b;
 
     margin-bottom:30px;
 
-
 }
 
 
+/* =====================================
+   INPUTS
+===================================== */
 
-.login-box input{
-
+.loginCard input{
 
     width:100%;
-
-
-    padding:15px;
-
-
-    margin-bottom:15px;
-
-
-    border-radius:12px;
-
-
-    border:
-
-    1px solid #cbd5e1;
-
-
-    outline:none;
-
-
-    font-size:15px;
-
-
-}
-
-
-
-.login-box input:focus{
-
-
-    border-color:#2563eb;
-
-
-}
-
-
-
-.login-box button{
-
-
-    width:100%;
-
-
-    padding:15px;
-
-
-    border:none;
-
-
-    border-radius:12px;
-
-
-    background:#2563eb;
-
-
-    color:white;
-
-
-    font-size:16px;
-
-
-    font-weight:bold;
-
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
-
-}
-
-
-
-.login-box button:hover{
-
-
-    background:#1d4ed8;
-
-
-}
-
-
-
-#erroLogin{
-
-
-    margin-top:15px;
-
-
-    color:var(--erro);
-
-
-    font-weight:bold;
-
-
-}
-
-
-
-
-
-
-/* =====================================
-   PAINEL
-===================================== */
-
-
-#painelAdmin{
-
-
-    min-height:100vh;
-
-
-}
-
-
-
-
-/* =====================================
-   HEADER ADMIN
-===================================== */
-
-
-.admin-header{
-
-
-    height:90px;
-
-
-    background:white;
-
-
-    display:flex;
-
-
-    align-items:center;
-
-
-    justify-content:space-between;
-
-
-    padding:0 35px;
-
-
-    box-shadow:var(--sombra);
-
-
-}
-
-
-
-.admin-header h1{
-
-
-    color:#0f172a;
-
-
-    font-size:25px;
-
-
-}
-
-
-
-.admin-header p{
-
-
-    color:#64748b;
-
-
-    margin-top:5px;
-
-
-}
-
-
-
-.admin-header button{
-
-
-    background:#dc2626;
-
-
-    color:white;
-
-
-    border:none;
-
-
-    padding:13px 22px;
-
-
-    border-radius:12px;
-
-
-    cursor:pointer;
-
-
-    font-weight:bold;
-
-
-}
-
-
-
-.admin-header button:hover{
-
-
-    background:#b91c1c;
-
-
-}
-
-
-
-
-
-
-/* =====================================
-   LAYOUT PRINCIPAL
-===================================== */
-
-
-.admin-layout{
-
-
-    display:flex;
-
-
-    min-height:
-
-    calc(100vh - 90px);
-
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   MENU LATERAL
-===================================== */
-
-
-.menu-admin{
-
-
-    width:260px;
-
-
-    background:#0f172a;
-
-
-    padding:25px 15px;
-
-
-}
-
-
-
-.menu-admin button{
-
-
-    width:100%;
-
-
-    padding:15px;
-
-
-    margin-bottom:12px;
-
-
-    border:none;
-
-
-    border-radius:12px;
-
-
-    background:#1e293b;
-
-
-    color:white;
-
-
-    text-align:left;
-
-
-    font-size:15px;
-
-
-    cursor:pointer;
-
-
-    transition:.3s;
-
-
-}
-
-
-
-.menu-admin button:hover{
-
-
-    background:#2563eb;
-
-
-    transform:translateX(5px);
-
-
-}
-
-
-
-
-
-
-/* =====================================
-   ÁREA DE TRABALHO
-===================================== */
-
-
-.area-trabalho{
-
-
-    flex:1;
-
-
-    padding:40px;
-
-
-}
-
-
-
-
-.area-trabalho h2{
-
-
-    color:#0f172a;
-
-
-    font-size:30px;
-
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-.area-trabalho p{
-
-
-    color:#64748b;
-
-
-    font-size:17px;
-
-
-}
-
-
-
-
-
-
-
-/* =====================================
-   CARDS DO ADMIN
-===================================== */
-
-
-.card-admin{
-
-
-    background:white;
-
-
-    padding:30px;
-
-
-    border-radius:20px;
-
-
-    box-shadow:var(--sombra);
-
-
-}
-
-
-
-.card-admin h2{
-
-
-    color:#2563eb;
-
-
-    margin-bottom:15px;
-
-
-}
-
-
-
-.card-admin hr{
-
-
-    border:none;
-
-
-    border-top:1px solid #e2e8f0;
-
-
-}
-
-
-
-
-
-
-/* =====================================
-   FORMULÁRIOS
-===================================== */
-
-
-.card-admin label{
-
-
-    display:block;
-
-
-    margin-bottom:6px;
-
-
-    font-weight:bold;
-
-
-}
-
-
-
-.card-admin input,
-.card-admin select{
-
-
-    width:100%;
-
 
     padding:14px;
 
+    margin-bottom:15px;
 
-    border-radius:12px;
+    border:1px solid #d1d5db;
 
-
-    border:1px solid #cbd5e1;
-
-
-    margin-bottom:18px;
-
+    border-radius:10px;
 
     font-size:15px;
 
+    transition:.3s;
+
+}
+
+.loginCard input:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
 
 }
 
 
+/* =====================================
+   BOTÕES
+===================================== */
 
+#btnEntrar{
 
-.card-admin button{
+    width:100%;
 
-
-    background:#2563eb;
-
-
-    color:white;
-
+    padding:15px;
 
     border:none;
 
+    border-radius:10px;
 
-    padding:14px 25px;
+    background:#2563eb;
 
+    color:white;
 
-    border-radius:12px;
-
-
-    cursor:pointer;
-
+    font-size:16px;
 
     font-weight:bold;
 
+    cursor:pointer;
+
+    transition:.3s;
 
 }
 
-
-
-.card-admin button:hover{
-
+#btnEntrar:hover{
 
     background:#1d4ed8;
 
+}
+
+.voltar{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#64748b;
+
+    color:white;
+
+    cursor:pointer;
+
+    margin-top:15px;
+
+    transition:.3s;
+
+}
+
+.voltar:hover{
+
+    background:#475569;
 
 }
 
 
+/* =====================================
+   LINHA
+===================================== */
+
+hr{
+
+    margin:25px 0;
+
+    border:none;
+
+    border-top:1px solid #e5e7eb;
+
+}
 
 
+/* =====================================
+   MENSAGEM
+===================================== */
+
+#mensagem{
+
+    margin-top:15px;
+
+    min-height:20px;
+
+    font-weight:bold;
+
+    color:#dc2626;
+
+}
 
 
 /* =====================================
    RESPONSIVO
 ===================================== */
 
+@media(max-width:600px){
 
-@media(max-width:768px){
+    .loginCard{
 
-
-
-    .admin-layout{
-
-
-        flex-direction:column;
-
+        padding:30px 25px;
 
     }
 
+    .loginCard h1{
 
-
-    .menu-admin{
-
-
-        width:100%;
-
+        font-size:24px;
 
     }
-
-
-
-    .admin-header{
-
-
-        padding:0 15px;
-
-
-    }
-
-
-
-    .admin-header h1{
-
-
-        font-size:18px;
-
-
-    }
-
-
-
-    .area-trabalho{
-
-
-        padding:20px;
-
-
-    }
-
-
-
-    .login-box{
-
-
-        width:90%;
-
-
-    }
-
-
-}
-/* =====================================
-   LOGOS ADMIN
-===================================== */
-
-
-.login-box img{
-
-    width:90px;
-
-    height:90px;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:0 auto 20px;
-
-}
-
-
-
-.logo-admin img{
-
-
-    width:50px;
-
-    height:50px;
-
-    object-fit:contain;
-
-    display:block;
-
-    margin:0 auto 10px;
-
-
-}
-
-
-
-.logo-admin{
-
-
-    text-align:center;
-
-    color:white;
-
-    margin-bottom:30px;
-
-
-}
-
-
-
-.logo-admin h2{
-
-
-    font-size:20px;
-
-    color:white;
-
 
 }
