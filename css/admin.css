@@ -289,11 +289,25 @@ transform:none;
 
 .sidebar-logo{
 
-
     padding:35px 20px;
 
     text-align:center;
 
+    border-bottom:
+    1px solid rgba(255,255,255,.1);
+
+}
+
+
+/* ORGANIZA LOGO E TEXTO */
+
+.brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
 
 }
 
