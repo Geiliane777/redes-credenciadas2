@@ -1,138 +1,116 @@
 // =========================================
-// ADMIN.JS
-// CONTROLE DO PAINEL
+// DASHBOARD
+// Rede Especialistas 2
 // =========================================
 
-console.log("admin.js carregado");
+window.addEventListener("load", () => {
 
-// =========================================
-// INICIALIZAÇÃO
-// =========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    configurarMenu();
+    carregarDashboard();
 
 });
 
 // =========================================
-// MENU
+// CARREGAR DASHBOARD
 // =========================================
 
-function configurarMenu() {
+async function carregarDashboard(){
 
-    document
-        .getElementById("btnClinicas")
-        .addEventListener("click", () => abrirModulo("clinicas"));
-
-    document
-        .getElementById("btnEspecialidades")
-        .addEventListener("click", () => abrirModulo("especialidades"));
-
-    document
-        .getElementById("btnRegioes")
-        .addEventListener("click", () => abrirModulo("regioes"));
-
-    document
-        .getElementById("btnEstados")
-        .addEventListener("click", () => abrirModulo("estados"));
-
-    document
-        .getElementById("btnCidades")
-        .addEventListener("click", () => abrirModulo("cidades"));
-
-    document
-        .getElementById("btnBairros")
-        .addEventListener("click", () => abrirModulo("bairros"));
+    await carregarTotalClinicas();
+    await carregarTotalEspecialidades();
+    await carregarTotalEstados();
+    await carregarTotalCidades();
+    await carregarTotalBairros();
+    await carregarTotalRegioes();
 
 }
 
 // =========================================
-// ABRIR MÓDULOS
+// CLÍNICAS
 // =========================================
 
-function abrirModulo(nome) {
+async function carregarTotalClinicas(){
 
-    const area = document.getElementById("areaConteudo");
+    const { count, error } = await supabaseClient
+        .from("clinicas")
+        .select("*", { count: "exact", head: true });
 
-    switch (nome) {
+    if(error){
 
-        case "clinicas":
-
-            if (typeof abrirModuloClinicas === "function") {
-
-                abrirModuloClinicas();
-
-            }
-
-            break;
-
-        case "especialidades":
-
-            if (typeof abrirModuloEspecialidades === "function") {
-
-                abrirModuloEspecialidades();
-
-            }
-
-            break;
-
-        case "regioes":
-
-            if (typeof abrirModuloRegioes === "function") {
-
-                abrirModuloRegioes();
-
-            }
-
-            break;
-
-        case "estados":
-
-            if (typeof abrirModuloEstados === "function") {
-
-                abrirModuloEstados();
-
-            }
-
-            break;
-
-        case "cidades":
-
-            if (typeof abrirModuloCidades === "function") {
-
-                abrirModuloCidades();
-
-            }
-
-            break;
-
-        case "bairros":
-
-            if (typeof abrirModuloBairros === "function") {
-
-                abrirModuloBairros();
-
-            }
-
-            break;
-
-        default:
-
-            area.innerHTML = `
-
-                <div class="card">
-
-                    <h2>Bem-vindo</h2>
-
-                    <p>
-                        Escolha uma opção no menu.
-                    </p>
-
-                </div>
-
-            `;
+        console.error(error);
+        return;
 
     }
+
+    document.getElementById("totalClinicas").textContent = count;
+
+}
+
+// =========================================
+// ESPECIALIDADES
+// =========================================
+
+async function carregarTotalEspecialidades(){
+
+    const { count } = await supabaseClient
+        .from("especialidades")
+        .select("*", { count: "exact", head: true });
+
+    document.getElementById("totalEspecialidades").textContent = count;
+
+}
+
+// =========================================
+// ESTADOS
+// =========================================
+
+async function carregarTotalEstados(){
+
+    const { count } = await supabaseClient
+        .from("estados")
+        .select("*", { count: "exact", head: true });
+
+    document.getElementById("totalEstados").textContent = count;
+
+}
+
+// =========================================
+// CIDADES
+// =========================================
+
+async function carregarTotalCidades(){
+
+    const { count } = await supabaseClient
+        .from("cidades")
+        .select("*", { count: "exact", head: true });
+
+    document.getElementById("totalCidades").textContent = count;
+
+}
+
+// =========================================
+// BAIRROS
+// =========================================
+
+async function carregarTotalBairros(){
+
+    const { count } = await supabaseClient
+        .from("bairros")
+        .select("*", { count: "exact", head: true });
+
+    document.getElementById("totalBairros").textContent = count;
+
+}
+
+// =========================================
+// REGIÕES
+// =========================================
+
+async function carregarTotalRegioes(){
+
+    const { count } = await supabaseClient
+        .from("regioes")
+        .select("*", { count: "exact", head: true });
+
+    document.getElementById("totalRegioes").textContent = count;
 
 }
