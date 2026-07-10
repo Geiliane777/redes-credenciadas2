@@ -4,7 +4,6 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Painel Administrativo</title>
@@ -19,6 +18,10 @@
 
 <body>
 
+<!-- ===========================================
+HEADER
+=========================================== -->
+
 <header class="header">
 
     <img src="img/tooth.png" class="logo">
@@ -31,6 +34,10 @@
 
 </header>
 
+<!-- ===========================================
+CONTAINER
+=========================================== -->
+
 <div class="container">
 
     <button
@@ -41,7 +48,9 @@
 
     </button>
 
-    <!-- LOGIN -->
+    <!-- ===========================================
+LOGIN
+=========================================== -->
 
     <section
         id="loginBox"
@@ -68,60 +77,181 @@
 
     </section>
 
-    <!-- PAINEL -->
+    <!-- ===========================================
+PAINEL
+=========================================== -->
 
     <section
         id="painel"
         class="hidden">
 
+        <!-- DASHBOARD -->
+
         <div class="dashboard">
 
             <div class="dashCard">
-
                 <h3 id="totalClinicas">0</h3>
+                <span>Clínicas</span>
+            </div>
 
+            <div class="dashCard">
+                <h3 id="totalEspecialidades">0</h3>
+                <span>Especialidades</span>
+            </div>
+
+            <div class="dashCard">
+                <h3 id="totalRegioes">0</h3>
+                <span>Regiões</span>
+            </div>
+
+            <div class="dashCard">
+                <h3 id="totalEstados">0</h3>
+                <span>Estados</span>
+            </div>
+
+            <div class="dashCard">
+                <h3 id="totalCidades">0</h3>
+                <span>Cidades</span>
+            </div>
+
+            <div class="dashCard">
+                <h3 id="totalBairros">0</h3>
+                <span>Bairros</span>
+            </div>
+
+        </div>
+
+        <!-- MENU -->
+
+        <div class="menuGrid">
+
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('clinicas')">
+
+                🏥
                 <span>Clínicas</span>
 
-            </div>
+            </button>
 
-            <div class="dashCard">
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('especialidades')">
 
-                <h3 id="totalEspecialidades">0</h3>
-
+                🦷
                 <span>Especialidades</span>
 
-            </div>
+            </button>
 
-            <div class="dashCard">
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('regioes')">
 
-                <h3 id="totalRegioes">0</h3>
-
+                🌎
                 <span>Regiões</span>
 
-            </div>
+            </button>
 
-            <div class="dashCard">
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('estados')">
 
-                <h3 id="totalEstados">0</h3>
-
+                📍
                 <span>Estados</span>
 
-            </div>
+            </button>
 
-            <div class="dashCard">
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('cidades')">
 
-                <h3 id="totalCidades">0</h3>
-
+                🏙
                 <span>Cidades</span>
 
-            </div>
+            </button>
 
-            <div class="dashCard">
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('bairros')">
 
-                <h3 id="totalBairros">0</h3>
-
+                📌
                 <span>Bairros</span>
+
+            </button>
+
+            <button
+                class="btnMenu"
+                onclick="abrirModulo('redes')">
+
+                🌐
+                <span>Redes</span>
+
+            </button>
+
+            <button
+                class="btnMenu sair"
+                onclick="logout()">
+
+                🚪
+                <span>Sair</span>
+
+            </button>
+
+        </div>
+
+        <!-- ÁREA DE TRABALHO -->
+
+        <div
+            id="areaConteudo"
+            class="cardPrincipal">
+
+            <div class="boasVindas">
+
+                <h2>
+
+                    Bem-vindo ao Painel Administrativo
+
+                </h2>
+
+                <p>
+
+                    Utilize o menu acima para gerenciar:
+
+                </p>
+
+                <ul>
+
+                    <li>🏥 Clínicas</li>
+
+                    <li>🦷 Especialidades</li>
+
+                    <li>🌎 Regiões</li>
+
+                    <li>📍 Estados</li>
+
+                    <li>🏙 Cidades</li>
+
+                    <li>📌 Bairros</li>
+
+                    <li>🌐 Redes Credenciadas</li>
+
+                </ul>
 
             </div>
 
         </div>
+
+    </section>
+
+</div>
+
+<!-- ===========================================
+SCRIPTS
+=========================================== -->
+
+<script src="js/supabase.js"></script>
+<script src="js/tema.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>
