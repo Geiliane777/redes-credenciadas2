@@ -1,41 +1,70 @@
-/* ===========================
-   RESET
-=========================== */
+```css
+/* ==========================================
+   REDE ESPECIALISTAS
+   ADMIN PANEL - MODERN UI
+========================================== */
+
+
+/* RESET */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI, Arial, sans-serif;
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
 }
+
 
 body{
-    background:#f5f7fb;
-    color:#1f2937;
+
+    background:#f8fafc;
+
+    color:#1e293b;
+
 }
 
-/* ===========================
-   CLASSE UTILITÁRIA
-=========================== */
+
+/* UTILIDADES */
 
 .hidden{
-    display:none !important;
+
+    display:none!important;
+
 }
 
-/* ===========================
+
+
+/* ==========================================
    LOGIN
-=========================== */
+========================================== */
+
 
 .login-screen{
+
     width:100%;
+
     height:100vh;
 
     display:flex;
-    justify-content:center;
+
     align-items:center;
 
-    background:linear-gradient(135deg,#0f172a,#2563eb);
+    justify-content:center;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #2563eb
+    );
+
 }
+
+
 
 .login-box{
 
@@ -43,15 +72,50 @@ body{
 
     background:white;
 
-    padding:40px;
+    padding:45px;
 
-    border-radius:20px;
-
-    box-shadow:0 20px 50px rgba(0,0,0,.25);
+    border-radius:25px;
 
     text-align:center;
 
+
+    box-shadow:
+
+    0 25px 60px
+
+    rgba(0,0,0,.25);
+
+
+    animation:
+
+    aparecer .4s ease;
+
 }
+
+
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
 
 .logo{
 
@@ -61,21 +125,27 @@ body{
 
 }
 
+
+
 .login-box h1{
 
-    margin-bottom:5px;
+    color:#2563eb;
 
-    color:#1d4ed8;
+    font-size:28px;
 
 }
+
+
 
 .login-box p{
 
-    color:#6b7280;
+    margin:10px 0 30px;
 
-    margin-bottom:30px;
+    color:#64748b;
 
 }
+
+
 
 .login-box input{
 
@@ -85,13 +155,16 @@ body{
 
     margin-bottom:15px;
 
-    border:1px solid #d1d5db;
 
-    border-radius:10px;
+    border-radius:12px;
+
+    border:1px solid #cbd5e1;
 
     font-size:15px;
 
 }
+
+
 
 .login-box input:focus{
 
@@ -101,157 +174,249 @@ body{
 
 }
 
+
+
 .login-box button{
+
 
     width:100%;
 
     padding:15px;
 
+
     border:none;
 
-    border-radius:10px;
+    border-radius:12px;
+
 
     background:#2563eb;
 
+
     color:white;
 
-    cursor:pointer;
 
     font-size:16px;
 
     font-weight:bold;
 
+
+    cursor:pointer;
+
+
     transition:.3s;
 
 }
+
+
 
 .login-box button:hover{
 
     background:#1d4ed8;
 
+    transform:translateY(-2px);
+
 }
 
-/* ===========================
+
+
+.erro-login{
+
+    margin-top:15px;
+
+    background:#fee2e2;
+
+    color:#b91c1c;
+
+    padding:12px;
+
+    border-radius:10px;
+
+}
+
+
+
+
+/* ==========================================
    PAINEL
-=========================== */
+========================================== */
+
 
 .painel{
 
     display:flex;
 
-    width:100%;
-
     min-height:100vh;
 
 }
 
-/* ===========================
-   MENU LATERAL
-=========================== */
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
 
 .sidebar{
 
-    width:260px;
+
+    width:270px;
+
+
+    height:100vh;
+
+
+    position:fixed;
+
 
     background:#0f172a;
 
+
     color:white;
+
 
     display:flex;
 
+
     flex-direction:column;
 
-    justify-content:space-between;
+
+    box-shadow:
+
+    5px 0 25px
+
+    rgba(0,0,0,.15);
+
 
 }
+
+
 
 .sidebar-logo{
 
+
+    padding:35px 20px;
+
     text-align:center;
 
-    padding:30px 20px;
 
 }
+
+
 
 .sidebar-logo img{
 
-    width:70px;
-
-    margin-bottom:10px;
+    width:75px;
 
 }
+
+
 
 .sidebar-logo h2{
 
-    font-size:22px;
+    margin-top:12px;
+
+    font-size:21px;
 
 }
 
+
+
 .sidebar nav{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:8px;
 
     padding:20px;
 
 }
 
+
+
 .menu-btn{
 
+
+    width:100%;
+
+
+    padding:15px;
+
+
+    margin-bottom:10px;
+
+
     border:none;
+
+
+    border-radius:12px;
+
 
     background:transparent;
 
+
     color:white;
+
 
     text-align:left;
 
-    padding:15px;
-
-    border-radius:10px;
 
     cursor:pointer;
+
+
+    transition:.3s;
+
 
     font-size:15px;
 
-    transition:.25s;
-
 }
 
-.menu-btn:hover{
 
-    background:#2563eb;
 
-}
-
+.menu-btn:hover,
 .menu-btn.active{
 
+
     background:#2563eb;
 
+
 }
+
+
 
 .logout{
 
-    margin:20px;
+
+    position:absolute;
+
+
+    bottom:20px;
+
+
+    left:20px;
+
+
+    right:20px;
+
 
     padding:15px;
 
+
     border:none;
 
-    border-radius:10px;
+
+    border-radius:12px;
+
 
     background:#dc2626;
 
+
     color:white;
+
 
     cursor:pointer;
 
+
     font-weight:bold;
 
+
 }
+
 
 .logout:hover{
 
@@ -259,136 +424,491 @@ body{
 
 }
 
-/* ===========================
+
+
+
+/* ==========================================
    CONTEÚDO
-=========================== */
+========================================== */
+
 
 .content{
 
-    flex:1;
 
-    display:flex;
+    margin-left:270px;
 
-    flex-direction:column;
+
+    width:calc(100% - 270px);
+
 
 }
 
-/* ===========================
-   TOPO
-=========================== */
+
+
 
 .topbar{
 
-    height:75px;
+
+    height:80px;
+
 
     background:white;
+
 
     display:flex;
 
+
     align-items:center;
 
-    padding:0 30px;
 
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
+    padding:0 35px;
+
+
+    box-shadow:
+
+    0 3px 15px
+
+    rgba(0,0,0,.08);
+
 
 }
+
+
 
 .topbar h1{
 
-    color:#1d4ed8;
-
-}
-
-/* ===========================
-   DASHBOARD
-=========================== */
-
-.page{
-
-    padding:30px;
-
-}
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
-    gap:20px;
-
-}
-
-.card{
-
-    background:white;
-
-    padding:30px;
-
-    border-radius:18px;
-
-    box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-}
-
-.card h3{
-
-    color:#6b7280;
-
-    margin-bottom:15px;
-
-}
-
-.card span{
-
-    font-size:38px;
-
-    font-weight:bold;
 
     color:#2563eb;
 
-}
-
-/* ===========================
-   ÁREA DINÂMICA
-=========================== */
-
-#conteudo{
-
-    padding:30px;
 
 }
 
-/* ===========================
+
+
+
+/* ==========================================
+   PÁGINAS
+========================================== */
+
+
+.page{
+
+
+    padding:35px;
+
+
+}
+
+
+
+
+/* ==========================================
+   DASHBOARD
+========================================== */
+
+
+.cards{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(220px,1fr));
+
+
+gap:25px;
+
+
+}
+
+
+
+
+.card{
+
+
+background:white;
+
+
+padding:30px;
+
+
+border-radius:22px;
+
+
+box-shadow:
+
+0 10px 30px
+
+rgba(0,0,0,.06);
+
+
+margin-bottom:25px;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.card:hover{
+
+
+transform:translateY(-5px);
+
+
+}
+
+
+
+.card h3{
+
+
+color:#64748b;
+
+
+font-size:16px;
+
+
+}
+
+
+
+.card span{
+
+
+display:block;
+
+
+margin-top:15px;
+
+
+font-size:42px;
+
+
+font-weight:800;
+
+
+color:#2563eb;
+
+
+}
+
+
+
+
+/* ==========================================
+   FORMULÁRIOS
+========================================== */
+
+
+input,
+select{
+
+
+width:100%;
+
+
+padding:14px;
+
+
+margin-top:10px;
+
+
+margin-bottom:12px;
+
+
+border-radius:12px;
+
+
+border:
+
+1px solid #cbd5e1;
+
+
+background:white;
+
+
+}
+
+
+
+input:focus,
+select:focus{
+
+
+outline:none;
+
+
+border-color:#2563eb;
+
+
+}
+
+
+
+
+/* ==========================================
+   LISTAS
+========================================== */
+
+
+.box{
+
+
+background:white;
+
+
+padding:18px;
+
+
+border-radius:16px;
+
+
+margin-bottom:12px;
+
+
+box-shadow:
+
+0 5px 15px
+
+rgba(0,0,0,.06);
+
+
+}
+
+
+
+
+.box h3{
+
+
+font-size:17px;
+
+
+}
+
+
+
+.box small{
+
+
+color:#64748b;
+
+
+}
+
+
+
+
+/* ==========================================
+   BOTÕES
+========================================== */
+
+
+button{
+
+font-family:inherit;
+
+}
+
+
+.green,
+.blue,
+.gray,
+.red{
+
+
+border:none;
+
+
+padding:13px 22px;
+
+
+border-radius:12px;
+
+
+cursor:pointer;
+
+
+font-weight:bold;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.green{
+
+background:#16a34a;
+
+color:white;
+
+}
+
+
+.blue{
+
+background:#2563eb;
+
+color:white;
+
+}
+
+
+.gray{
+
+background:#64748b;
+
+color:white;
+
+}
+
+
+.red{
+
+background:#dc2626;
+
+color:white;
+
+}
+
+
+
+.green:hover,
+.blue:hover,
+.gray:hover,
+.red:hover{
+
+
+transform:translateY(-2px);
+
+
+filter:brightness(.95);
+
+
+}
+
+
+
+
+/* ==========================================
+   STATUS
+========================================== */
+
+
+.status{
+
+
+padding:5px 12px;
+
+
+border-radius:20px;
+
+
+font-size:12px;
+
+
+font-weight:bold;
+
+
+}
+
+
+
+.status.ativo{
+
+
+background:#dcfce7;
+
+color:#15803d;
+
+
+}
+
+
+
+.status.inativo{
+
+
+background:#fee2e2;
+
+color:#b91c1c;
+
+
+}
+
+
+
+
+/* ==========================================
    RESPONSIVO
-=========================== */
+========================================== */
+
 
 @media(max-width:900px){
 
+
 .sidebar{
 
-    width:90px;
+
+width:80px;
+
 
 }
+
+
 
 .sidebar-logo h2{
 
-    display:none;
+
+display:none;
+
 
 }
+
+
+
+.content{
+
+
+margin-left:80px;
+
+
+width:calc(100% - 80px);
+
+
+}
+
+
 
 .menu-btn{
 
-    text-align:center;
 
-    font-size:13px;
+font-size:12px;
 
-}
+text-align:center;
 
-.logout{
-
-    font-size:13px;
 
 }
 
+
+
+.page{
+
+
+padding:20px;
+
+
 }
+
+
+}
+```
