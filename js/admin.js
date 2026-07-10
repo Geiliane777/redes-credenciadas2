@@ -12,19 +12,20 @@ console.log("admin.js carregado");
 // LOGIN
 // =====================================
 
+
 function login(){
 
 
     const usuario =
-        document.getElementById("usuario").value;
+    document.getElementById("usuario").value;
 
 
     const senha =
-        document.getElementById("senha").value;
+    document.getElementById("senha").value;
 
 
     const erro =
-        document.getElementById("erroLogin");
+    document.getElementById("erroLogin");
 
 
 
@@ -58,37 +59,35 @@ function login(){
 
 
 
+
 // =====================================
 // MOSTRAR PAINEL
 // =====================================
+
 
 function mostrarPainel(){
 
 
     const loginArea =
-        document.getElementById("loginArea");
+    document.getElementById("loginArea");
 
 
-    const painelAdmin =
-        document.getElementById("painelAdmin");
+    const painel =
+    document.getElementById("painelAdmin");
 
 
 
     if(loginArea){
 
-
         loginArea.style.display="none";
-
 
     }
 
 
 
-    if(painelAdmin){
+    if(painel){
 
-
-        painelAdmin.style.display="block";
-
+        painel.style.display="block";
 
     }
 
@@ -99,9 +98,8 @@ function mostrarPainel(){
 
 
 
-
 // =====================================
-// VERIFICAR LOGIN AO CARREGAR
+// VERIFICAR LOGIN
 // =====================================
 
 
@@ -111,17 +109,15 @@ document.addEventListener(
 
 
     const logado =
-        localStorage.getItem(
-            "adminLogado"
-        );
+    localStorage.getItem(
+        "adminLogado"
+    );
 
 
 
-    if(logado === "true"){
-
+    if(logado==="true"){
 
         mostrarPainel();
-
 
     }
 
@@ -133,9 +129,11 @@ document.addEventListener(
 
 
 
+
 // =====================================
-// SAIR DO ADMIN
+// SAIR
 // =====================================
+
 
 function sairAdmin(){
 
@@ -156,268 +154,244 @@ function sairAdmin(){
 
 
 
+
 // =====================================
-// ABRIR MÓDULOS
+// MENU
 // =====================================
+
 
 function abrirModulo(modulo){
 
 
-
-    const area =
-        document.getElementById(
-            "areaTrabalho"
-        );
-
-
-
-    if(!area) return;
+const area =
+document.getElementById(
+"areaTrabalho"
+);
 
 
 
-    let conteudo = "";
+let conteudo="";
 
 
 
-
-
-    switch(modulo){
+switch(modulo){
 
 
 
-        // =============================
-        // CLÍNICAS
-        // =============================
+case "clinicas":
 
-        case "clinicas":
 
-conteudo = `
+conteudo=`
 
 <div class="card-admin">
 
+
 <h2>
-🏥 Cadastro de Clínicas
+🏥 Clínicas
 </h2>
 
 
-<p>
-Gerencie as clínicas credenciadas.
-</p>
-
-
-<hr><br>
-
-
 <button onclick="novoCadastroClinica()">
+
 ➕ Nova Clínica
+
 </button>
 
-
-<br><br>
 
 
 <div id="listaClinicas">
 
-Carregando clínicas...
+</div>
+
 
 </div>
+
+
+`;
+
+break;
+
+
+
+
+
+
+case "especialidades":
+
+
+conteudo=`
+
+<div class="card-admin">
+
+<h2>
+🦷 Especialidades
+</h2>
+
+
+<p>
+Cadastro de especialidades.
+</p>
 
 
 </div>
 
 `;
 
-        break;
-        // =============================
-        // ESPECIALIDADES
-        // =============================
+break;
 
-        case "especialidades":
 
 
-            conteudo = `
 
-                <h2>
-                    🦷 Especialidades
-                </h2>
 
 
-                <p>
-                    Cadastro e gerenciamento
-                    das especialidades.
-                </p>
 
+case "regioes":
 
-            `;
 
+conteudo=`
 
-        break;
+<div class="card-admin">
 
+<h2>
+🌎 Regiões
+</h2>
 
 
+<p>
+Gerenciar regiões.
+</p>
 
 
+</div>
 
+`;
 
-        // =============================
-        // REGIÕES
-        // =============================
+break;
 
-        case "regioes":
 
 
-            conteudo = `
 
-                <h2>
-                    🌎 Regiões
-                </h2>
 
 
-                <p>
-                    Gerenciar regiões cadastradas.
-                </p>
 
 
-            `;
+case "estados":
 
 
-        break;
+conteudo=`
 
+<div class="card-admin">
 
+<h2>
+📍 Estados
+</h2>
 
 
+<p>
+Gerenciar estados.
+</p>
 
 
+</div>
 
-        // =============================
-        // ESTADOS
-        // =============================
+`;
 
-        case "estados":
+break;
 
 
-            conteudo = `
 
-                <h2>
-                    📍 Estados
-                </h2>
 
 
-                <p>
-                    Cadastro dos estados.
-                </p>
 
 
-            `;
+case "cidades":
 
 
-        break;
+conteudo=`
 
+<div class="card-admin">
 
+<h2>
+🏙 Cidades
+</h2>
 
 
+<p>
+Gerenciar cidades.
+</p>
 
 
+</div>
 
+`;
 
-        // =============================
-        // CIDADES
-        // =============================
+break;
 
-        case "cidades":
 
 
-            conteudo = `
 
-                <h2>
-                    🏙 Cidades
-                </h2>
 
 
-                <p>
-                    Cadastro das cidades.
-                </p>
 
+case "bairros":
 
-            `;
 
+conteudo=`
 
-        break;
+<div class="card-admin">
 
+<h2>
+📌 Bairros
+</h2>
 
 
+<p>
+Gerenciar bairros.
+</p>
 
 
+</div>
 
+`;
 
-        // =============================
-        // BAIRROS
-        // =============================
-
-        case "bairros":
-
-
-            conteudo = `
-
-                <h2>
-                    📌 Bairros
-                </h2>
-
-
-                <p>
-                    Cadastro dos bairros.
-                </p>
-
-
-            `;
-
-
-        break;
-
-
-
-
-
-
-
-        default:
-
-
-            conteudo = `
-
-                <h2>
-                    Bem-vindo ao painel administrativo
-                </h2>
-
-
-                <p>
-                    Escolha uma opção no menu.
-                </p>
-
-
-            `;
-
-
-    }
-
-
-
-
-
-
-    area.innerHTML = conteudo;
-
+break;
 
 
 }
+
+
+
+area.innerHTML=conteudo;
+
+
+}
+
+
+
+
+
+
+
+
+
+
+// =====================================
+// NOVA CLÍNICA
+// =====================================
+
+
 function novoCadastroClinica(){
 
 
+
 const area =
-document.getElementById("areaTrabalho");
+document.getElementById(
+"areaTrabalho"
+);
 
 
-area.innerHTML = `
+
+area.innerHTML=`
 
 
 <div class="card-admin">
@@ -426,6 +400,7 @@ area.innerHTML = `
 <h2>
 ➕ Nova Clínica
 </h2>
+
 
 
 
@@ -437,11 +412,15 @@ Nome da Clínica
 
 
 
+
+
 <label>
 Endereço
 </label>
 
 <input id="enderecoClinica">
+
+
 
 
 
@@ -455,6 +434,62 @@ Telefone
 
 
 
+<h3>
+📍 Localização
+</h3>
+
+
+
+
+
+<label>
+Região
+</label>
+
+<select id="regiaoClinica">
+
+<option>
+Selecione
+</option>
+
+</select>
+
+
+
+
+
+<label>
+Estado
+</label>
+
+<select id="estadoClinica">
+
+<option>
+Selecione
+</option>
+
+</select>
+
+
+
+
+
+<label>
+Cidade
+</label>
+
+<select id="cidadeClinica">
+
+<option>
+Selecione
+</option>
+
+</select>
+
+
+
+
+
 <label>
 Bairro
 </label>
@@ -462,7 +497,7 @@ Bairro
 <select id="bairroClinica">
 
 <option>
-Carregando bairros...
+Selecione
 </option>
 
 </select>
@@ -471,26 +506,25 @@ Carregando bairros...
 
 
 
-<label>
-Especialidades
-</label>
+
+<h3>
+🦷 Especialidades
+</h3>
 
 
-<select id="especialidadesClinica" multiple>
+<div id="listaEspecialidades">
 
-<option>
-Carregando especialidades...
-</option>
+Carregando...
 
-
-</select>
-
+</div>
 
 
 
-<label>
-Rede
-</label>
+
+
+<h3>
+🌐 Rede
+</h3>
 
 
 <select id="redeClinica">
@@ -511,7 +545,8 @@ Rede Sindilegis
 
 
 
-<br>
+
+<br><br>
 
 
 <button onclick="salvarClinica()">
@@ -529,50 +564,50 @@ Salvar Clínica
 
 
 
-carregarBairrosAdmin();
+carregarRegioesAdmin();
 
 carregarEspecialidadesAdmin();
 
 
 }
-async function salvarClinica(){
-
-
-const nome =
-document.getElementById("nomeClinica").value;
-
-
-const endereco =
-document.getElementById("enderecoClinica").value;
-
-
-const telefone =
-document.getElementById("telefoneClinica").value;
-
-
-const bairro =
-document.getElementById("bairroClinica").value;
 
 
 
-const especialidades =
-Array.from(
-document.getElementById("especialidadesClinica").selectedOptions
-)
-.map(e=>e.value);
 
 
 
-const rede =
-document.getElementById("redeClinica").value;
 
 
 
-if(!nome || !bairro || especialidades.length===0){
+// =====================================
+// CARREGAR REGIÕES
+// =====================================
 
-alert(
-"Preencha todos os campos"
+
+async function carregarRegioesAdmin(){
+
+
+const select =
+document.getElementById(
+"regiaoClinica"
 );
+
+
+
+if(!select) return;
+
+
+
+const {data,error}=await supabaseClient
+.from("regioes")
+.select("*")
+.order("nome");
+
+
+
+if(error){
+
+console.error(error);
 
 return;
 
@@ -580,17 +615,210 @@ return;
 
 
 
+select.innerHTML=`
 
-// 1 - salva clínica
+<option value="">
+Selecione a Região
+</option>
+
+`;
+
+
+
+data.forEach(r=>{
+
+
+select.innerHTML+=`
+
+<option value="${r.id}">
+${r.nome}
+</option>
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+// =====================================
+// CARREGAR ESPECIALIDADES
+// =====================================
+
+
+async function carregarEspecialidadesAdmin(){
+
+
+
+const area =
+document.getElementById(
+"listaEspecialidades"
+);
+
+
+
+if(!area) return;
+
+
+
+
+const {data,error}=await supabaseClient
+.from("especialidades")
+.select("*")
+.eq("ativo",true)
+.order("nome");
+
+
+
+if(error){
+
+console.error(error);
+
+return;
+
+}
+
+
+
+area.innerHTML="";
+
+
+
+data.forEach(e=>{
+
+
+area.innerHTML+=`
+
+<label>
+
+<input 
+type="checkbox"
+class="especialidadeCheck"
+value="${e.id}"
+>
+
+${e.nome}
+
+</label>
+
+<br>
+
+`;
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+
+// =====================================
+// SALVAR CLÍNICA
+// =====================================
+
+
+async function salvarClinica(){
+
+
+
+const nome =
+document.getElementById(
+"nomeClinica"
+).value;
+
+
+
+const endereco =
+document.getElementById(
+"enderecoClinica"
+).value;
+
+
+
+const telefone =
+document.getElementById(
+"telefoneClinica"
+).value;
+
+
+
+const bairro =
+document.getElementById(
+"bairroClinica"
+).value;
+
+
+
+const rede =
+document.getElementById(
+"redeClinica"
+).value;
+
+
+
+
+const especialidades =
+Array.from(
+document.querySelectorAll(
+".especialidadeCheck:checked"
+)
+)
+.map(e=>e.value);
+
+
+
+
+
+
+if(
+!nome ||
+!bairro ||
+especialidades.length===0
+){
+
+
+alert(
+"Preencha todos os campos"
+);
+
+
+return;
+
+
+}
+
+
+
+
+
 
 const {data:clinica,error}=await supabaseClient
 .from("clinicas")
 .insert([{
 
-nome,
-endereco,
-telefone,
+nome:nome,
+
+endereco:endereco,
+
+telefone:telefone,
+
 bairro_id:bairro,
+
 ativo:true
 
 }])
@@ -600,15 +828,20 @@ ativo:true
 
 
 
+
+
 if(error){
+
 
 console.error(error);
 
 alert(
-"Erro ao salvar clínica"
+"Erro ao cadastrar clínica"
 );
 
+
 return;
+
 
 }
 
@@ -617,18 +850,23 @@ return;
 
 
 
-// 2 - salva especialidades
 
 
-const registros = especialidades.map(e=>({
+const dadosEspecialidades =
+especialidades.map(e=>({
+
 
 clinica_id:clinica.id,
 
+
 especialidade_id:e,
+
 
 rede:rede,
 
+
 ativo:true
+
 
 
 }));
@@ -636,9 +874,14 @@ ativo:true
 
 
 
+
+
 const {error:errorEsp}=await supabaseClient
 .from("clinica_especialidades")
-.insert(registros);
+.insert(
+dadosEspecialidades
+);
+
 
 
 
@@ -646,15 +889,20 @@ const {error:errorEsp}=await supabaseClient
 
 if(errorEsp){
 
+
 console.error(errorEsp);
 
+
 alert(
-"Clínica salva, mas erro nas especialidades"
+"Erro ao salvar especialidades"
 );
+
 
 return;
 
+
 }
+
 
 
 
@@ -667,79 +915,6 @@ alert(
 
 abrirModulo("clinicas");
 
-
-}
-// =====================================
-// CARREGAR BAIRROS
-// =====================================
-
-async function carregarBairrosAdmin(){
-const select =
-document.getElementById("bairroClinica");
-
-const {data,error}=await supabaseClient
-.from("bairros")
-.select(`
-id,
-nome,
-cidades(nome)
-`)
-.order("nome");
-select.innerHTML="";
-data.forEach(b=>{
-
-
-select.innerHTML += `
-
-<option value="${b.id}">
-
-${b.nome} - ${b.cidades?.nome}
-
-</option>
-
-`;
-
-
-});
-
-
-}
-// =====================================
-// CARREGAR ESPECIALIDADES
-// =====================================
-async function carregarEspecialidadesAdmin(){
-
-
-const select =
-document.getElementById("especialidadesClinica");
-
-
-
-const {data,error}=await supabaseClient
-.from("especialidades")
-.select("*")
-.eq("ativo",true)
-.order("nome");
-
-
-
-select.innerHTML="";
-
-
-
-data.forEach(e=>{
-
-
-select.innerHTML += `
-
-<option value="${e.id}">
-${e.nome}
-</option>
-
-`;
-
-
-});
 
 
 }
