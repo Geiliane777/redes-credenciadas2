@@ -57,49 +57,287 @@
         <!-- ==================================
              DASHBOARD
         =================================== -->
-        <section id="dashboard" class="page">
-            <div class="cards">
-                <div class="card"><h3>Clínicas</h3><span id="totalClinicas">0</span></div>
-                <div class="card"><h3>Especialidades</h3><span id="totalEspecialidades">0</span></div>
-                <div class="card"><h3>Regiões</h3><span id="totalRegioes">0</span></div>
-                <div class="card"><h3>Estados</h3><span id="totalEstados">0</span></div>
-                <div class="card"><h3>Cidades</h3><span id="totalCidades">0</span></div>
-                <div class="card"><h3>Bairros</h3><span id="totalBairros">0</span></div>
-            </div>
-        </section>
+      <section id="dashboard" class="page">
+
+    <div class="page-header">
+        <h2>Visão Geral</h2>
+        <p>Resumo da Rede Especialistas</p>
+    </div>
+
+
+    <div class="cards">
+
+
+        <div class="card dashboard-card">
+            <h3>🏥 Clínicas</h3>
+            <span id="totalClinicas">0</span>
+            <small>Clínicas cadastradas</small>
+        </div>
+
+
+        <div class="card dashboard-card">
+            <h3>🦷 Especialidades</h3>
+            <span id="totalEspecialidades">0</span>
+            <small>Tipos de atendimento</small>
+        </div>
+
+
+        <div class="card dashboard-card">
+            <h3>🌎 Regiões</h3>
+            <span id="totalRegioes">0</span>
+            <small>Regiões cadastradas</small>
+        </div>
+
+
+        <div class="card dashboard-card">
+            <h3>📍 Estados</h3>
+            <span id="totalEstados">0</span>
+            <small>Estados atendidos</small>
+        </div>
+
+
+        <div class="card dashboard-card">
+            <h3>🏙 Cidades</h3>
+            <span id="totalCidades">0</span>
+            <small>Cidades cadastradas</small>
+        </div>
+
+
+        <div class="card dashboard-card">
+            <h3>📌 Bairros</h3>
+            <span id="totalBairros">0</span>
+            <small>Bairros cadastrados</small>
+        </div>
+
+
+    </div>
+
+</section>
 
         <!-- ==================================
              CLÍNICAS (lista + editar + vincular rede)
         =================================== -->
-        <section id="clinicas" class="page hidden">
+       <section id="clinicas" class="page hidden">
 
-            <div class="card">
-                <h3>Adicionar Clínica</h3>
-                <input id="clinica_nome" placeholder="Nome da Clínica">
-                <input id="clinica_endereco" placeholder="Endereço">
-                <input id="clinica_telefone" placeholder="Telefone">
 
-                <select id="clinica_regiao"><option value="">Selecione Região</option></select>
-                <select id="clinica_estado"><option value="">Selecione Estado</option></select>
-                <select id="clinica_cidade"><option value="">Selecione Cidade</option></select>
-                <select id="clinica_bairro"><option value="">Selecione Bairro</option></select>
+<div class="page-header">
 
-                <h4 style="margin-top:15px;">Primeiro atendimento</h4>
-                <select id="clinica_especialidade"><option value="">Selecione Especialidade</option></select>
-                <select id="clinica_rede">
-                    <option value="especialistas">Rede Especialistas</option>
-                    <option value="sindilegis">Rede Sindilegis</option>
-                </select>
+<h2>Gerenciamento de Clínicas</h2>
 
-                <button class="green" id="btnSalvarClinica">Salvar Clínica</button>
-            </div>
+<p>
+Cadastre e gerencie clínicas da rede
+</p>
 
-            <div class="card">
-                <h3>Clínicas Cadastradas</h3>
-                <input id="filtro_clinica_nome" placeholder="Buscar por nome...">
-                <div id="listaClinicas"></div>
-            </div>
-        </section>
+</div>
+
+
+
+<div class="card">
+
+
+<h3>🏥 Nova Clínica</h3>
+
+
+
+<div class="form-grid">
+
+
+<div>
+<label>
+Nome da Clínica
+</label>
+
+<input 
+id="clinica_nome"
+placeholder="Digite o nome da clínica">
+</div>
+
+
+
+<div>
+
+<label>
+Telefone
+</label>
+
+<input 
+id="clinica_telefone"
+placeholder="(00) 00000-0000">
+
+</div>
+
+
+
+<div class="full">
+
+<label>
+Endereço
+</label>
+
+<input
+id="clinica_endereco"
+placeholder="Rua, número">
+
+</div>
+
+
+
+<div>
+
+<label>
+Região
+</label>
+
+<select id="clinica_regiao">
+
+<option>
+Selecione Região
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+Estado
+</label>
+
+<select id="clinica_estado">
+
+<option>
+Selecione Estado
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+Cidade
+</label>
+
+<select id="clinica_cidade">
+
+<option>
+Selecione Cidade
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+Bairro
+</label>
+
+<select id="clinica_bairro">
+
+<option>
+Selecione Bairro
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+Especialidade inicial
+</label>
+
+<select id="clinica_especialidade">
+
+<option>
+Selecione Especialidade
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+Rede
+</label>
+
+<select id="clinica_rede">
+
+<option value="especialistas">
+Rede Especialistas
+</option>
+
+<option value="sindilegis">
+Rede Sindilegis
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+</div>
+
+
+
+<button 
+class="green"
+id="btnSalvarClinica">
+
+💾 Salvar Clínica
+
+</button>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+📋 Clínicas cadastradas
+</h3>
+
+
+<input 
+id="filtro_clinica_nome"
+placeholder="🔎 Buscar clínica...">
+
+
+<div id="listaClinicas">
+
+</div>
+
+
+</div>
+
+
+
+</section>
 
         <!-- ==================================
              EDITAR CLÍNICA (aberto ao clicar em uma clínica da lista)
