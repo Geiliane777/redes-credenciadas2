@@ -23,6 +23,12 @@ async function fazerLogin(){
     const senha = document.getElementById("senha").value.trim();
     const mensagem = document.getElementById("loginMensagem");
 
+    if(!email || !senha){
+        mensagem.innerHTML = "Preencha e-mail e senha.";
+        mensagem.style.color = "#dc2626";
+        return;
+    }
+
     mensagem.innerHTML = "Entrando...";
     mensagem.style.color = "#6b7280";
 
@@ -32,7 +38,7 @@ async function fazerLogin(){
     });
 
     if(error){
-        mensagem.innerHTML = "Usuário ou senha inválidos.";
+        mensagem.innerHTML = "E-mail ou senha inválidos.";
         mensagem.style.color = "#dc2626";
         return;
     }
