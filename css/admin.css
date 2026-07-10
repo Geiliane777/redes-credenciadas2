@@ -1,112 +1,123 @@
-/* =====================================
+/* ===========================
    RESET
-===================================== */
+=========================== */
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-
-    min-height:100vh;
-
-    background:linear-gradient(
-        135deg,
-        #0f172a,
-        #1d4ed8,
-        #2563eb
-    );
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
+    background:#f4f7fb;
+    color:#333;
 }
 
+/* ===========================
+   HEADER
+=========================== */
 
-/* =====================================
-   LOGIN
-===================================== */
+.header{
 
-.loginContainer{
+    background:linear-gradient(135deg,#0f172a,#2563eb);
 
-    width:100%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:20px;
-
-}
-
-.loginCard{
-
-    width:100%;
-
-    max-width:420px;
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:40px;
-
-    box-shadow:0 20px 50px rgba(0,0,0,.20);
+    color:#fff;
 
     text-align:center;
 
+    padding:45px 20px;
+
+    border-bottom-left-radius:30px;
+    border-bottom-right-radius:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
 }
-
-
-/* =====================================
-   LOGO
-===================================== */
 
 .logo{
 
     width:90px;
 
-    margin-bottom:20px;
+    display:block;
+
+    margin:0 auto 20px;
 
 }
 
+.header h1{
 
-/* =====================================
-   TÍTULOS
-===================================== */
+    font-size:36px;
 
-.loginCard h1{
-
-    color:#0f172a;
-
-    margin-bottom:8px;
-
-    font-size:30px;
+    margin-bottom:10px;
 
 }
 
-.loginCard p{
+.header p{
 
-    color:#64748b;
+    font-size:18px;
 
-    margin-bottom:30px;
+    opacity:.9;
 
 }
 
+/* ===========================
+   CONTAINER
+=========================== */
 
-/* =====================================
-   INPUTS
-===================================== */
+.container{
 
-.loginCard input{
+    width:95%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    margin-top:-25px;
+
+    padding-bottom:40px;
+
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* ===========================
+   LOGIN
+=========================== */
+
+#loginBox{
+
+    max-width:450px;
+
+    margin:40px auto;
+
+}
+
+#loginBox h2{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    color:#2563eb;
+
+}
+
+#loginBox input{
 
     width:100%;
 
@@ -114,62 +125,19 @@ body{
 
     margin-bottom:15px;
 
-    border:1px solid #d1d5db;
+    border:1px solid #ddd;
 
     border-radius:10px;
 
     font-size:15px;
 
-    transition:.3s;
-
 }
 
-.loginCard input:focus{
-
-    outline:none;
-
-    border-color:#2563eb;
-
-    box-shadow:0 0 0 3px rgba(37,99,235,.15);
-
-}
-
-
-/* =====================================
+/* ===========================
    BOTÕES
-===================================== */
+=========================== */
 
-#btnEntrar{
-
-    width:100%;
-
-    padding:15px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#2563eb;
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.3s;
-
-}
-
-#btnEntrar:hover{
-
-    background:#1d4ed8;
-
-}
-
-.voltar{
+button{
 
     width:100%;
 
@@ -179,73 +147,167 @@ body{
 
     border-radius:10px;
 
-    background:#64748b;
-
-    color:white;
-
     cursor:pointer;
 
-    margin-top:15px;
+    font-size:15px;
+
+    font-weight:bold;
 
     transition:.3s;
 
 }
 
-.voltar:hover{
+.btnAzul{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.btnAzul:hover{
+
+    background:#1d4ed8;
+
+}
+
+.btnCinza{
+
+    background:#64748b;
+
+    color:#fff;
+
+}
+
+.btnCinza:hover{
 
     background:#475569;
 
 }
 
+/* ===========================
+   PAINEL
+=========================== */
 
-/* =====================================
-   LINHA
-===================================== */
+.hidden{
 
-hr{
-
-    margin:25px 0;
-
-    border:none;
-
-    border-top:1px solid #e5e7eb;
+    display:none;
 
 }
 
+.dashboard{
 
-/* =====================================
-   MENSAGEM
-===================================== */
+    display:grid;
 
-#mensagem{
+    grid-template-columns:260px 1fr;
 
-    margin-top:15px;
+    gap:25px;
 
-    min-height:20px;
+    margin-top:30px;
+
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+.menu{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.menu h3{
+
+    margin-bottom:20px;
+
+    color:#2563eb;
+
+    text-align:center;
+
+}
+
+.menu button{
+
+    margin-bottom:12px;
+
+}
+
+/* ===========================
+   ÁREA
+=========================== */
+
+#conteudo{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    min-height:600px;
+
+}
+
+/* ===========================
+   FORMULÁRIOS
+=========================== */
+
+label{
+
+    display:block;
+
+    margin-top:18px;
+
+    margin-bottom:6px;
 
     font-weight:bold;
 
-    color:#dc2626;
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    font-size:15px;
 
 }
 
+hr{
 
-/* =====================================
+    margin:30px 0;
+
+    border:none;
+
+    border-top:1px solid #ddd;
+
+}
+
+/* ===========================
    RESPONSIVO
-===================================== */
+=========================== */
 
-@media(max-width:600px){
+@media(max-width:900px){
 
-    .loginCard{
+.dashboard{
 
-        padding:30px 25px;
+    grid-template-columns:1fr;
 
-    }
-
-    .loginCard h1{
-
-        font-size:24px;
-
-    }
+}
 
 }
