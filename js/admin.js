@@ -654,79 +654,41 @@ ${r.nome}
 // =====================================
 
 
-async function carregarEspecialidadesAdmin(){
+async function carregarEspecialidades(){
 
+    console.log("Carregando especialidades...");
 
+    const select = document.getElementById("especialidade");
 
-const area =
-document.getElementById(
-"listaEspecialidades"
-);
+    console.log("Select:", select);
 
+    const { data, error } = await supabaseClient
+        .from("especialidades")
+        .select("*")
+        .order("nome");
 
+    console.log("Erro:", error);
+    console.log("Dados:", data);
 
-if(!area) return;
+    if(error){
+        return;
+    }
 
+    select.innerHTML = `
+        <option value="">Todas as Especialidades</option>
+    `;
 
+    data.forEach(item => {
 
+        select.innerHTML += `
+            <option value="${item.id}">
+                ${item.nome}
+            </option>
+        `;
 
-const {data,error}=await supabaseClient
-.from("especialidades")
-.select("*")
-.eq("ativo",true)
-.order("nome");
-
-
-
-if(error){
-
-console.error(error);
-
-return;
-
-}
-
-
-
-area.innerHTML="";
-
-
-
-data.forEach(e=>{
-
-
-area.innerHTML+=`
-
-<label>
-
-<input 
-type="checkbox"
-class="especialidadeCheck"
-value="${e.id}"
->
-
-${e.nome}
-
-</label>
-
-<br>
-
-`;
-
-
-});
-
-
+    });
 
 }
-
-
-
-
-
-
-
-
 // =====================================
 // SALVAR CLÍNICA
 // =====================================
@@ -845,13 +807,6 @@ return;
 
 }
 
-
-
-
-
-
-
-
 const dadosEspecialidades =
 especialidades.map(e=>({
 
@@ -902,19 +857,8 @@ return;
 
 
 }
-
-
-
-
-
 alert(
 "Clínica cadastrada com sucesso!"
 );
-
-
-
 abrirModulo("clinicas");
-
-
-
 }
