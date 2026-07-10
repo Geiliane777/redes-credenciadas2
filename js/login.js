@@ -1,11 +1,15 @@
 // ======================================
-// LOGIN DO PAINEL ADMINISTRATIVO (Supabase Auth)
+// LOGIN DO PAINEL ADMINISTRATIVO
+// (Senha fixa - apenas para uso temporário/testes)
 // ======================================
 
-// Verifica se já existe uma sessão válida
-window.addEventListener("load", async () => {
-    const { data: { session } } = await supabaseClient.auth.getSession();
-    if (session) {
+const USUARIO = "admin";
+const SENHA = "123456";
+
+// Verifica se já existe uma sessão
+window.addEventListener("load", () => {
+    const logado = localStorage.getItem("adminLogado");
+    if(logado === "true"){
         mostrarPainel();
     }
 });
@@ -18,33 +22,19 @@ document.getElementById("senha").addEventListener("keypress", function(e){
     }
 });
 
-async function fazerLogin(){
-    const email = document.getElementById("usuario").value.trim();
+function fazerLogin(){
+    const usuario = document.getElementById("usuario").value.trim();
     const senha = document.getElementById("senha").value.trim();
     const mensagem = document.getElementById("loginMensagem");
 
-    if(!email || !senha){
-        mensagem.innerHTML = "Preencha e-mail e senha.";
-        mensagem.style.color = "#dc2626";
+    if(usuario === USUARIO && senha === SENHA){
+        localStorage.setItem("adminLogado", "true");
+        mostrarPainel();
         return;
     }
 
-    mensagem.innerHTML = "Entrando...";
-    mensagem.style.color = "#6b7280";
-
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: senha
-    });
-
-    if(error){
-        mensagem.innerHTML = "E-mail ou senha inválidos.";
-        mensagem.style.color = "#dc2626";
-        return;
-    }
-
-    mensagem.innerHTML = "";
-    mostrarPainel();
+    mensagem.innerHTML = "Usuário ou senha inválidos.";
+    mensagem.style.color = "#dc2626";
 }
 
 function mostrarPainel(){
@@ -52,7 +42,7 @@ function mostrarPainel(){
     document.getElementById("painel").classList.remove("hidden");
 }
 
-document.getElementById("btnLogout").addEventListener("click", async () => {
-    await supabaseClient.auth.signOut();
+document.getElementById("btnLogout").addEventListener("click", () => {
+    localStorage.removeItem("adminLogado");
     location.reload();
 });
