@@ -4,76 +4,199 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login Administrativo</title>
+    <title>Painel Administrativo</title>
 
     <link rel="icon" href="img/tooth.png">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/admin.css">
 
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
 <body>
 
-<div class="loginContainer">
+    <!-- ===========================
+         LOGIN
+    ============================ -->
 
-    <div class="loginCard">
+    <div id="loginArea" class="login-container">
 
-        <img
-            src="img/tooth.png"
-            class="logo">
+        <div class="login-box">
 
-        <h1>
+            <img src="img/tooth.png" class="login-logo">
 
-            Painel Administrativo
+            <h1>Painel Administrativo</h1>
 
-        </h1>
+            <p>
+                Gerenciamento das Redes Credenciadas
+            </p>
 
-        <p>
+            <div class="campo">
 
-            Redes Credenciadas
+                <label>Usuário</label>
 
-        </p>
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="Digite o usuário">
 
-        <input
-            type="text"
-            id="usuario"
-            placeholder="Usuário">
+            </div>
 
-        <input
-            type="password"
-            id="senha"
-            placeholder="Senha">
+            <div class="campo">
 
-        <button
-            id="btnEntrar">
+                <label>Senha</label>
 
-            Entrar
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite a senha">
 
-        </button>
+            </div>
 
-        <div id="mensagem"></div>
+            <button id="btnEntrar">
 
-        <hr>
+                Entrar
 
-        <button
-            class="voltar"
-            onclick="window.location.href='index.html'">
+            </button>
 
-            ← Voltar para Busca
+            <div id="erroLogin"></div>
 
-        </button>
+        </div>
 
     </div>
 
-</div>
+    <!-- ===========================
+         PAINEL
+    ============================ -->
 
-<script src="js/supabase.js"></script>
-<script src="js/login.js"></script>
+    <div id="painelAdmin" class="painel" style="display:none;">
+
+        <!-- HEADER -->
+
+        <header class="header-admin">
+
+            <div>
+
+                <h1>
+                    ⚙ Painel Administrativo
+                </h1>
+
+                <p>
+                    Sistema de gerenciamento das Redes Credenciadas
+                </p>
+
+            </div>
+
+            <div>
+
+                <button id="btnSair">
+
+                    🚪 Sair
+
+                </button>
+
+            </div>
+
+        </header>
+
+        <!-- LAYOUT -->
+
+        <div class="layout-admin">
+
+            <!-- MENU -->
+
+            <aside class="menu-admin">
+
+                <button id="btnClinicas">
+
+                    🏥 Clínicas
+
+                </button>
+
+                <button id="btnEspecialidades">
+
+                    🦷 Especialidades
+
+                </button>
+
+                <button id="btnRegioes">
+
+                    🌎 Regiões
+
+                </button>
+
+                <button id="btnEstados">
+
+                    📍 Estados
+
+                </button>
+
+                <button id="btnCidades">
+
+                    🏙 Cidades
+
+                </button>
+
+                <button id="btnBairros">
+
+                    📌 Bairros
+
+                </button>
+
+            </aside>
+
+            <!-- ÁREA DE TRABALHO -->
+
+            <main id="areaConteudo" class="conteudo-admin">
+
+                <div class="card">
+
+                    <h2>
+
+                        Bem-vindo
+
+                    </h2>
+
+                    <p>
+
+                        Selecione um módulo no menu ao lado.
+
+                    </p>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- ===========================
+         SCRIPTS
+    ============================ -->
+
+    <script src="js/supabase.js"></script>
+
+    <script src="js/login.js"></script>
+
+    <script src="js/admin.js"></script>
+
+    <script src="js/clinicas.js"></script>
+
+    <script src="js/especialidades.js"></script>
+
+    <script src="js/regioes.js"></script>
+
+    <script src="js/estados.js"></script>
+
+    <script src="js/cidades.js"></script>
+
+    <script src="js/bairros.js"></script>
 
 </body>
 
