@@ -1,104 +1,67 @@
-// =========================================
-// LOGIN.JS
-// =========================================
+// ======================================
+// LOGIN DO PAINEL ADMINISTRATIVO
+// ======================================
 
-console.log("login.js carregado");
+const USUARIO = "admin";
+const SENHA = "123456";
 
-// =========================================
-// LOGIN
-// =========================================
+// Verifica se já existe uma sessão
+window.addEventListener("load", () => {
 
-function login() {
+    const logado = localStorage.getItem("adminLogado");
+
+    if(logado === "true"){
+        mostrarPainel();
+    }
+
+});
+
+// Evento do botão Entrar
+document.getElementById("btnLogin").addEventListener("click", fazerLogin);
+
+// Permite pressionar ENTER
+document.getElementById("senha").addEventListener("keypress", function(e){
+
+    if(e.key === "Enter"){
+        fazerLogin();
+    }
+
+});
+
+function fazerLogin(){
 
     const usuario = document.getElementById("usuario").value.trim();
     const senha = document.getElementById("senha").value.trim();
-    const erro = document.getElementById("erroLogin");
 
-    erro.innerHTML = "";
+    const mensagem = document.getElementById("loginMensagem");
 
-    if (usuario === "admin" && senha === "123456") {
+    if(usuario === USUARIO && senha === SENHA){
 
-        localStorage.setItem("adminLogado", "true");
+        localStorage.setItem("adminLogado","true");
 
         mostrarPainel();
 
-    } else {
-
-        erro.innerHTML = "Usuário ou senha incorretos.";
+        return;
 
     }
 
-}
-
-// =========================================
-// MOSTRAR PAINEL
-// =========================================
-
-function mostrarPainel() {
-
-    document.getElementById("loginArea").style.display = "none";
-    document.getElementById("painelAdmin").style.display = "block";
+    mensagem.innerHTML = "Usuário ou senha inválidos.";
+    mensagem.style.color = "#dc2626";
 
 }
 
-// =========================================
-// SAIR
-// =========================================
+function mostrarPainel(){
 
-function sairAdmin() {
+    document.getElementById("loginScreen").classList.add("hidden");
+
+    document.getElementById("painel").classList.remove("hidden");
+
+}
+
+document.getElementById("btnLogout").addEventListener("click",()=>{
 
     localStorage.removeItem("adminLogado");
 
     location.reload();
-
-}
-
-// =========================================
-// VERIFICAR LOGIN
-// =========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (localStorage.getItem("adminLogado") === "true") {
-
-        mostrarPainel();
-
-    }
-
-    // Botão Entrar
-    document
-        .getElementById("btnEntrar")
-        .addEventListener("click", login);
-
-    // Enter no usuário
-    document
-        .getElementById("usuario")
-        .addEventListener("keypress", function (e) {
-
-            if (e.key === "Enter") {
-
-                login();
-
-            }
-
-        });
-
-    // Enter na senha
-    document
-        .getElementById("senha")
-        .addEventListener("keypress", function (e) {
-
-            if (e.key === "Enter") {
-
-                login();
-
-            }
-
-        });
-
-    // Botão Sair
-    document
-        .getElementById("btnSair")
-        .addEventListener("click", sairAdmin);
 
 });
