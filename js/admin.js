@@ -428,14 +428,13 @@ area.innerHTML = `
 </h2>
 
 
+
 <label>
 Nome da Clínica
 </label>
 
 <input id="nomeClinica">
 
-
-<br><br>
 
 
 <label>
@@ -445,8 +444,6 @@ Endereço
 <input id="enderecoClinica">
 
 
-<br><br>
-
 
 <label>
 Telefone
@@ -455,7 +452,66 @@ Telefone
 <input id="telefoneClinica">
 
 
-<br><br>
+
+
+
+<label>
+Bairro
+</label>
+
+<select id="bairroClinica">
+
+<option>
+Carregando bairros...
+</option>
+
+</select>
+
+
+
+
+
+<label>
+Especialidades
+</label>
+
+
+<select id="especialidadesClinica" multiple>
+
+<option>
+Carregando especialidades...
+</option>
+
+
+</select>
+
+
+
+
+<label>
+Rede
+</label>
+
+
+<select id="redeClinica">
+
+
+<option value="especialistas">
+Rede Especialistas
+</option>
+
+
+<option value="sindilegis">
+Rede Sindilegis
+</option>
+
+
+</select>
+
+
+
+
+<br>
 
 
 <button onclick="salvarClinica()">
@@ -465,92 +521,225 @@ Salvar Clínica
 </button>
 
 
+
 </div>
 
 
 `;
 
-}
-// =====================================
-// SALVAR CLÍNICA
-// =====================================
 
+
+carregarBairrosAdmin();
+
+carregarEspecialidadesAdmin();
+
+
+}
 async function salvarClinica(){
 
 
-    const nome =
-    document.getElementById("nomeClinica").value;
+const nome =
+document.getElementById("nomeClinica").value;
 
 
-    const endereco =
-    document.getElementById("enderecoClinica").value;
+const endereco =
+document.getElementById("enderecoClinica").value;
 
 
-    const telefone =
-    document.getElementById("telefoneClinica").value;
+const telefone =
+document.getElementById("telefoneClinica").value;
 
 
-
-    if(
-        !nome ||
-        !endereco
-    ){
-
-        alert(
-            "Preencha nome e endereço"
-        );
-
-        return;
-
-    }
+const bairro =
+document.getElementById("bairroClinica").value;
 
 
 
-    const { data, error } = await supabaseClient
-    .from("clinicas")
-    .insert([
-
-        {
-
-            nome:nome,
-
-            endereco:endereco,
-
-            telefone:telefone,
-
-            ativo:true
-
-        }
-
-    ]);
+const especialidades =
+Array.from(
+document.getElementById("especialidadesClinica").selectedOptions
+)
+.map(e=>e.value);
 
 
 
-    if(error){
-
-
-        console.error(error);
-
-
-        alert(
-            "Erro ao cadastrar clínica"
-        );
-
-
-        return;
-
-
-    }
+const rede =
+document.getElementById("redeClinica").value;
 
 
 
-    alert(
-        "Clínica cadastrada com sucesso!"
-    );
+if(!nome || !bairro || especialidades.length===0){
+
+alert(
+"Preencha todos os campos"
+);
+
+return;
+
+}
 
 
 
-    abrirModulo("clinicas");
+
+// 1 - salva clínica
+
+const {data:clinica,error}=await supabaseClient
+.from("clinicas")
+.insert([{
+
+nome,
+endereco,
+telefone,
+bairro_id:bairro,
+ativo:true
+
+}])
+.select()
+.single();
+
+
+
+
+if(error){
+
+console.error(error);
+
+alert(
+"Erro ao salvar clínica"
+);
+
+return;
+
+}
+
+
+
+
+
+
+// 2 - salva especialidades
+
+
+const registros = especialidades.map(e=>({
+
+clinica_id:clinica.id,
+
+especialidade_id:e,
+
+rede:rede,
+
+ativo:true
+
+
+}));
+
+
+
+
+const {error:errorEsp}=await supabaseClient
+.from("clinica_especialidades")
+.insert(registros);
+
+
+
+
+
+if(errorEsp){
+
+console.error(errorEsp);
+
+alert(
+"Clínica salva, mas erro nas especialidades"
+);
+
+return;
+
+}
+
+
+
+
+alert(
+"Clínica cadastrada com sucesso!"
+);
+
+
+
+abrirModulo("clinicas");
+
+
+}
+// =====================================
+// CARREGAR BAIRROS
+// =====================================
+
+async function carregarBairrosAdmin(){
+const select =
+document.getElementById("bairroClinica");
+
+const {data,error}=await supabaseClient
+.from("bairros")
+.select(`
+id,
+nome,
+cidades(nome)
+`)
+.order("nome");
+select.innerHTML="";
+data.forEach(b=>{
+
+
+select.innerHTML += `
+
+<option value="${b.id}">
+
+${b.nome} - ${b.cidades?.nome}
+
+</option>
+
+`;
+
+
+});
+
+
+}
+// =====================================
+// CARREGAR ESPECIALIDADES
+// =====================================
+async function carregarEspecialidadesAdmin(){
+
+
+const select =
+document.getElementById("especialidadesClinica");
+
+
+
+const {data,error}=await supabaseClient
+.from("especialidades")
+.select("*")
+.eq("ativo",true)
+.order("nome");
+
+
+
+select.innerHTML="";
+
+
+
+data.forEach(e=>{
+
+
+select.innerHTML += `
+
+<option value="${e.id}">
+${e.nome}
+</option>
+
+`;
+
+
+});
 
 
 }
