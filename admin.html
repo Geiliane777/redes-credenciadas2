@@ -4,9 +4,10 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Painel Administrativo</title>
+    <title>Login Administrativo</title>
 
     <link rel="icon" href="img/tooth.png">
 
@@ -18,240 +19,62 @@
 
 <body>
 
-<!-- ===========================================
-HEADER
-=========================================== -->
+<div class="loginContainer">
 
-<header class="header">
+    <div class="loginCard">
 
-    <img src="img/tooth.png" class="logo">
+        <img
+            src="img/tooth.png"
+            class="logo">
 
-    <h1>Painel Administrativo</h1>
+        <h1>
 
-    <p>
-        Gerenciamento das Redes Credenciadas
-    </p>
+            Painel Administrativo
 
-</header>
+        </h1>
 
-<!-- ===========================================
-CONTAINER
-=========================================== -->
+        <p>
 
-<div class="container">
+            Redes Credenciadas
 
-    <button
-        class="btnVoltar"
-        onclick="location.href='index.html'">
-
-        ← Voltar para Busca
-
-    </button>
-
-    <!-- ===========================================
-LOGIN
-=========================================== -->
-
-    <section
-        id="loginBox"
-        class="card">
-
-        <h2>Login</h2>
+        </p>
 
         <input
+            type="text"
             id="usuario"
             placeholder="Usuário">
 
         <input
-            id="senha"
             type="password"
+            id="senha"
             placeholder="Senha">
 
         <button
-            class="btnAzul"
-            onclick="login()">
+            id="btnEntrar">
 
             Entrar
 
         </button>
 
-    </section>
+        <div id="mensagem"></div>
 
-    <!-- ===========================================
-PAINEL
-=========================================== -->
+        <hr>
 
-    <section
-        id="painel"
-        class="hidden">
+        <button
+            class="voltar"
+            onclick="window.location.href='index.html'">
 
-        <!-- DASHBOARD -->
+            ← Voltar para Busca
 
-        <div class="dashboard">
+        </button>
 
-            <div class="dashCard">
-                <h3 id="totalClinicas">0</h3>
-                <span>Clínicas</span>
-            </div>
-
-            <div class="dashCard">
-                <h3 id="totalEspecialidades">0</h3>
-                <span>Especialidades</span>
-            </div>
-
-            <div class="dashCard">
-                <h3 id="totalRegioes">0</h3>
-                <span>Regiões</span>
-            </div>
-
-            <div class="dashCard">
-                <h3 id="totalEstados">0</h3>
-                <span>Estados</span>
-            </div>
-
-            <div class="dashCard">
-                <h3 id="totalCidades">0</h3>
-                <span>Cidades</span>
-            </div>
-
-            <div class="dashCard">
-                <h3 id="totalBairros">0</h3>
-                <span>Bairros</span>
-            </div>
-
-        </div>
-
-        <!-- MENU -->
-
-        <div class="menuGrid">
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('clinicas')">
-
-                🏥
-                <span>Clínicas</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('especialidades')">
-
-                🦷
-                <span>Especialidades</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('regioes')">
-
-                🌎
-                <span>Regiões</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('estados')">
-
-                📍
-                <span>Estados</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('cidades')">
-
-                🏙
-                <span>Cidades</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('bairros')">
-
-                📌
-                <span>Bairros</span>
-
-            </button>
-
-            <button
-                class="btnMenu"
-                onclick="abrirModulo('redes')">
-
-                🌐
-                <span>Redes</span>
-
-            </button>
-
-            <button
-                class="btnMenu sair"
-                onclick="logout()">
-
-                🚪
-                <span>Sair</span>
-
-            </button>
-
-        </div>
-
-        <!-- ÁREA DE TRABALHO -->
-
-        <div
-            id="areaConteudo"
-            class="cardPrincipal">
-
-            <div class="boasVindas">
-
-                <h2>
-
-                    Bem-vindo ao Painel Administrativo
-
-                </h2>
-
-                <p>
-
-                    Utilize o menu acima para gerenciar:
-
-                </p>
-
-                <ul>
-
-                    <li>🏥 Clínicas</li>
-
-                    <li>🦷 Especialidades</li>
-
-                    <li>🌎 Regiões</li>
-
-                    <li>📍 Estados</li>
-
-                    <li>🏙 Cidades</li>
-
-                    <li>📌 Bairros</li>
-
-                    <li>🌐 Redes Credenciadas</li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
+    </div>
 
 </div>
 
-<!-- ===========================================
-SCRIPTS
-=========================================== -->
-
 <script src="js/supabase.js"></script>
-<script src="js/tema.js"></script>
-<script src="js/admin.js"></script>
+<script src="js/login.js"></script>
 
 </body>
+
 </html>
