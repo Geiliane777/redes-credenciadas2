@@ -8,7 +8,6 @@ async function popularRegioes(selectId){
         .from("regioes")
         .select("*")
         .order("nome");
-
     const el = document.getElementById(selectId);
     if(!el) return;
 
@@ -771,10 +770,9 @@ async function excluirEspecialidade(id){
 let clinicaEmEdicaoId = null;
 
 document.addEventListener("DOMContentLoaded", () => {
-    // Cascata do formulário de adicionar clínica
+
     ligarCascataLocalizacao("clinica_regiao", "clinica_estado", "clinica_cidade", "clinica_bairro");
 
-    // Cascata do formulário de editar clínica
     ligarCascataLocalizacao("edit_clinica_regiao", "edit_clinica_estado", "edit_clinica_cidade", "edit_clinica_bairro");
 
     const btnSalvar = document.getElementById("btnSalvarClinica");
@@ -786,11 +784,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnAtualizar = document.getElementById("btnAtualizarClinica");
     if(btnAtualizar) btnAtualizar.addEventListener("click", atualizarClinica);
 
+    // NOVO
+    const btnExcluir = document.getElementById("btnExcluirClinica");
+    if(btnExcluir) btnExcluir.addEventListener("click", excluirClinica);
+
     const btnVoltar = document.getElementById("btnVoltarClinicas");
     if(btnVoltar) btnVoltar.addEventListener("click", () => mostrarPagina("clinicas"));
 
     const btnAddEspRede = document.getElementById("btnAdicionarEspRede");
     if(btnAddEspRede) btnAddEspRede.addEventListener("click", adicionarEspecialidadeRede);
+
 });
 
 async function carregarPaginaClinicas(){
