@@ -15,13 +15,11 @@ async function popularRegioes(selectId){
         console.error(error);
         return;
     }
-
     el.innerHTML = `<option value="">Selecione Região</option>`;
     data.forEach(r => {
         el.innerHTML += `<option value="${r.id}">${r.nome}</option>`;
     });
 }
-
 async function popularEstados(selectId, regiaoId){
     const el = document.getElementById(selectId);
     if(!el) return;
@@ -44,7 +42,6 @@ async function popularEstados(selectId, regiaoId){
         el.innerHTML += `<option value="${e.id}">${e.nome}</option>`;
     });
 }
-
 async function popularCidades(selectId, estadoId){
     const el = document.getElementById(selectId);
     if(!el) return;
@@ -1002,6 +999,61 @@ async function atualizarClinica(){
     alert("Dados atualizados com sucesso!");
 }
 
+// ======================================
+// EXCLUIR CLÍNICA
+// ======================================
+async function excluirClinica(){
+
+    const id = document.getElementById("edit_clinica_id").value;
+
+    if(!id){
+        alert("Nenhuma clínica selecionada.");
+        return;
+    }
+
+    const confirmar = confirm(
+        "Tem certeza que deseja excluir esta clínica? Esta ação não pode ser desfeita."
+    );
+
+    if(!confirmar) return;
+
+
+    // Primeiro remove os vínculos com especialidades
+    const { error: erroVinculo } = await supabaseClient
+        .from("clinica_especialidades")
+        .delete()
+        .eq("clinica_id", id);
+
+
+    if(erroVinculo){
+        console.error(erroVinculo);
+        alert("Erro ao remover vínculos da clínica: " + erroVinculo.message);
+        return;
+    }
+
+
+    // Depois remove a clínica
+    const { error } = await supabaseClient
+        .from("clinicas")
+        .delete()
+        .eq("id", id);
+
+
+    if(error){
+        console.error(error);
+        alert("Erro ao excluir clínica: " + error.message);
+        return;
+    }
+
+
+    alert("Clínica excluída com sucesso!");
+
+    clinicaEmEdicaoId = null;
+
+    mostrarPagina("clinicas");
+
+    listarClinicas();
+}
 // ======================================
 // ESPECIALIDADES / REDES DA CLÍNICA EM EDIÇÃO
 // ======================================
