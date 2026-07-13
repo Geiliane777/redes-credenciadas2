@@ -303,31 +303,23 @@ to{
 
 
 .logo-area{
-
+.logo-area{
 
     width:75px;
 
-
     height:75px;
-
 
     margin:auto;
 
-
     display:flex;
-
 
     align-items:center;
 
-
     justify-content:center;
 
-
-    background:white;
-
+    background:transparent;
 
     border-radius:20px;
-
 
 }
 
@@ -335,12 +327,13 @@ to{
 
 .logo-area img{
 
+    width:65px;
 
-    width:55px;
+    height:65px;
 
+    object-fit:contain;
 
 }
-
 
 
 .sidebar-logo h2{
