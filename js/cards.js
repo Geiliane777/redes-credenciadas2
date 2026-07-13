@@ -188,7 +188,7 @@ function mostrarClinicas(clinicas) {
 
 
                     <h2>
-                        🏥 ${clinica.nome}
+                         ${clinica.nome}
                     </h2>
 
 
@@ -207,7 +207,7 @@ function mostrarClinicas(clinicas) {
                     <p>
 
                         <strong>
-                            📍 Endereço
+                            Endereço
                         </strong>
 
                         <br>
@@ -246,7 +246,7 @@ function mostrarClinicas(clinicas) {
                     <p>
 
                         <strong>
-                            📞 Telefone
+                             Telefone
                         </strong>
 
                         <br>
@@ -283,7 +283,7 @@ function mostrarClinicas(clinicas) {
 
                         <strong>
 
-                            🦷 Procedimentos disponíveis
+                             Procedimentos disponíveis
 
                         </strong>
 
