@@ -224,7 +224,7 @@ function mostrarClinicas(clinicas) {
                     <p>
 
                         <strong>
-                            🏙 Localização
+                            Localização
                         </strong>
 
                         <br>
