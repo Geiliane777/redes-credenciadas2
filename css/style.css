@@ -1,77 +1,44 @@
-
-
 /* =====================================
-   TEMA
+   TEM
 ===================================== */
-
 :root{
-
     --cor-fundo:#f3f6fb;
-
     --cor-card:#ffffff;
-
     --cor-header1:#0f172a;
-
     --cor-header2:#2563eb;
-
     --cor-primaria:#2563eb;
-
     --cor-primaria-hover:#1d4ed8;
-
     --cor-sucesso:#059669;
-
     --cor-sucesso-hover:#047857;
-
     --texto:#374151;
-
     --texto-forte:#111827;
-
     --sombra:0 10px 30px rgba(0,0,0,.08);
-
 }
-
-
-
 /* =====================================
    TEMA ESCURO
 ===================================== */
-
 body.dark{
-
     --cor-fundo:#0f172a;
-
     --cor-card:#1e293b;
-
     --cor-header1:#020617;
-
     --cor-header2:#1e40af;
-
     --cor-primaria:#3b82f6;
-
     --cor-primaria-hover:#2563eb;
-
     --cor-sucesso:#10b981;
-
     --cor-sucesso-hover:#059669;
-
     --texto:#f8fafc;
-
     --texto-forte:#ffffff;
-
     --sombra:0 10px 30px rgba(0,0,0,.35);
-
 }
 /* =====================================
    RESET
 ===================================== */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
     font-family:Arial, Helvetica, sans-serif;
 }
-
 body{
     background:var(--cor-fundo);
     color:var(--texto);
@@ -79,426 +46,235 @@ body{
 }
 /* NÃO ALTERAR TODAS AS IMAGENS */
 /* Não coloque img { width:100%; } */
-
-
 /* =====================================
    HEADER
 ===================================== */
-
 .header{
-
     background:linear-gradient(
     135deg,
     var(--cor-header1),
     var(--cor-header2)
 );
     color:white;
-
     text-align:center;
-
     padding:50px 20px;
-
     border-bottom-left-radius:30px;
     border-bottom-right-radius:30px;
-
    box-shadow:var(--sombra);
 }
-
-
 /* =====================================
    LOGO
 ===================================== */
-
 .logo{
-
     width:90px;
-
     height:auto;
-
     display:block;
-
     margin:0 auto 20px;
-
 }
-
-
 /* =====================================
    TÍTULOS
 ===================================== */
-
 .header h1{
-
     font-size:36px;
-
     margin-bottom:10px;
-
 }
-
 .header p{
-
     font-size:18px;
-
     opacity:.9;
-
 }
-
-
 /* =====================================
    CONTAINER
 ===================================== */
-
 .container{
-
     width:95%;
-
     max-width:1200px;
-
     margin:auto;
-
     margin-top:-30px;
-
     margin-bottom:40px;
-
 }
-
-
 /* =====================================
    FILTROS
 ===================================== */
-
 .filtros{
-
 background:var(--cor-card);
-   
     padding:25px;
-
     border-radius:20px;
-
  box-shadow:var(--sombra);
-
     display:grid;
-
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
     gap:15px;
-
 }
-
-
 /* =====================================
    SELECT
 ===================================== */
 select{
-
     width:100%;
-
     padding:14px;
-
     border-radius:10px;
-
     border:1px solid #d1d5db;
-
     font-size:15px;
-
     background:var(--cor-card);
-
     color:var(--texto);
-
 }
-
 /* =====================================
    BOTÃO
 ===================================== */
-
 button{
-
     background:var(--cor-primaria);
-
     color:white;
-
     border:none;
-
     border-radius:10px;
-
     cursor:pointer;
-
     font-size:16px;
-
     font-weight:bold;
-
     padding:14px;
-
     transition:.3s;
-
 }
-
 button:hover{
-
   background:var(--cor-primaria-hover);
-
 }
-
-
 /* =====================================
    RESULTADO
 ===================================== */
-
 #resultado{
-
     margin-top:35px;
-
 }
-
 .tituloResultado{
-
     margin-bottom:20px;
-
     color:var(--cor-primaria);
-
 }
-
-
 /* =====================================
    CARD
 ===================================== */
-
 .card{
-
 background:var(--cor-card);
-   
     border-radius:18px;
-
     overflow:hidden;
-
     margin-bottom:25px;
-
   box-shadow:var(--sombra);
-
     transition:.3s;
-
 }
-
 .card:hover{
-
     transform:translateY(-5px);
-
     box-shadow:var(--sombra);
-
 }
-
-
 /* =====================================
    CABEÇALHO DO CARD
 ===================================== */
-
 .cardHeader{
-
 background:var(--cor-primaria);
-   
     color:white;
-
     padding:20px;
-
 }
-
 .cardHeader h2{
-
     font-size:24px;
-
 }
-
-
 /* =====================================
    INFORMAÇÕES
 ===================================== */
-
 .info{
-
     padding:25px;
-
 }
 /* =====================================
    LINKS (Telefone)
 ===================================== */
-
 /* =====================================
    TELEFONE
 ===================================== */
-
 .info p a,
 .info p a:link,
 .info p a:visited,
 .info p a:hover,
 .info p a:active{
-
     color:inherit !important;
-
     text-decoration:none !important;
-
     font-weight:normal;
-
 }
-
 .info p a:hover{
-
     color:var(--cor-primaria) !important;
-
 }
-
 /* Chrome / Safari */
-
 a[href^="tel"]{
-
     color:inherit !important;
-
     text-decoration:none !important;
-
 }
-
 a[href^="tel"]:visited{
-
     color:inherit !important;
-
 }
-
 a[href^="tel"]:hover{
-
     color:var(--cor-primaria) !important;
-
 }
-
 /* =====================================
    ESPECIALIDADES
 ===================================== */
-
 .especialidades{
-
     margin-top:20px;
-
 }
-
 .tags{
-
     display:flex;
-
     flex-wrap:wrap;
-
     gap:10px;
-
     margin-top:10px;
-
 }
-
 .tag{
-
     background:var(--cor-primaria);
     color:white;
-
     padding:8px 14px;
-
     border-radius:30px;
-
     font-size:13px;
-
     font-weight:bold;
-
 }
-
-
 /* =====================================
    BOTÃO GOOGLE MAPS
 ===================================== */
-
 .acoes{
-
     margin-top:25px;
-
 }
-
 .btnAcao{
-
     display:block;
-
     width:100%;
-
     text-align:center;
-
     text-decoration:none;
-
     padding:15px;
-
     background:var(--cor-sucesso);
-
     color:white;
-
     border-radius:10px;
-
     font-weight:bold;
-
     transition:.3s;
-
 }
-
 .btnAcao:hover{
-
     background:var(--cor-sucesso-hover);
-
 }
-
-
 /* =====================================
    SEM RESULTADO
 ===================================== */
-
 .semResultado{
-
     background:var(--cor-card);
     padding:40px;
-
     border-radius:20px;
-
     text-align:center;
-
    box-shadow:var(--sombra);
-
 }
-
-
 /* =====================================
    RESPONSIVO
 ===================================== */
-
 @media(max-width:768px){
-
     .header h1{
-
         font-size:30px;
-
     }
-
     .header p{
-
         font-size:16px;
-
     }
-
     .logo{
-
         width:75px;
-
     }
-
     .filtros{
-
         grid-template-columns:1fr;
-
     }
-
 }
 /* =====================================
    TRANSIÇÃO DO TEMA
 ===================================== */
-
 body,
 .header,
 .filtros,
@@ -511,92 +287,57 @@ button,
 select,
 .semResultado,
 a{
-
     transition:
         background .3s,
         color .3s,
         border-color .3s,
         box-shadow .3s;
-
 }
 /* =====================================
    BOTÃO ATIVO
 ===================================== */
-
 button.ativo{
-
     background:var(--cor-primaria);
-
     color:#fff;
-
 }
-
 button.ativo:hover{
-
     background:var(--cor-primaria-hover);
-
 }
 /* =====================================
    REDE SINDILEGIS
 ===================================== */
-
 body.sindilegis{
-
     --cor-header1:#0f172a;
     --cor-header2:#581c87;
-
     --cor-primaria:#7c3aed;
     --cor-primaria-hover:#6d28d9;
-
     --cor-sucesso:#16a34a;
     --cor-sucesso-hover:#15803d;
-
 }
-
 body.sindilegis .header{
-
     background:linear-gradient(
         135deg,
         #0f172a,
         #581c87,
         #7c3aed
     );
-
 }
-
 body.sindilegis .tag{
-
     background:#7c3aed;
-
 }
-
 body.sindilegis .cardHeader{
-
     background:#7c3aed;
-
 }
-
 body.sindilegis .tituloResultado{
-
     color:#7c3aed;
-
 }
-
 body.sindilegis button{
-
     background:#7c3aed;
-
 }
-
 body.sindilegis button:hover{
-
     background:#6d28d9;
-
 }
-
 body.sindilegis .ativo{
-
     background:#7c3aed;
     color:#fff;
-
 }
