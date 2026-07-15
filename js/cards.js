@@ -1,6 +1,7 @@
 // ======================================
 // EXIBIR CLÍNICAS
 // ======================================
+
 function mostrarClinicas(clinicas) {
     const resultado = document.getElementById("resultado");
     resultado.innerHTML = "";
