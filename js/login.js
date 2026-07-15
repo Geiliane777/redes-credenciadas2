@@ -1,6 +1,7 @@
 // ======================================
 // LOGIN DO PAINEL ADMINISTRATIVO
 // ======================================
+
 const USUARIO = "admin";
 const SENHA = "123456";
 // Verifica se já existe uma sessão
