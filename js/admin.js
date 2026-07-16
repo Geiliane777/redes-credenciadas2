@@ -553,8 +553,7 @@ async function carregarPaginaEspecialidades(){
 async function addNovaEspecialidade(){
     const input = document.getElementById("nova_especialidade");
 const nome = input.value.trim();
-const rede =
-document.getElementById("especialidade_rede").value;
+    const rede = document.getElementById("especialidade_rede").value;
     if(!nome){
         alert("Digite o nome da especialidade.");
         return;
@@ -567,7 +566,10 @@ document.getElementById("especialidade_rede").value;
         alert("Esta especialidade já está cadastrada!");
         return;
     }
-    const { error } = await supabaseClient.from("especialidades").insert([{ nome }]);
+    const { error } = await supabaseClient.from("especialidades").insert([{
+    nome,
+    rede
+}]);
     if(error){
         console.error(error);
         alert("Erro ao salvar especialidade: " + error.message);
