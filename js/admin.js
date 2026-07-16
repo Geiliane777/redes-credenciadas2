@@ -577,6 +577,7 @@ const nome = input.value.trim();
     }
     alert("Especialidade cadastrada com sucesso!");
     input.value = "";
+    document.getElementById("especialidade_rede").value = "especialistas";
     listarEspecialidades();
 }
 async function listarEspecialidades(){
@@ -596,14 +597,27 @@ async function listarEspecialidades(){
         container.innerHTML = "<p>Nenhuma especialidade cadastrada.</p>";
         return;
     }
-    container.innerHTML = "";
-    data.forEach(e => {
-        container.innerHTML += `
-            <div class="box" style="display:flex; justify-content:space-between; align-items:center;">
-                <h3>${e.nome}</h3>
-                <button class="red" style="width:auto; margin:0;" onclick="excluirEspecialidade(${e.id})">Excluir</button>
-            </div>
-        `;
+    container.innerHTML += `
+<div class="box" style="display:flex; justify-content:space-between; align-items:center;">
+
+    <div>
+        <h3>${e.nome}</h3>
+        <small>
+            ${e.rede === "especialistas"
+                ? "Rede Especialistas"
+                : "Rede Sindilegis"}
+        </small>
+    </div>
+
+    <button
+        class="red"
+        style="width:auto; margin:0;"
+        onclick="excluirEspecialidade(${e.id})">
+        Excluir
+    </button>
+
+</div>
+`;
     });
 }
 async function excluirEspecialidade(id){
