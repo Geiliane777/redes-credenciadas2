@@ -581,44 +581,47 @@ const nome = input.value.trim();
     listarEspecialidades();
 }
 async function listarEspecialidades(){
+
     const container = document.getElementById("listaEspecialidades");
-    if(!container) return;
-    container.innerHTML = "<p>Carregando...</p>";
+
     const { data, error } = await supabaseClient
         .from("especialidades")
         .select("*")
         .order("nome");
+
     if(error){
         console.error(error);
-        container.innerHTML = "<p>Erro ao carregar especialidades.</p>";
         return;
     }
-    if(!data || data.length === 0){
-        container.innerHTML = "<p>Nenhuma especialidade cadastrada.</p>";
-        return;
-    }
-    container.innerHTML += `
-<div class="box" style="display:flex; justify-content:space-between; align-items:center;">
 
-    <div>
-        <h3>${e.nome}</h3>
-        <small>
-            ${e.rede === "especialistas"
-                ? "Rede Especialistas"
-                : "Rede Sindilegis"}
-        </small>
-    </div>
+    container.innerHTML = "";
 
-    <button
-        class="red"
-        style="width:auto; margin:0;"
-        onclick="excluirEspecialidade(${e.id})">
-        Excluir
-    </button>
+    data.forEach(e=>{
 
-</div>
-`;
+        container.innerHTML += `
+        <div class="box" style="display:flex; justify-content:space-between; align-items:center;">
+
+            <div>
+                <h3>${e.nome}</h3>
+                <small>
+                    ${e.rede === "especialistas"
+                        ? "Rede Especialistas"
+                        : "Rede Sindilegis"}
+                </small>
+            </div>
+
+            <button
+                class="red"
+                style="width:auto; margin:0;"
+                onclick="excluirEspecialidade(${e.id})">
+                Excluir
+            </button>
+
+        </div>
+        `;
+
     });
+
 }
 async function excluirEspecialidade(id){
     const confirmar = confirm(
