@@ -489,23 +489,41 @@ Gerencie os tipos de atendimento disponíveis.
 ➕ Nova Especialidade
 </h3>
 <div class="form-grid">
-<div>
-<label>
-Nome da especialidade
-</label>
-<input 
-id="nova_especialidade"
-placeholder="Ex: Implantodontia">
+
+    <div>
+        <label>
+            Nome da especialidade
+        </label>
+
+        <input
+            id="nova_especialidade"
+            placeholder="Ex: Implantodontia">
+    </div>
+
+    <!-- NOVA DIV -->
+    <div>
+        <label>
+            Rede
+        </label>
+
+        <select id="especialidade_rede">
+            <option value="especialistas">
+                Rede Especialistas
+            </option>
+
+            <option value="sindilegis">
+                Rede Sindilegis
+            </option>
+        </select>
+    </div>
+
 </div>
-</div>
-<button 
+
+<button
 class="green"
 id="btnSalvarEspecialidade">
 💾 Salvar
 </button>
-</div>
-<div class="card">
-<h3>
 📋 Especialidades cadastradas
 </h3>
 <div id="listaEspecialidades">
